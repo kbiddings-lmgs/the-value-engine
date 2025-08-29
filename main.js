@@ -2,25 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.fixed-nav .nav-item');
   const sections = document.querySelectorAll('.content-section');
 
-  const updateNavHighlight = () => {
-    let currentSectionId = '';
-    const scrollY = window.scrollY;
+  function updateActiveLink() {
+    let current = '';
+    const scrollPosition = window.pageYOffset + window.innerHeight / 2; // Check position from the middle of the viewport
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100; // Offset to highlight before reaching the top
-      const sectionHeight = section.clientHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        currentSectionId = section.id;
+      if (section.offsetTop <= scrollPosition) {
+        current = section.getAttribute('id');
       }
     });
 
     navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href').substring(1) === currentSectionId) {
+      if (link.href.includes(current)) {
         link.classList.add('active');
       }
     });
-  };
+  }
 
-  window.addEventListener('scroll', updateNavHighlight);
+  // Initial check on page load
+  updateActiveLink();
+
+  // Update on scroll
+  window.addEventListener('scroll', updateActiveLink);
 });
