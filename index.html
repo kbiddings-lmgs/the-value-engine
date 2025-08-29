@@ -10,18 +10,116 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Hero Section -->
   <header class="hero" style="background-image: url('/images/hero-banner.png');">
     <div class="hero-content">
-      <h1>The Value Engine</h1>
-      <p>The definitive portal for all your value selling tools.</p>
+      <h1 class="hero-title">The Value Engine</h1>
+      <p class="hero-subtitle">The definitive portal for all your value selling tools.</p>
     </div>
   </header>
 
+  <!-- Navigation Cards -->
   <main class="container">
     <h2>Explore the Arsenal</h2>
-    <section class="card-grid" id="tools-container"></section>
-  </main>
+    <section class="card-grid">
+      <a href="#conversation-tools" class="card">
+        <img src="/images/conversation-icon.png" alt="Conversation Tools" class="card-icon">
+        <h3 class="card-title">Have the Conversation</h3>
+      </a>
+      <a href="#story-tools" class="card">
+        <img src="/images/story-icon.png" alt="Story Tools" class="card-icon">
+        <h3 class="card-title">Show the Story</h3>
+      </a>
+      <a href="#business-tools" class="card">
+        <img src="/images/business-case-icon.png" alt="Business Case Tools" class="card-icon">
+        <h3 class="card-title">Build the Business Case</h3>
+      </a>
+      <a href="#skills-tools" class="card">
+        <img src="/images/skills-icon.png" alt="Skills Tools" class="card-icon">
+        <h3 class="card-title">Level Up Your Skills</h3>
+      </a>
+      <a href="#facts-tools" class="card">
+        <img src="/images/facts-icon.png" alt="Facts Tools" class="card-icon">
+        <h3 class="card-title">Get the Facts</h3>
+      </a>
+    </section>
 
+    <!-- Detailed Content Sections -->
+    <div class="content-sections">
+      <section id="conversation-tools" class="content-section">
+        <div class="content-image">
+          <img src="/images/conversation-icon.png" alt="Have the Conversation">
+        </div>
+        <div class="content-text">
+          <h3 class="section-title">Have the Conversation</h3>
+          <p class="section-description">These tools help you with powerful conversation starters, personalized outreach, and real-time insights.</p>
+          <ul>
+            <li>**AI Conversation Intelligence:** Get live guidance and post-call summaries to pinpoint key moments.</li>
+            <li>**Persona-Based Talking Points:** Access tailored scripts and talking points for any buyer persona.</li>
+            <li>**AI-Powered Email Generator:** Create personalized emails with just a few prompts.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="story-tools" class="content-section reversed">
+        <div class="content-image">
+          <img src="/images/story-icon.png" alt="Show the Story">
+        </div>
+        <div class="content-text">
+          <h3 class="section-title">Show the Story</h3>
+          <p class="section-description">Use these tools to prove value and build compelling narratives with visuals and data-driven stories.</p>
+          <ul>
+            <li>**Automated Value Decks:** Generate professional slide decks that align with your prospect's industry and pain points.</li>
+            <li>**Visual Storyteller:** Access a library of pre-built infographics and visual templates.</li>
+            <li>**Dynamic Case Studies:** Tailor case studies to highlight specific customer successes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="business-tools" class="content-section">
+        <div class="content-image">
+          <img src="/images/business-case-icon.png" alt="Build the Business Case">
+        </div>
+        <div class="content-text">
+          <h3 class="section-title">Build the Business Case</h3>
+          <p class="section-description">Leverage these tools to create compelling financial justifications and close deals faster.</p>
+          <ul>
+            <li>**ROI Calculator:** Input prospect data to generate a custom ROI analysis.</li>
+            <li>**Business Case Builder:** Answer a few questions to build a polished, C-suite ready business case document.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills-tools" class="content-section reversed">
+        <div class="content-image">
+          <img src="/images/skills-icon.png" alt="Level Up Your Skills">
+        </div>
+        <div class="content-text">
+          <h3 class="section-title">Level Up Your Skills</h3>
+          <p class="section-description">A library of tools to help you practice your pitch, receive feedback, and improve your skills on demand.</p>
+          <ul>
+            <li>**Pitch Practice AI:** Practice your pitch and get real-time feedback on tone, pace, and clarity.</li>
+            <li>**Training Arsenal:** Access on-demand training modules and micro-lessons on AI selling best practices.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="facts-tools" class="content-section">
+        <div class="content-image">
+          <img src="/images/facts-icon.png" alt="Get the Facts">
+        </div>
+        <div class="content-text">
+          <h3 class="section-title">Get the Facts</h3>
+          <p class="section-description">Quickly find the data and market insights you need to back up your claims and build credibility.</p>
+          <ul>
+            <li>**Market & Competitor Insights:** Search a library of up-to-date market trends and competitor analyses.</li>
+            <li>**Data Dashboards:** Find key metrics and data visualizations to inform your strategy.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+  <button id="back-to-top" title="Go to top">&#9650;</button>
   <script src="/main.js"></script>
 </body>
 </html>
