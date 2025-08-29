@@ -143,8 +143,8 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 .card-icon {
-  width: 100px; /* Updated icon size */
-  height: 100px;
+  width: 300px; /* Updated icon size */
+  height: 300px;
   margin-bottom: 20px;
 }
 .card-title {
