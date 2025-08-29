@@ -20,7 +20,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: var(--cf-white); /* White background for the whole page */
   color: var(--cf-black);
 }
 
@@ -129,7 +129,7 @@ body {
   justify-content: center;
 }
 .card {
-  background-color: var(--cf-white); /* White for cards */
+  background-color: var(--cf-gray); /* Light gray for cards */
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -143,8 +143,8 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 .card-icon {
-  width: 300px; /* Updated icon size */
-  height: 300px;
+  width: 128px; /* Updated icon size */
+  height: 128px;
   margin-bottom: 20px;
 }
 .card-title {
@@ -200,8 +200,9 @@ body {
   align-items: center;
 }
 .content-image img {
-  width: 100%;
-  max-width: 350px;
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
   height: auto;
 }
 .content-text {
