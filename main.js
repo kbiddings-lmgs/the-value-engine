@@ -1,31 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const backToTopButton = document.getElementById('back-to-top');
+  const navLinks = document.querySelectorAll('.fixed-nav .nav-item');
+  const sections = document.querySelectorAll('.content-section');
 
-  const showButton = () => {
-    if (window.scrollY > 200) {
-      backToTopButton.classList.add('show');
-    } else {
-      backToTopButton.classList.remove('show');
-    }
-  };
+  const updateNavHighlight = () => {
+    let currentSectionId = '';
+    const scrollY = window.scrollY;
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100; // Offset to highlight before reaching the top
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        currentSectionId = section.id;
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === currentSectionId) {
+        link.classList.add('active');
+      }
     });
   };
 
-  window.addEventListener('scroll', showButton);
-  backToTopButton.addEventListener('click', scrollToTop);
-
-  // Smooth scroll for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+  window.addEventListener('scroll', updateNavHighlight);
 });
