@@ -23,6 +23,13 @@ body {
   background-color: var(--cf-white); /* White background for the whole page */
   color: var(--cf-black);
 }
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
 
 /* Fixed Right-Hand Navigation */
 .fixed-nav {
@@ -219,23 +226,28 @@ body {
   color: var(--cf-black);
   margin-bottom: 20px;
 }
-.content-text ul {
-  list-style: none;
-  padding: 0;
+
+/* Tool list styles */
+.tool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.content-text ul li {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF6633" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') no-repeat left center;
-  background-size: 20px;
-  padding-left: 30px;
-  margin-bottom: 15px;
-  font-size: 1rem;
+.tool-item {
   color: var(--cf-black);
 }
-.separator {
-  height: 1px;
-  width: 80%;
-  background-color: var(--cf-gray);
-  margin: 40px auto;
+.tool-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px;
+  color: var(--cf-black);
+}
+.tool-item p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+.tool-item strong {
+  color: var(--cf-ruby-orange);
 }
 .tool-link {
   display: inline-block;
