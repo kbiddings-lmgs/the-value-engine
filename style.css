@@ -151,7 +151,7 @@ body {
   font-size: 1.2rem;
   margin: 0;
   font-weight: 600;
-  color: var(--cf-ruby-orange);
+  color: var(--cf-black);
 }
 
 /* Detailed Content Sections */
@@ -236,6 +236,20 @@ body {
   width: 80%;
   background-color: var(--cf-gray);
   margin: 40px auto;
+}
+.tool-link {
+  display: inline-block;
+  background-color: var(--cf-ruby-orange);
+  color: var(--cf-white);
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.tool-link:hover {
+  background-color: var(--cf-tangerine-orange);
 }
 
 /* Footer */
