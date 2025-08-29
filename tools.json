@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Ignite Client Conversations",
+    "description": "Access AI-powered scripts, key insights, and talking points to prepare for any client conversation and ensure every word lands with impact.",
+    "icon": "/images/conversation-icon.png",
+    "url": "https://yourcompany.atlassian.net/wiki/spaces/SPACEKEY/pages/PAGEID_1"
+  },
+  {
+    "id": "2",
+    "name": "Craft a Compelling Story",
+    "description": "Go beyond the pitch deck. Leverage dynamic templates, visual aids, and compelling case studies to build a powerful narrative that proves your value.",
+    "icon": "/images/story-icon.png",
+    "url": "https://yourcompany.atlassian.net/wiki/spaces/SPACEKEY/pages/PAGEID_2"
+  },
+  {
+    "id": "3",
+    "name": "Build a Winning Business Case",
+    "description": "Instantly create a rock-solid business case. Quantify your value with a clear ROI analysis to secure executive buy-in and close deals faster.",
+    "icon": "/images/business-case-icon.png",
+    "url": "https://yourcompany.atlassian.net/wiki/spaces/SPACEKEY/pages/PAGEID_3"
+  },
+  {
+    "id": "4",
+    "name": "Master Your Sales Skills",
+    "description": "Access a library of on-demand training and practice tools. Master your craft with AI-powered coaching to turn every selling motion into a win.",
+    "icon": "/images/skills-icon.png",
+    "url": "https://yourcompany.atlassian.net/wiki/spaces/SPACEKEY/pages/PAGEID_4"
+  },
+  {
+    "id": "5",
+    "name": "Find the Facts, Fast",
+    "description": "Eliminate research roadblocks. Find the data, market insights, and competitive intelligence you need in seconds to become the most trusted advisor.",
+    "icon": "/images/facts-icon.png",
+    "url": "https://yourcompany.atlassian.net/wiki/spaces/SPACEKEY/pages/PAGEID_5"
+  }
+]
