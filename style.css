@@ -20,7 +20,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background-color: var(--cf-white);
+  background-color: #f0f0f0; /* Light gray background */
   color: var(--cf-black);
 }
 
@@ -92,7 +92,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.5); /* Semi-transparent overlay for text readability */
+  background: rgba(255, 255, 255, 0.1); /* Brighter overlay */
 }
 .hero-content {
   position: relative;
@@ -129,7 +129,7 @@ body {
   justify-content: center;
 }
 .card {
-  background-color: #f0f0f0; /* Light gray for cards */
+  background-color: var(--cf-white); /* White for cards */
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -143,8 +143,8 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 .card-icon {
-  width: 60px;
-  height: 60px;
+  width: 100px; /* Updated icon size */
+  height: 100px;
   margin-bottom: 20px;
 }
 .card-title {
@@ -164,16 +164,11 @@ body {
   align-items: center;
   gap: 40px;
   padding: 60px 0;
-  border-top: 1px solid var(--cf-gray);
-  width: 100vw;
+  width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 }
-.content-section:last-child {
-  border-bottom: 1px solid var(--cf-gray);
+.content-section:first-child {
+  padding-top: 0;
 }
 .content-section:nth-child(even) {
   background-color: var(--cf-black);
@@ -191,8 +186,8 @@ body {
 @media (min-width: 768px) {
   .content-section {
     flex-direction: row;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 1200px;
+    margin: auto;
   }
   .content-section.reversed {
     flex-direction: row-reverse;
