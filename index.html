@@ -1,162 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Value Engine</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Value Engine</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light background */
+            color: #1f2937; /* Dark text */
+        }
+        /* Enable smooth scrolling */
+        html {
+            scroll-behavior: smooth; 
+        }
+        /* Custom class for active vertical navigation link */
+        .nav-active {
+            background-color: #F38020; /* Cloudflare Orange */
+            color: white !important; /* !important to override default text color */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<body>
-  <header class="hero" style="background-image: url('/images/hero-banner.png');">
-    <div class="hero-content">
-      <h1 class="hero-title">The Value Engine</h1>
-      <p class="hero-subtitle">Your Unified Hub for AI-Powered Value Selling</p>
-    </div>
-  </header>
+<body class="min-h-screen p-4 sm:p-8">
 
-  <main class="container">
-    <div class="fixed-nav">
-      <a href="#conversation" class="nav-item">Conversation</a>
-      <a href="#story" class="nav-item">Storytelling</a>
-      <a href="#case" class="nav-item">Business Case</a>
-      <a href="#skills" class="nav-item">Skills</a>
-      <a href="#facts" class="nav-item">Facts</a>
-    </div>
+    <div id="app" class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center py-10 rounded-xl bg-white mb-6 shadow-md border border-gray-200">
+            <!-- Title -->
+            <h1 class="5xl font-extrabold text-[#F38020] mb-3">The Value Engine</h1>
+            <!-- Sub-header -->
+            <p class="text-xl text-gray-500">Your Unified Hub for AI-Powered Value Selling</p>
+        </header>
+        
+        <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) -->
+        <section class="mb-12" id="explore">
+            <h2 class="text-3xl font-bold text-[#F38020] mb-6 border-b border-gray-200 pb-3 flex items-center text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 mr-3 text-[#F38020] transform rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10.5V6a2.25 2.25 0 00-4.5 0v4.5M16.883 17.5l-4.707 4.707a1 1 0 01-1.414 0l-4.707-4.707a1 1 0 010-1.414L10.5 10.5m-1.5 0v1.5a1.5 1.5 0 01-3 0V10.5m9 0v1.5a1.5 1.5 0 01-3 0V10.5" />
+                </svg>
+                Explore the Arsenal
+            </h2>
+            
+            <!-- Card Grid populated by JS -->
+            <div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Cards injected by JavaScript -->
+            </div>
+        </section>
 
-    <h2>Explore the Arsenal</h2>
-    <p class="section-subtitle">Select a card to jump to a specific tool category.</p>
-    <section class="card-grid">
-      <a href="#conversation" class="card">
-        <img src="/images/convo.png" alt="Conversation Icon" class="card-icon">
-        <h3 class="card-title">Have the Conversation</h3>
-      </a>
-      <a href="#story" class="card">
-        <img src="/images/story.png" alt="Story Icon" class="card-icon">
-        <h3 class="card-title">Show the Story</h3>
-      </a>
-      <a href="#case" class="card">
-        <img src="/images/case.png" alt="Business Case Icon" class="card-icon">
-        <h3 class="card-title">Build the Business Case</h3>
-      </a>
-      <a href="#skills" class="card">
-        <img src="/images/skills.png" alt="Skills Icon" class="card-icon">
-        <h3 class="card-title">Level Up Your Skills</h3>
-      </a>
-      <a href="#facts" class="card">
-        <img src="/images/data.png" alt="Data Icon" class="card-icon">
-        <h3 class="card-title">Get the Facts</h3>
-      </a>
-    </section>
-  </main>
+        <!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) -->
+        <section class="mb-12" id="content-sections">
+            <div id="engine-content" class="space-y-12">
+                <!-- Detailed Content injected by JavaScript -->
+            </div>
+        </section>
 
-  <section class="content-sections">
-    <div id="conversation" class="content-section">
-      <div class="content-image">
-        <img src="/images/have-convo.png" alt="Conversation Section Image">
-      </div>
-      <div class="content-text">
-        <h3 class="section-title">Have the Conversation</h3>
-        <p class="section-description">Tools to help sellers guide every interaction with a customer. From discovery questions that uncover pain points to dynamic talking points that highlight your value proposition, this section provides everything needed to lead meaningful, impactful conversations.</p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <h4>Discovery Assistant & Report</h4>
-           <p>The Value Discovery Buddy is an AI-powered discovery coach and report generator that streamlines your sales discovery, providing deep customer insights and solution positioning before you even step into the meeting.</p><p></p>
-    <p class="type"><strong>TYPE:</strong> GEM + Content Generator</p>
-    <div class="tips-box">
-        <h5>Tips</h5>
-        <p>To use the Value Discovery Assistant it's easy!</p>
-        <ul>
-            <li>Click the <strong>Access Assistant</strong> button below. That will open the Gem.</li>
-            <li>Say "Hi!" and <strong>press Enter</strong>. The assistant will start up and you can begin getting to work - that's it.</li>
-        </ul>
-        <p><strong>Save it for later?</strong> When in Gemini, you can always PIN the Gem to the left-hand side of your screen to save it for future use.</p>
-        <p><strong>Guidance:</strong> The Assistant is designed to guide you step-by-step to build out your value discovery knowledge about your customer. Once you've finished your conversation and are satisfied with the value discovery process, the assistant will ask you if you'd like to "generate a report." It will provide you with a unique code snippet and a link to the associated Google Sheet generator. The assistant will also give you clear instructions on what to do from there to generate & access your full report.</p>
+        <!-- Footer updated with ID for dynamic year insertion -->
+        <footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
+            <p id="copyright-text">&copy; Cloudflare. The Value Engine. Built for Value Selling.</p>
+        </footer>
     </div>
-            <a href="https://gemini.google.com/gem/1kk-IXbzXFpfAdIkmQaZowG9zDcUWyGI2?usp=sharing" target="_blank" class="tool-link">Access Assistant</a>
-          </div>
+    
+    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) -->
+    <nav id="vertical-nav" class="fixed right-4 top-1/4 w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
+        <div id="vertical-nav-links" class="space-y-1">
+            <!-- Links populated by JS -->
         </div>
-      </div>
-    </div>
-    <div class="separator"></div>
+    </nav>
+    
+    <!-- Fixed "Back to Top" Button (Positioned slightly left to accommodate the fixed nav) -->
+    <button id="back-to-top" class="fixed bottom-6 right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
+        <!-- Up Arrow Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
 
-    <div id="story" class="content-section reversed">
-      <div class="content-image">
-        <img src="/images/show-story.png" alt="Story Section Image">
-      </div>
-      <div class="content-text">
-        <h3 class="section-title">Show the Story</h3>
-        <p class="section-description">Go beyond a static presentation. These tools allow you to create compelling, visual stories that resonate with your customers. Build custom journey maps, demonstrate real-world ROI with dynamic case studies, and use engaging visuals to make your solution unforgettable.</p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <h4>Akamai Takeout Data Sheet for All Verticals</h4>
-            <p>The Takeout Data Sheet Generator automatically creates a customized Akamai data sheet for any customer, vertical, or scenario. It provides quantified, compelling reasons why a prospect would want to learn more, transforming your conversations from general to strategic. <p></p><p></p><p> <strong>TYPE:</strong> Prompt + Generator</p>
-            <a href="https://wiki.cfdata.org/x/JAzoSQ" target="_blank" class="tool-link">Access Tool</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="separator"></div>
+    <script>
+        // --- 1. CORE DATA (JSON) ---
+        const VALUE_ENGINE_DATA = [
+            {
+                id: 'prepare',
+                title: 'Strategic Preparation',
+                navTitle: 'Prep', // Shortened title for navigation
+                description: 'Develop a Value Hypothesis—a well-researched insight into a potential high-impact objective(s) we can help the customer achieve.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-red-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-2.239 3-5s-1.343-5-3-5-3 2.239-3 5 1.343 5 3 5z" /></svg>',
+                tools: [
+                    {
+                        name: 'Targeting & Insights Coach',
+                        type: 'AI GEM',
+                        status: 'Coming Soon',
+                        link: '#',
+                        description: 'An AI assistant to help identify ideal customer profiles, key personas, and initial high-level value hypothesis targets.',
+                        tip: 'Define your target persona and industry before launching this assistant for the best initial results.'
+                    },
+                    {
+                        name: 'Role-Play Coach',
+                        type: 'AI GEM',
+                        status: 'Active',
+                        link: 'https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing',
+                        description: 'Master your initial discovery conversations by practicing pitches and refining your strategic messaging with an AI stakeholder.',
+                        tip: 'Input key details about your prospect or industry to ensure the role-play is highly realistic and challenging.'
+                    },
+                    {
+                        name: 'Value Map Generator',
+                        type: 'Content Generator',
+                        status: 'Under Construction',
+                        link: '#',
+                        description: 'Generate high-level value maps aligning your product capabilities to customer objectives and desired business outcomes.',
+                        tip: 'Use your completed Value Hypothesis as the input for this generator to create the framework.'
+                    }
+                ]
+            },
+            {
+                id: 'engage',
+                title: 'Engage & Validate',
+                navTitle: 'Engage', // Shortened title for navigation
+                description: 'Achieve Problem Validation by securing mutual agreement that the prospect\'s pain(s) is urgent, solvable, and worthy of our joint investment.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.173a.5.5 0 000-.866l-5-2.887a.5.5 0 00-.5 0L8 15" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>',
+                tools: [
+                    {
+                        name: 'Discovery Prep Coach',
+                        type: 'AI GEM + Content Generator',
+                        status: 'Active',
+                        link: 'https://gemini.google.com/gem/1kk-IXbzXpfAdIkmQaZowG9zDcUWyGI2?usp=sharing',
+                        description: 'An AI assistant that helps structure and prepare for discovery calls, ensuring all critical pain points and validation questions are covered.',
+                        tip: 'Focus on asking open-ended questions that uncover urgency and budget commitment.'
+                    },
+                    {
+                        name: 'Akamai Takeout Data Sheet',
+                        type: 'Prompt + Generator',
+                        status: 'Active',
+                        link: 'https://wiki.cfdata.org/x/JAzoSQ',
+                        description: 'Generate a customized Akamai data sheet for any customer or vertical, providing quantified and compelling reasons for further engagement.',
+                        tip: 'Use this sheet as a "leave-behind" to reinforce the strategic nature of your validated problem.'
+                    }
+                ]
+            },
+            {
+                id: 'quantify',
+                title: 'Quantify the Impact',
+                navTitle: 'Quantify', // Shortened title for navigation
+                description: 'Establish Quantified Outcomes by converting qualitative pain into the measurable financial and operational metrics the prospect is committed to changing (the ROI baseline).',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-green-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>',
+                tools: [
+                    {
+                        name: 'Qualification Coach',
+                        type: 'AI GEM',
+                        status: 'Coming Soon',
+                        link: '#',
+                        description: 'An AI assistant that guides you through the necessary financial and business metrics to qualify the deal based on potential value.',
+                        tip: 'Ensure you have metrics for operational cost, risk reduction, and revenue acceleration ready before engaging.'
+                    },
+                    {
+                        name: 'Impact Modeler',
+                        type: 'Data Tool',
+                        status: 'Under Construction',
+                        link: '#',
+                        description: 'An interactive calculator tool to model the financial impact (ROI, TCO, NPV) of Cloudflare solutions based on customer data.',
+                        tip: 'Only use this tool once you have successfully validated the quantifiable business metrics with the customer.'
+                    }
+                ]
+            },
+            {
+                id: 'cocreate',
+                title: 'Co-Create the Case',
+                navTitle: 'Case', // Shortened title for navigation
+                description: 'Secure Contractual Commitment by anchoring the final agreement (price and terms) directly to the projected value in the co-created Business Case.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-yellow-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a4 4 0 014-4h.875M17 9.5h0m1.5 1.5h0M21 21H13v-1a4 4 0 014-4h3a4 4 0 013 3v1z" /></svg>',
+                tools: [
+                    {
+                        name: 'Case & Negotiation Coach',
+                        type: 'AI GEM',
+                        status: 'Coming Soon',
+                        link: '#',
+                        description: 'An AI assistant to refine your business case narrative and practice negotiation strategies anchored to the projected value.',
+                        tip: 'Practice negotiating a pricing increase by referring back to the mutually agreed-upon value metrics.'
+                    },
+                    {
+                        name: 'Lite Business Value Assessment',
+                        type: 'Content Generator',
+                        status: 'Active',
+                        link: '#',
+                        description: 'A quick-generation tool for creating a high-level assessment of the customer\'s current state and the financial uplift from the proposed solution.',
+                        tip: 'Keep the assessment high-level for C-level executives; focus on 3 key financial metrics.'
+                    }
+                ]
+            },
+            {
+                id: 'continuousreturn',
+                title: 'Drive Continuous Return',
+                navTitle: 'Realize', // Shortened title for navigation
+                description: 'Develop and execute a comprehensive success plan, tracking customer objectives and KPIs to proactively uncover new needs and drive long-term loyalty.',
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-indigo-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15v1a1 1 0 001 1h2a1 1 0 001-1v-1m-4 0v-2a1 1 0 011-1h2a1 1 0 011 1v2m-4 0h4m-4-7h4m-4 0V8a2 2 0 012-2h0a2 2 0 012 2v1m-4-1h4m-2 0V4a2 2 0 00-2-2h0a2 2 0 00-2 2v2m4-2H6a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2v-5" /></svg>',
+                tools: [
+                    {
+                        name: 'Handoff Coach',
+                        type: 'AI GEM',
+                        status: 'Coming Soon',
+                        link: '#',
+                        description: 'An AI guide to structure the perfect handoff, ensuring the Customer Success team is equipped with the validated value hypothesis and KPIs.',
+                        tip: 'Use the output from the Lite Business Value Assessment to structure the handoff document.'
+                    },
+                    {
+                        name: 'Renewal & Growth Coach',
+                        type: 'AI GEM',
+                        status: 'Coming Soon',
+                        link: '#',
+                        description: 'Provides AI-driven strategies and talking points to maximize renewal rates and identify expansion opportunities based on realized value.',
+                        tip: 'Focus on realized value metrics (KPIs) tracked over the past year to anchor the renewal conversation.'
+                    },
+                    {
+                        name: 'QBR Content Generator',
+                        type: 'Content Generator',
+                        status: 'Under Construction',
+                        link: '#',
+                        description: 'Generates a draft structure and key content points for a Value-focused Quarterly Business Review (QBR).',
+                        tip: 'Customize the content to focus on the customer\'s objectives, not just product features.'
+                    }
+                ]
+            }
+        ];
 
-    <div id="case" class="content-section">
-      <div class="content-image">
-        <img src="/images/build-case.png" alt="Business Case Section Image">
-      </div>
-      <div class="content-text">
-        <h3 class="section-title">Build the Business Case</h3>
-        <p class="section-description">Make the financial argument undeniable. This suite of tools helps you quantify the value of your solution, allowing you to build and present clear ROI analyses, TCO (Total Cost of Ownership) comparisons, and custom value models that prove the business impact of your product or service.</p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <h4>Proof of Value</h4>
-            <p>Used in the mid-to-late stages of the sales cycle, this Proof of Value (PoV) assistant helps you create an informed hypothesis to bring to a customer, transforming the conversation from a general demo into a customized, one-page plan. It outlines a specific business challenge and defines the exact metrics you will track together, shifting the focus from "what does it do?" to "how will we prove it works for you?" This proactive approach demonstrates your commitment to a measurable outcome and accelerates the deal toward a close.<p></p><p></p><p> <strong>TYPE:</strong> GEM <strong></strong> + Content Generator</p>
-            <a href="" target="_blank" class="tool-link">Under Construction</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="separator"></div>
+        // --- 2. RENDER HUB CONTENT AND NAVIGATION ---
 
-    <div id="skills" class="content-section reversed">
-      <div class="content-image">
-        <img src="/images/level-up.png" alt="Skills Section Image">
-      </div>
-      <div class="content-text">
-        <h3 class="section-title">Level Up Your Skills</h3>
-        <p class="section-description">Become a master of value-based selling. This is your resource for continuous learning, featuring AI-powered sales coaching, role-playing simulations, and a library of proven strategies and best practices to sharpen your skills and elevate your sales game.</p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <h4>Role-Play Coach</h4>
-            <p>Master your next sales conversation with the Role-Play Coach. This powerful tool turns Gemini into a realistic, data-driven customer stakeholder, allowing you to practice your pitch, based on your discovery notes or Value Discovery Report, for an authentic simulation. You'll practice refining your strategy and building confidence for any scenario.<p></p><p></p><p><strong>TYPE:</strong> GEM </strong></p>
-            <a href="https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing" target="_blank" class="tool-link">Access Tool</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="separator"></div>
-    <div id="facts" class="content-section">
-      <div class="content-image">
-        <img src="/images/get-facts.png" alt="Facts Section Image">
-      </div>
-      <div class="content-text">
-        <h3 class="section-title">Get the Facts</h3>
-        <p class="section-description">Your go-to source for market intelligence. Access real-time data, competitive analysis, and industry insights to back up your claims and inform your strategy. This section provides the factual foundation you need to confidently answer customer questions and navigate complex sales cycles.</p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <h4>Coming Soon!</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        function getToolTag(type) {
+            if (type.toUpperCase().includes('COACH') || type.toUpperCase().includes('GEM')) return 'COACH';
+            if (type.toUpperCase().includes('GENERATOR') || type.toUpperCase().includes('ASSESSMENT') || type.toUpperCase().includes('BUILDER')) return 'GENERATOR';
+            if (type.toUpperCase().includes('TOOL') || type.toUpperCase().includes('MODELER') || type.toUpperCase().includes('TRACKER')) return 'TOOL';
+            return 'RESOURCE';
+        }
 
-  <footer class="footer">
-    <div class="footer-content">
-      <a href="#hero" class="nav-item">Have feedback? Let us know.</a>
-    </div>
-  </footer>
-  
-  <script src="/main.js"></script>
+        function renderEngineContent() {
+            const cardContainer = document.getElementById('card-grid');
+            const contentContainer = document.getElementById('engine-content');
+            const navContainer = document.getElementById('vertical-nav-links'); // Target for vertical nav
+            
+            let contentHtml = '';
+            let navHtml = '';
+            let cardHtml = '';
+
+            VALUE_ENGINE_DATA.forEach(category => {
+                // 1. Build Vertical Navigation Link (Simplified) - using navTitle
+                navHtml += `
+                    <a href="#${category.id}" data-section-id="${category.id}" class="side-nav-item block text-sm px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100 rounded transition duration-150">
+                        <span class="truncate">${category.navTitle}</span>
+                    </a>
+                `;
+
+                // 2. Build Card Grid Item
+                cardHtml += `
+                    <a href="#${category.id}" class="block p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-gray-200 text-center">
+                        <div class="flex flex-col items-center">
+                            ${category.icon.replace('w-8 h-8', 'w-12 h-12')} <!-- Use larger icon for card -->
+                            <h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
+                        </div>
+                    </a>
+                `;
+
+
+                // 3. Build Detailed Content Section (Scroll Target)
+                contentHtml += `
+                    <!-- Category Section: ${category.title} -->
+                    <div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-16 -mt-16">
+                        <div class="flex items-center mb-4">
+                            ${category.icon.replace('w-12 h-12 mb-3', 'w-8 h-8')} <!-- Use smaller icon for section header -->
+                            <h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">${category.description}</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${category.tools.map(tool => `
+                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for header to prevent overlap) -->
+                                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                    
+                                    <!-- Header: Title and Tag side-by-side using Flexbox -->
+                                    <div class="flex justify-between items-start mb-4">
+                                        <!-- Title: Constrained width to prevent it from pushing the tag, uses pr-4 for spacing -->
+                                        <h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
+                                        
+                                        <!-- Tool Tag: Uses flex-shrink-0 to maintain position -->
+                                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 uppercase flex-shrink-0 mt-0.5">
+                                            ${getToolTag(tool.type)}
+                                        </span>
+                                    </div>
+
+                                    <!-- Short Description -->
+                                    <p class="text-sm text-gray-600 mb-4">${tool.description}</p>
+
+                                    <!-- Tips to Use (Highlighted) -->
+                                    <div class="p-3 mb-4 rounded-lg bg-orange-50 border border-orange-200">
+                                        <p class="text-xs font-semibold text-[#F38020] mb-1">Tips to Use:</p>
+                                        <p class="text-sm text-gray-700">${tool.tip}</p>
+                                    </div>
+
+                                    <!-- Button and Status -->
+                                    <div class="flex items-center justify-between mt-6">
+                                        <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-red-600'}">
+                                            Status: ${tool.status}
+                                        </span>
+                                        <a href="${tool.link}" target="_blank" class="py-2 px-4 rounded-lg font-semibold bg-[#F38020] text-white hover:bg-[#FF9900] transition duration-200 text-center ${tool.status !== 'Active' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">
+                                            Start Using
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- END TOOL CARD LAYOUT -->
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            navContainer.innerHTML = navHtml;
+            cardContainer.innerHTML = cardHtml;
+            contentContainer.innerHTML = contentHtml;
+        }
+
+        // --- 3. INITIALIZATION & UTILITIES (Dynamic Year) ---
+        
+        function setDynamicYear() {
+            const currentYear = new Date().getFullYear();
+            const footerElement = document.getElementById('copyright-text');
+            if (footerElement) {
+                // Get the existing text and inject the current year after the copyright symbol
+                const originalText = footerElement.innerHTML;
+                // Use a regex to replace the copyright symbol only if the year isn't already there
+                if (!originalText.includes(currentYear)) {
+                    // This will result in: &copy; [Year] Cloudflare...
+                    footerElement.innerHTML = originalText.replace('&copy;', `&copy; ${currentYear}`);
+                }
+            }
+        }
+
+        // --- 4. NAVIGATION UTILITIES (Back to Top & Scroll Spy) ---
+
+        function scrollToTop() {
+            // Smoothly scroll to the top of the 'app' container
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function handleScroll() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            // Back to Top Button Visibility
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.remove('invisible', 'opacity-0');
+                backToTopButton.classList.add('visible', 'opacity-100');
+            } else {
+                backToTopButton.classList.remove('visible', 'opacity-100');
+                backToTopButton.classList.add('invisible', 'opacity-0');
+            }
+
+            // Scroll Spy Logic
+            const sections = document.querySelectorAll('#engine-content > div');
+            const navLinks = document.querySelectorAll('.side-nav-item');
+            const scrollOffset = 200; 
+
+            let currentSectionId = null;
+
+            // Iterate sections backwards to find the one whose top edge is currently highest 
+            // but still below the scrollOffset.
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const rect = section.getBoundingClientRect();
+                
+                if (rect.top <= scrollOffset) {
+                    currentSectionId = section.id;
+                    break;
+                }
+            }
+
+            // Apply active styles
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active', 'text-white', 'text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
+                
+                if (link.dataset.sectionId === currentSectionId) {
+                    link.classList.add('nav-active');
+                } else {
+                    link.classList.add('text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
+                }
+            });
+        }
+
+        window.onload = () => {
+            renderEngineContent();
+            setDynamicYear();
+            handleScroll(); // Check position on load
+        };
+
+        window.onscroll = handleScroll; // Attach scroll handler
+    </script>
 </body>
 </html>
