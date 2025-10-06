@@ -29,24 +29,25 @@
 <body class="min-h-screen p-4 sm:p-8">
 
     <div id="app" class="max-w-7xl mx-auto">
-        <!-- HEADER: Updated to include image background styles and placeholder -->
+        <!-- HEADER: Updated to include image background styles and path -->
         <header 
-            class="text-center py-10 rounded-xl bg-gray-800 mb-6 shadow-md border border-gray-200 bg-cover bg-center" 
+            class="text-center py-10 rounded-xl mb-6 shadow-md border border-gray-200 bg-cover bg-center" 
             style="background-image: url('/images/hero-banner.png');"
         >
-            <!-- Title: Changed text color to black -->
-            <h1 class="text-5xl font-extrabold text-black mb-3">The Value Engine</h1>
-            <!-- Sub-header: Changed text color to black -->
-            <p class="text-xl text-black">Your Unified Hub for AI-Powered Value Selling</p>
+            <!-- Title: Text color set to white for visibility against a background image -->
+            <h1 class="text-5xl font-extrabold text-white mb-3">The Value Engine</h1>
+            <!-- Sub-header: Text color set to white for visibility against a background image -->
+            <p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
         </header>
         
         <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) -->
-        <section class="mb-12" id="explore">
-            <h2 class="text-3xl font-bold text-[#F38020] mb-6 border-b border-gray-200 pb-3 flex items-center text-gray-800">
-                <!-- EXPLORE ICON: Changed from SVG to local image -->
+        <section class="mb-24" id="explore">
+            <h2 class="text-3xl font-bold text-[#F38020] mb-3 pb-1 flex items-center text-gray-800">
+                <!-- EXPLORE ICON: Local image -->
                 <img src="/images/explore.png" alt="Explore Icon" class="w-7 h-7 mr-3">
-                Explore
+                Explore the Arsenal
             </h2>
+            <p class="text-gray-600 mb-8">Select a stage below to jump to the tools that drive value throughout the customer journey.</p>
             
             <!-- Card Grid populated by JS -->
             <div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -56,7 +57,7 @@
 
         <!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) -->
         <section class="mb-12" id="content-sections">
-            <div id="engine-content" class="space-y-12">
+            <div id="engine-content" class="space-y-16">
                 <!-- Detailed Content injected by JavaScript -->
             </div>
         </section>
@@ -91,7 +92,7 @@
                 navTitle: 'Prep', // Shortened title for navigation
                 description: 'Develop a Value Hypothesis—a well-researched insight into a potential high-impact objective(s) we can help the customer achieve.',
                 // ICON UPDATED TO IMAGE PATH
-                icon: '/images/data.png', 
+                icon: '/images/prep.png', 
                 tools: [
                     {
                         name: 'Targeting & Insights Coach',
@@ -102,20 +103,20 @@
                         tip: 'Take the time to work through each section with the coach. Then take your summary to the <strong> Value Map Generator </strong> to create a customer-facing version.'
                     },
                     {
+                        name: 'Role-Play Coach',
+                        type: 'AI GEM',
+                        status: 'Active',
+                        link: 'https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing',
+                        description: 'Real-World Ready Practice. The Role-Play Coach simulates a live situation where it dynamically embodies your target persona. It uses your refined research—including personalized value hypotheses and compelling event summaries—to ensure the practice is hyper-relevant, preparing you to engage the real account with confidence and precision.',
+                        tip: 'Use your insights from the Targeting & Insights or Discovery coaches to create a more realistic situation.'
+                    },
+                    {
                         name: 'Value Map Generator',
                         type: 'Content Generator',
                         status: 'Active',
                         link: 'https://gemini.google.com/gem/1iGzPeCbCrXkCQ5YfPStD65pAYGu25jXI?usp=sharing',
                         description: 'Leverage coach-led insights to build precision value maps. This process aligns your product capabilities directly with critical customer objectives and desired business outcomes, giving you a clear, customized framework to validate directly with your customers and drive deeper engagement.',
                         tip: 'Use your completed Value Map to facilitate deeper, business value-focused outreach and discovery conversations.'
-                    },
-                   {
-                        name: 'Role-Play Coach',
-                        type: 'AI GEM',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing',
-                        description: 'Real-World Ready Practice. The Role-Play Coach simulates a live situation where it dynamically embodies your target persona. It uses your refined research—including personalized value hypotheses and compelling event summaries—to ensure the practice is hyper-relevant, preparing you to engage the real account with confidence and precision.',
-                        tip: 'Use your insights from the <strong> Targeting & Insights </strong> or <strong> Discovery coaches </strong> to create a more realistic situation.'
                     }
                 ]
             },
@@ -125,7 +126,7 @@
                 navTitle: 'Engage', // Shortened title for navigation
                 description: 'Achieve Problem Validation by securing mutual agreement that the prospect\'s pain(s) is urgent, solvable, and worthy of our joint investment.',
                 // ICON UPDATED TO IMAGE PATH
-                icon: '/images/convo.png',
+                icon: '/images/engage.png',
                 tools: [
                     {
                         name: 'Discovery Prep Coach',
@@ -151,23 +152,23 @@
                 navTitle: 'Quantify', // Shortened title for navigation
                 description: 'Establish Quantified Outcomes by converting qualitative pain into the measurable financial and operational metrics the prospect is committed to changing (the ROI baseline).',
                 // ICON UPDATED TO IMAGE PATH
-                icon: '/images/case.png',
+                icon: '/images/quantify.png',
                 tools: [
                     {
                         name: 'Qualification Coach',
                         type: 'AI GEM',
                         status: 'Coming Soon',
                         link: '#',
-                        description: 'This coach will guide you through the necessary financial and business metrics to qualify the deal based on potential value.',
-                        tip: ''
+                        description: 'An AI assistant that guides you through the necessary financial and business metrics to qualify the deal based on potential value.',
+                        tip: 'Ensure you have metrics for operational cost, risk reduction, and revenue acceleration ready before engaging.'
                     },
                     {
                         name: 'Impact Modeler',
                         type: 'Data Tool',
                         status: 'Coming Soon',
                         link: '#',
-                        description: 'An interactive tool to generate impact stats, case studies, and do light ROI modeling of Cloudflare solutions based on customer data.',
-                        tip: ''
+                        description: 'An interactive calculator tool to model the financial impact (ROI, TCO, NPV) of Cloudflare solutions based on customer data.',
+                        tip: 'Only use this tool once you have successfully validated the quantifiable business metrics with the customer.'
                     }
                 ]
             },
@@ -177,15 +178,15 @@
                 navTitle: 'Case', // Shortened title for navigation
                 description: 'Secure Contractual Commitment by anchoring the final agreement (price and terms) directly to the projected value in the co-created Business Case.',
                 // ICON UPDATED TO IMAGE PATH
-                icon: '/images/story.png',
+                icon: '/images/case.png',
                 tools: [
                     {
                         name: 'Case & Negotiation Coach',
                         type: 'AI GEM',
                         status: 'Coming Soon',
                         link: '#',
-                        description: 'This coach will help you refine your business case narrative and practice negotiation strategies anchored to the projected value.',
-                        tip: ''
+                        description: 'An AI assistant to refine your business case narrative and practice negotiation strategies anchored to the projected value.',
+                        tip: 'Practice negotiating a pricing increase by referring back to the mutually agreed-upon value metrics.'
                     },
                     {
                         name: 'Lite Business Value Assessment',
@@ -193,7 +194,7 @@
                         status: 'Coming Soon',
                         link: '#',
                         description: 'A quick-generation tool for creating a high-level assessment of the customer\'s current state and the financial uplift from the proposed solution.',
-                        tip: ''
+                        tip: 'Keep the assessment high-level for C-level executives; focus on 3 key financial metrics.'
                     }
                 ]
             },
@@ -203,23 +204,23 @@
                 navTitle: 'Realize', // Shortened title for navigation
                 description: 'Develop and execute a comprehensive success plan, tracking customer objectives and KPIs to proactively uncover new needs and drive long-term loyalty.',
                 // ICON UPDATED TO IMAGE PATH
-                icon: '/images/skills.png',
+                icon: '/images/realize.png',
                 tools: [
                     {
                         name: 'Handoff Coach',
                         type: 'AI GEM',
                         status: 'Coming Soon',
                         link: '#',
-                        description: 'A coach that is there to structure the perfect handoff, ensuring the Customer Success team is equipped with the validated value hypothesis and KPIs.',
-                        tip: ''
+                        description: 'An AI guide to structure the perfect handoff, ensuring the Customer Success team is equipped with the validated value hypothesis and KPIs.',
+                        tip: 'Use the output from the Lite Business Value Assessment to structure the handoff document.'
                     },
                     {
                         name: 'Renewal & Growth Coach',
                         type: 'AI GEM',
                         status: 'Coming Soon',
                         link: '#',
-                        description: 'Provides strategies and talking points to maximize renewal rates and identify expansion opportunities based on realized value.',
-                        tip: ''
+                        description: 'Provides AI-driven strategies and talking points to maximize renewal rates and identify expansion opportunities based on realized value.',
+                        tip: 'Focus on realized value metrics (KPIs) tracked over the past year to anchor the renewal conversation.'
                     },
                     {
                         name: 'QBR Content Generator',
@@ -227,7 +228,7 @@
                         status: 'Coming Soon',
                         link: '#',
                         description: 'Generates a draft structure and key content points for a Value-focused Quarterly Business Review (QBR).',
-                        tip: ''
+                        tip: 'Customize the content to focus on the customer\'s objectives, not just product features.'
                     }
                 ]
             }
@@ -278,9 +279,9 @@
                     </a>
                 `;
 
-                // 2. Build Card Grid Item
+                // 2. Build Card Grid Item (Now with bg-orange-50)
                 cardHtml += `
-                    <a href="#${category.id}" class="block p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-gray-200 text-center">
+                    <a href="#${category.id}" class="block p-6 bg-orange-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-orange-200 text-center">
                         <div class="flex flex-col items-center">
                             ${generateIconHtml(category.icon, true)} <!-- Use large icon/image -->
                             <h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
@@ -292,7 +293,7 @@
                 // 3. Build Detailed Content Section (Scroll Target)
                 contentHtml += `
                     <!-- Category Section: ${category.title} -->
-                    <div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-16 -mt-16">
+                    <div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
                         <div class="flex items-center mb-4">
                             ${generateIconHtml(category.icon, false)} <!-- Use small icon/image -->
                             <h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
@@ -354,11 +355,8 @@
             if (footerElement) {
                 // Get the existing text and inject the current year after the copyright symbol
                 const originalText = footerElement.innerHTML;
-                // Use a regex to replace the copyright symbol only if the year isn't already there
-                if (!originalText.includes(currentYear)) {
-                    // This will result in: &copy; [Year] Cloudflare...
-                    footerElement.innerHTML = originalText.replace('&copy;', `&copy; ${currentYear}`);
-                }
+                // Replace the copyright symbol with the symbol followed by the current year
+                footerElement.innerHTML = originalText.replace('&copy;', `&copy; ${currentYear}`);
             }
         }
 
@@ -384,7 +382,8 @@
             // Scroll Spy Logic
             const sections = document.querySelectorAll('#engine-content > div');
             const navLinks = document.querySelectorAll('.side-nav-item');
-            const scrollOffset = 200; 
+            // Offset adjusted to account for the fixed header height and the improved spacing
+            const scrollOffset = 180; 
 
             let currentSectionId = null;
 
