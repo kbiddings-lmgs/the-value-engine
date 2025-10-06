@@ -301,8 +301,8 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             ${category.tools.map(tool => `
-                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for header to prevent overlap) -->
-                                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for consistent button alignment) -->
+                                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
                                     
                                     <!-- Header: Title and Tag side-by-side using Flexbox -->
                                     <div class="flex justify-between items-start mb-4">
@@ -324,8 +324,8 @@
                                         <p class="text-sm text-gray-700">${tool.tip}</p>
                                     </div>
 
-                                    <!-- Button and Status -->
-                                    <div class="flex items-center justify-between mt-6">
+                                    <!-- Button and Status: Uses mt-auto to push to the bottom -->
+                                    <div class="flex items-center justify-between mt-auto">
                                         <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-red-600'}">
                                             Status: ${tool.status}
                                         </span>
