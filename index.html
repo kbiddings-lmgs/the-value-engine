@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ513B8SVC"></script>
+<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ513B8SVC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -13,10 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Value Engine</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter font -->
-    <style>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font --><style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
@@ -38,56 +35,50 @@
 <body class="min-h-screen p-4 sm:p-8">
 
     <div id="app" class="max-w-7xl mx-auto">
-        <!-- HEADER: Updated to include image background styles and path -->
-        <header 
+        <!-- HEADER: Updated to include image background styles and path --><header 
             class="text-center py-10 rounded-xl mb-6 shadow-md border border-gray-200 bg-cover bg-center" 
             style="background-image: url('/images/hero-banner.png');"
         >
-            <!-- Title: Text color set to white for visibility against a background image -->
-            <h1 class="text-5xl font-extrabold text-white mb-3">The Value Engine</h1>
-            <!-- Sub-header: Text color set to white for visibility against a background image -->
-            <p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
+            <!-- Title: Text color set to white for visibility against a background image --><h1 class="text-5xl font-extrabold text-white mb-3">The Value Engine</h1>
+            <!-- Sub-header: Text color set to white for visibility against a background image --><p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
         </header>
         
-        <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) -->
-        <section class="mb-24" id="explore">
+        <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) --><section class="mb-16" id="explore">
             <h2 class="text-3xl font-bold text-[#F38020] mb-3 pb-1 flex items-center text-gray-800">
-                <!-- EXPLORE ICON: Local image -->
-                <img src="/images/play.png" alt="Explore Icon" class="w-7 h-7 mr-3">
+                <!-- EXPLORE ICON: Local image --><img src="/images/play.png" alt="Explore Icon" class="w-7 h-7 mr-3">
                 Get Started
             </h2>
             <p class="text-gray-600 mb-8">Select an action below to start driving value throughout the customer journey.</p>
             
-            <!-- Card Grid populated by JS -->
-            <div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Cards injected by JavaScript -->
-            </div>
+            <!-- Card Grid populated by JS --><div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Cards injected by JavaScript --></div>
         </section>
 
-        <!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) -->
-        <section class="mb-12" id="content-sections">
+        <!-- UPDATED: AI PRINCIPLES CALLOUT (Icon removed) --><section class="mb-16 p-4 bg-gray-50 border-l-4 border-gray-200 rounded-lg shadow-sm" id="ai-principles">
+            <h2 class="text-lg font-bold text-gray-800 mb-2">Remember: Smart AI Use</h2>
+            <ul class="list-disc ml-7 space-y-1 text-sm text-gray-700">
+                <li>Everyone has a responsibility to <strong>protect customer data</strong> in any and every situation.</li>
+                <li>Only use <strong>approved tools</strong> for work.</li>
+                <li>You still <strong>own the output</strong>. Read, understand, and approve all AI-generated work.</li>
+            </ul>
+        </section>
+        <!-- END UPDATED SECTION --><!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) --><section class="mb-12" id="content-sections">
             <div id="engine-content" class="space-y-16">
-                <!-- Detailed Content injected by JavaScript -->
-            </div>
+                <!-- Detailed Content injected by JavaScript --></div>
         </section>
 
-        <!-- Footer updated with ID for dynamic year insertion -->
-        <footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
+        <!-- Footer updated with ID for dynamic year insertion --><footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
             <p id="copyright-text">&copy; Cloudflare. The Value Engine. Built for Value Selling.</p>
         </footer>
     </div>
     
-    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) -->
-    <nav id="vertical-nav" class="fixed right-4 top-1/4 w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
+    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) --><nav id="vertical-nav" class="fixed right-4 top-1/4 w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
         <div id="vertical-nav-links" class="space-y-1">
-            <!-- Links populated by JS -->
-        </div>
+            <!-- Links populated by JS --></div>
     </nav>
     
-    <!-- Fixed "Back to Top" Button (Positioned slightly left to accommodate the fixed nav) -->
-    <button id="back-to-top" class="fixed bottom-6 right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
-        <!-- Up Arrow Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <!-- Fixed "Back to Top" Button (Positioned slightly left to accommodate the fixed nav) --><button id="back-to-top" class="fixed bottom-6 right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
+        <!-- Up Arrow Icon --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
@@ -292,8 +283,7 @@
                 cardHtml += `
                     <a href="#${category.id}" class="block p-6 bg-orange-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-orange-200 text-center">
                         <div class="flex flex-col items-center">
-                            ${generateIconHtml(category.icon, true)} <!-- Use large icon/image -->
-                            <h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
+                            ${generateIconHtml(category.icon, true)} <!-- Use large icon/image --><h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
                         </div>
                     </a>
                 `;
@@ -301,41 +291,32 @@
 
                 // 3. Build Detailed Content Section (Scroll Target)
                 contentHtml += `
-                    <!-- Category Section: ${category.title} -->
-                    <div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
+                    <!-- Category Section: ${category.title} --><div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
                         <div class="flex items-center mb-4">
-                            ${generateIconHtml(category.icon, false)} <!-- Use small icon/image -->
-                            <h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
+                            ${generateIconHtml(category.icon, false)} <!-- Use small icon/image --><h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
                         </div>
                         <p class="text-gray-600 mb-6">${category.description}</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             ${category.tools.map(tool => `
-                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for consistent button alignment) -->
-                                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
+                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for consistent button alignment) --><div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
                                     
-                                    <!-- Header: Title and Tag side-by-side using Flexbox -->
-                                    <div class="flex justify-between items-start mb-4">
-                                        <!-- Title: Constrained width to prevent it from pushing the tag, uses pr-4 for spacing -->
-                                        <h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
+                                    <!-- Header: Title and Tag side-by-side using Flexbox --><div class="flex justify-between items-start mb-4">
+                                        <!-- Title: Constrained width to prevent it from pushing the tag, uses pr-4 for spacing --><h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
                                         
-                                        <!-- Tool Tag: Uses flex-shrink-0 to maintain position -->
-                                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 uppercase flex-shrink-0 mt-0.5">
+                                        <!-- Tool Tag: Uses flex-shrink-0 to maintain position --><span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 uppercase flex-shrink-0 mt-0.5">
                                             ${getToolTag(tool.type)}
                                         </span>
                                     </div>
 
-                                    <!-- Short Description -->
-                                    <p class="text-sm text-gray-600 mb-4">${tool.description}</p>
+                                    <!-- Short Description --><p class="text-sm text-gray-600 mb-4">${tool.description}</p>
 
-                                    <!-- Tips to Use (Highlighted) -->
-                                    <div class="p-3 mb-4 rounded-lg bg-orange-50 border border-orange-200">
+                                    <!-- Tips to Use (Highlighted) --><div class="p-3 mb-4 rounded-lg bg-orange-50 border border-orange-200">
                                         <p class="text-xs font-semibold text-[#F38020] mb-1">Tips to Use:</p>
                                         <p class="text-sm text-gray-700">${tool.tip}</p>
                                     </div>
 
-                                    <!-- Button and Status: Uses mt-auto to push to the bottom -->
-                                    <div class="flex items-center justify-between mt-auto">
+                                    <!-- Button and Status: Uses mt-auto to push to the bottom --><div class="flex items-center justify-between mt-auto">
                                         <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-red-600'}">
                                             Status: ${tool.status}
                                         </span>
@@ -344,8 +325,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!-- END TOOL CARD LAYOUT -->
-                            `).join('')}
+                                <!-- END TOOL CARD LAYOUT -->`).join('')}
                         </div>
                     </div>
                 `;
