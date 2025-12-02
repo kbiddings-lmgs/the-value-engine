@@ -549,9 +549,7 @@
 
             renderEngineContent(activeData, tabId);
             
-            // Scroll to main content (just below the tabs)
-            const exploreSection = document.getElementById('explore');
-            if(exploreSection) exploreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // REMOVED SCROLL: The scrollIntoView call has been removed here to prevent the page from jumping.
         }
 
         // --- 4. UTILITIES ---
