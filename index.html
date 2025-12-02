@@ -91,8 +91,7 @@
             <!-- Sub-header: Text color set to white for visibility against a background image --><p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
         </header>
         
-        <!-- NEW: GRAPHICAL TABS SECTION -->
-        <div id="tab-navigation" class="flex justify-center bg-white shadow-lg rounded-b-xl mb-10 border-t border-gray-100 overflow-hidden">
+        <!-- NEW: GRAPHICAL TABS SECTION --><div id="tab-navigation" class="flex justify-center bg-white shadow-lg rounded-b-xl mb-10 border-t border-gray-100 overflow-hidden">
             <button 
                 id="tab-pre-sales" 
                 onclick="switchTab('pre-sales', this)" 
@@ -108,15 +107,11 @@
                 Value Realized
             </button>
         </div>
-        <!-- END NEW TAB NAVIGATION -->
-
-        <!-- MAIN CONTENT CONTAINER (Controlled by Tabs) -->
-        <div id="main-content-container">
+        <!-- END NEW TAB NAVIGATION --><!-- MAIN CONTENT CONTAINER (Controlled by Tabs) --><div id="main-content-container">
         
             <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) --><section class="mb-16" id="explore">
                 <h2 id="explore-header" class="text-3xl font-bold mb-3 pb-1 flex items-center text-gray-800">
-                    <!-- Icon and text injected by JS -->
-                </h2>
+                    <!-- Icon and text injected by JS --></h2>
                 <p class="text-gray-600 mb-8">Select a stage below to access tools and resources.</p>
                 
                 <!-- Card Grid populated by JS --><div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -136,9 +131,7 @@
                     <!-- Detailed Content injected by JavaScript --></div>
             </section>
         </div>
-        <!-- END MAIN CONTENT CONTAINER -->
-
-        <!-- Footer updated with ID for dynamic year insertion --><footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
+        <!-- END MAIN CONTENT CONTAINER --><!-- Footer updated with ID for dynamic year insertion --><footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
             <p id="copyright-text">&copy; Cloudflare. The Value Engine. Built for Value Selling.</p>
         </footer>
     </div>
@@ -148,7 +141,7 @@
             <!-- Links populated by JS --></div>
     </nav>
     
-    <!-- Fixed "Back to Top" Button (Positioned slightly left to accommodate the fixed nav) --><button id="back-to-top" class="fixed bottom-6 right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
+    <!-- Fixed "Back to Top" Button (Updated responsive positioning) --><button id="back-to-top" class="fixed bottom-6 right-6 md:right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
         <!-- Up Arrow Icon --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
@@ -442,7 +435,8 @@
             
             // Text Colors
             const primaryColorHex = isPreSales ? '#F38020' : '#960c3e'; 
-            const headerTextColor = isPreSales ? 'text-gray-800' : 'text-[#960c3e]';
+            // Header text is always text-gray-800 (black)
+            const headerTextColor = 'text-gray-800'; 
             
             // Card Styles (Tailwind arbitrary values for Burgundy)
             const cardBg = isPreSales ? 'bg-orange-50' : 'bg-[#fff0f5]'; // Custom light pink/burgundy bg
@@ -461,8 +455,8 @@
             // Vertical Nav Class
             const navActiveClass = isPreSales ? 'nav-active-orange' : 'nav-active-burgundy';
 
-            // Update Header Text
-            const phaseTitle = isPreSales ? 'Value Promised Stages' : 'Value Realized Stages';
+            // Update Header Text - Static "Get Started"
+            const phaseTitle = 'Get Started';
             // Determine placeholder icon color based on theme
             const iconFallbackColor = isPreSales ? 'F38020' : '960c3e'; 
             const headerIcon = `<img src="/images/play.png" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/28/${iconFallbackColor}/fff?text=▶️';">`;
