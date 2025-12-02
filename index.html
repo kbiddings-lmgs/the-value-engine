@@ -302,61 +302,81 @@
             }
         ];
 
-        // Value Realized (Post-Sales) - 5 Placeholder Stages (Burgundy Theme)
+        // Value Realized (Post-Sales) - 5 NEW Placeholder Stages (Burgundy Theme)
         const POST_SALES_DATA = [
             {
-                id: 'onboarding',
-                title: 'Onboarding & Deployment',
-                navTitle: 'Deploy', 
-                description: 'Ensure a smooth transition from sale to production, achieving initial technical milestones and setting the stage for value measurement.',
-                icon: '/images/launch.png', 
+                id: 'value_definition',
+                title: 'Success & KPI Definition',
+                navTitle: 'Define', 
+                description: 'This initial stage involves clearly identifying and defining the specific objectives, expected outcomes, and metrics for success (KPIs) of the investment. It is crucial to align on what "value" means for all stakeholders and to set realistic expectations.',
+                icon: '/images/define.png', 
                 tools: [
-                    { name: 'Initial Success Tracker', type: 'Data Tool', status: 'Coming Soon', link: '#', description: 'Tracks key technical deployment metrics.', tip: 'Use in first 30-60 days to affirm quick time-to-value.' },
-                    { name: 'Technical Handoff Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Automates the creation of a structured document for the technical handover.', tip: 'Essential for internal teams alignment.' }
+                    { name: 'Objective Alignment Planner', type: 'AI GEM', status: 'Coming Soon', link: '#', 
+                      description: 'Helps structure initial success metrics and stakeholder goals, ensuring alignment across the organization on what success looks like.', 
+                      tip: 'Collaborate with the customer to map every objective to a measurable KPI before implementation begins.' },
+                    { name: 'KPI Definition Template', type: 'Content Generator', status: 'Coming Soon', link: '#', 
+                      description: 'Template for documenting agreed-upon KPIs, required baseline metrics, and the method for tracking future performance.', 
+                      tip: 'Ensure sign-off from key stakeholders to validate the metrics and expectations.' }
                 ]
             },
             {
-                id: 'tracking',
-                title: 'Tracking & Measurement',
-                navTitle: 'Track', 
-                description: 'Systematically monitor and capture the actual financial and operational results against the value initially promised.',
-                icon: '/images/monitor.png', 
+                id: 'value_delivery',
+                title: 'Onboarding & Implementation',
+                navTitle: 'Onboard', 
+                description: 'This stage focuses on the implementation and support processes that enable the value to be achieved. It includes onboarding, training, technical integration, and providing ongoing guidance to ensure users can utilize the product or service effectively.',
+                icon: '/images/deliver.png', 
                 tools: [
-                    { name: 'KPI Alignment Tool', type: 'Data Tool', status: 'Coming Soon', link: '#', description: 'A tool to map validated business objectives to specific data points.', tip: 'Focus on Top 3 KPIs.' },
-                    { name: 'Value Dashboard Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Generates a customer-ready snapshot of realized value.', tip: 'Perfect for QBRs.' }
+                    { name: 'Onboarding Process Checklist', type: 'Resource', status: 'Coming Soon', link: '#', 
+                      description: 'A comprehensive checklist for guiding successful technical integration, user setup, and initial feature adoption.', 
+                      tip: 'Use this checklist to track the key milestones necessary for the customer to start using the product effectively.' },
+                    { name: 'Enablement Content Finder', type: 'AI GEM', status: 'Coming Soon', link: '#', 
+                      description: 'Locates relevant training materials, technical documentation, and best practice guides based on the customer\'s specific configuration.', 
+                      tip: 'Proactively share these resources with the customer\'s technical and business users during implementation.' }
                 ]
             },
             {
-                id: 'optimize',
+                id: 'value_realization',
+                title: 'Adoption & Engagement',
+                navTitle: 'Adopt', 
+                description: 'This is the point where the customer or organization actively uses the solution and begins to experience the actual, quantifiable benefits and achieves their initial goals. This is often the "aha" moment when the product\'s utility becomes clear in a day-to-day workflow.',
+                icon: '/images/realize.png', 
+                tools: [
+                    { name: 'Aha Moment Indicator', type: 'Data Tool', status: 'Coming Soon', link: '#', 
+                      description: 'Tracks specific user actions or usage patterns indicating high engagement or goal achievement within the product.', 
+                      tip: 'Identify these key moments early and celebrate them with the customer to reinforce positive value perception.' },
+                    { name: 'Usage Gap Analyzer', type: 'AI GEM', status: 'Coming Soon', link: '#', 
+                      description: 'Identifies accounts with low feature adoption or usage compared to their initial objectives, suggesting tailored intervention strategies.', 
+                      tip: 'Use the analysis to prioritize which accounts need proactive outreach and coaching.' }
+                ]
+            },
+            {
+                id: 'value_validation',
+                title: 'Measurement & ROI Verification',
+                navTitle: 'Verify', 
+                description: 'In this stage, the value that has been realized is measured, tracked, and verified against the initial metrics and expectations defined in the first stage. This can involve surveys, data analytics, and performance reviews to ensure the promised value is consistently delivered and to confirm ROI.',
+                icon: '/images/validate.png', 
+                tools: [
+                    { name: 'Value Measurement Coach', type: 'AI GEM', status: 'Coming Soon', link: '#', 
+                      description: 'Guides you through collecting, structuring, and presenting realized value data to key stakeholders, preparing for QBRs and executive reviews.', 
+                      tip: 'Focus the conversation on the business impact of the metrics, not just the technical performance improvements.' },
+                    { name: 'ROI Verification Report Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', 
+                      description: 'Creates professional reports comparing agreed-upon baseline metrics vs. realized performance, including clear ROI confirmation.', 
+                      tip: 'Share this report with executive sponsors to ensure documented value is cascaded throughout the organization.' }
+                ]
+            },
+            {
+                id: 'value_optimization',
                 title: 'Optimization & Expansion',
-                navTitle: 'Expand', 
-                description: 'Proactively leverage realized value data to identify areas for improved usage, product adoption, and new expansion opportunities.',
-                icon: '/images/magnify.png', 
+                navTitle: 'Expand',
+                description: 'The final stage involves using the feedback and data gathered during validation to continuously refine strategies and maximize the perceived value. This iterative process seeks to improve efficiency, explore upsell opportunities, and ensure long-term growth and sustained success.',
+                icon: '/images/optimize.png',
                 tools: [
-                    { name: 'Success Story Builder', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Assists in drafting internal and external case studies.', tip: 'Use verified savings and revenue acceleration numbers.' },
-                    { name: 'Opportunity Identifier', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Analyzes usage patterns against the installed base to highlight underutilized products.', tip: 'Use this coach 90 days before renewal.' }
-                ]
-            },
-            {
-                id: 'advocacy',
-                title: 'Advocacy & Evangelism',
-                navTitle: 'Advocacy', 
-                description: 'Solidify the customer relationship through documented success, ensuring renewal conversations are value-driven and expansion-focused.',
-                icon: '/images/handshake.png', 
-                tools: [
-                    { name: 'Renewal Prep Coach', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Guides the Customer Success team through compiling realized value evidence.', tip: 'Focus on realized value metrics anchored to ROI.' },
-                    { name: 'Executive Value Presentation Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Generates a draft structure for a Value-focused QBR.', tip: 'Customize content to focus on customer objectives.' }
-                ]
-            },
-            {
-                id: 'transformation',
-                title: 'Strategic Transformation',
-                navTitle: 'Transform',
-                description: 'Elevate the partnership to a strategic level by aligning with long-term business evolution and digital strategy.',
-                icon: '/images/cycle.png',
-                tools: [
-                    { name: 'Executive Briefing Planner', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Agendas for C-level strategy days focusing on future growth.', tip: 'Focus on 3-5 year horizon.' },
-                    { name: 'Innovation Workshop Guide', type: 'Resource', status: 'Coming Soon', link: '#', description: 'Framework for co-innovation sessions and roadmapping.', tip: 'Involve product management for future solutions.' }
+                    { name: 'Continuous Improvement Planner', type: 'AI GEM', status: 'Coming Soon', link: '#', 
+                      description: 'Helps structure iterative plans for maximizing product utility, identifying next-best actions, and improving efficiency based on validation data.', 
+                      tip: 'Treat this as a collaborative planning session with the customer to define the next quarter\'s priorities.' },
+                    { name: 'Next Step/Expansion Roadmap Builder', type: 'Content Generator', status: 'Coming Soon', link: '#', 
+                      description: 'Generates a strategic plan for advocacy, renewal, and identifying logical upsell or cross-sell opportunities.', 
+                      tip: 'Anchor any expansion proposals directly to the validated value realized in the previous stage.' }
                 ]
             }
         ];
@@ -381,11 +401,11 @@
             const sizeClass = isLarge ? 'w-12 h-12 mb-3' : 'w-8 h-8';
             const extraClasses = isLarge ? '' : ' mr-3'; 
             let placeholderText = 'A';
-            if (iconSource.includes('launch')) placeholderText = '🚀';
-            else if (iconSource.includes('monitor')) placeholderText = '📊';
-            else if (iconSource.includes('magnify')) placeholderText = '🔎';
-            else if (iconSource.includes('handshake')) placeholderText = '🤝';
-            else if (iconSource.includes('cycle')) placeholderText = '🔄';
+            if (iconSource.includes('define')) placeholderText = '🎯'; // New: Definition
+            else if (iconSource.includes('deliver')) placeholderText = '🛠️'; // New: Delivery
+            else if (iconSource.includes('realize')) placeholderText = '✅'; // New: Realization
+            else if (iconSource.includes('validate')) placeholderText = '🔍'; // New: Validation
+            else if (iconSource.includes('optimize')) placeholderText = '✨'; // New: Optimization
             else if (iconSource.includes('data')) placeholderText = '🧠';
             else if (iconSource.includes('convo')) placeholderText = '💬';
             else if (iconSource.includes('story')) placeholderText = '📈';
