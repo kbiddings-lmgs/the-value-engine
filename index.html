@@ -17,18 +17,66 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* Light background */
+            background-color: #f4f6f8; /* Slightly darker light background for better contrast */
             color: #1f2937; /* Dark text */
         }
         /* Enable smooth scrolling */
         html {
             scroll-behavior: smooth; 
         }
-        /* Custom class for active vertical navigation link */
-        .nav-active {
-            background-color: #F38020; /* Cloudflare Orange */
-            color: white !important; /* !important to override default text color */
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        
+        /* Brand Colors */
+        :root {
+            --brand-orange: #F38020;
+            --brand-burgundy: #960c3e;
+        }
+
+        /* Active Navigation Styles (Vertical Nav) */
+        .nav-active-orange {
+            background-color: var(--brand-orange);
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .nav-active-burgundy {
+            background-color: var(--brand-burgundy);
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tab Styles */
+        .tab-btn {
+            position: relative;
+            overflow: hidden;
+            flex-grow: 1; /* Make tabs evenly spread */
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .tab-active-orange {
+            color: var(--brand-orange);
+        }
+        .tab-active-orange::after {
+            background-color: var(--brand-orange);
+            transform: scaleX(1);
+        }
+        .tab-active-burgundy {
+            color: var(--brand-burgundy);
+        }
+        .tab-active-burgundy::after {
+            background-color: var(--brand-burgundy);
+            transform: scaleX(1);
+        }
+
+        /* Scroll anchor offset, accounting for fixed nav/tabs/header */
+        .section-anchor {
+            scroll-margin-top: 14rem;
         }
     </style>
 </head>
@@ -36,43 +84,66 @@
 
     <div id="app" class="max-w-7xl mx-auto">
         <!-- HEADER: Updated to include image background styles and path --><header 
-            class="text-center py-10 rounded-xl mb-6 shadow-md border border-gray-200 bg-cover bg-center" 
+            class="text-center py-10 rounded-t-xl mb-0 shadow-md border border-gray-200 bg-cover bg-center" 
             style="background-image: url('/images/hero-banner.png');"
         >
             <!-- Title: Text color set to white for visibility against a background image --><h1 class="text-5xl font-extrabold text-white mb-3">SANDBOX The Value Engine</h1>
             <!-- Sub-header: Text color set to white for visibility against a background image --><p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
         </header>
         
-        <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) --><section class="mb-16" id="explore">
-            <h2 class="text-3xl font-bold text-[#F38020] mb-3 pb-1 flex items-center text-gray-800">
-                <!-- EXPLORE ICON: Local image --><img src="/images/play.png" alt="Explore Icon" class="w-7 h-7 mr-3">
-                Get Started
-            </h2>
-            <p class="text-gray-600 mb-8">Select an action below to start driving value throughout the customer journey.</p>
-            
-            <!-- Card Grid populated by JS --><div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Cards injected by JavaScript --></div>
-        </section>
+        <!-- NEW: GRAPHICAL TABS SECTION -->
+        <div id="tab-navigation" class="flex justify-center bg-white shadow-lg rounded-b-xl mb-10 border-t border-gray-100 overflow-hidden">
+            <button 
+                id="tab-pre-sales" 
+                onclick="switchTab('pre-sales', this)" 
+                class="tab-btn py-5 text-lg font-bold text-gray-500 hover:bg-gray-50 transition duration-200 border-r border-gray-100"
+            >
+                Value Promised
+            </button>
+            <button 
+                id="tab-post-sales" 
+                onclick="switchTab('post-sales', this)" 
+                class="tab-btn py-5 text-lg font-bold text-gray-500 hover:bg-gray-50 transition duration-200"
+            >
+                Value Realized
+            </button>
+        </div>
+        <!-- END NEW TAB NAVIGATION -->
 
-        <!-- UPDATED: AI PRINCIPLES CALLOUT (Icon removed) --><section class="mb-16 p-4 bg-gray-50 border-l-4 border-gray-200 rounded-lg shadow-sm" id="ai-principles">
-            <h2 class="text-lg font-bold text-gray-800 mb-2">Remember: Smart AI Use</h2>
-            <ul class="list-disc ml-7 space-y-1 text-sm text-gray-700">
-                <li>Everyone has a responsibility to <strong>protect customer data</strong> in any and every situation.</li>
-                <li>You still <strong>own the output</strong>. Read, understand, and approve all AI-generated work.</li>
-                <li>Only use <strong>approved tools</strong> for work.</li>
-            </ul>
-        </section>
-        <!-- END UPDATED SECTION --><!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) --><section class="mb-12" id="content-sections">
-            <div id="engine-content" class="space-y-16">
-                <!-- Detailed Content injected by JavaScript --></div>
-        </section>
+        <!-- MAIN CONTENT CONTAINER (Controlled by Tabs) -->
+        <div id="main-content-container">
+        
+            <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) --><section class="mb-16" id="explore">
+                <h2 id="explore-header" class="text-3xl font-bold mb-3 pb-1 flex items-center text-gray-800">
+                    <!-- Icon and text injected by JS -->
+                </h2>
+                <p class="text-gray-600 mb-8">Select a stage below to access tools and resources.</p>
+                
+                <!-- Card Grid populated by JS --><div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Cards injected by JavaScript --></div>
+            </section>
+
+            <!-- UPDATED: AI PRINCIPLES CALLOUT (Icon removed) --><section class="mb-16 p-4 bg-gray-50 border-l-4 border-gray-200 rounded-lg shadow-sm" id="ai-principles">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">Remember: Smart AI Use</h2>
+                <ul class="list-disc ml-7 space-y-1 text-sm text-gray-700">
+                    <li>Everyone has a responsibility to <strong>protect customer data</strong> in any and every situation.</li>
+                    <li>You still <strong>own the output</strong>. Read, understand, and approve all AI-generated work.</li>
+                    <li>Only use <strong>approved tools</strong> for work.</li>
+                </ul>
+            </section>
+            <!-- END UPDATED SECTION --><!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) --><section class="mb-12" id="content-sections">
+                <div id="engine-content" class="space-y-16">
+                    <!-- Detailed Content injected by JavaScript --></div>
+            </section>
+        </div>
+        <!-- END MAIN CONTENT CONTAINER -->
 
         <!-- Footer updated with ID for dynamic year insertion --><footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
             <p id="copyright-text">&copy; Cloudflare. The Value Engine. Built for Value Selling.</p>
         </footer>
     </div>
     
-    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) --><nav id="vertical-nav" class="fixed right-4 top-1/4 w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
+    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) --><nav id="vertical-nav" class="fixed right-4 top-[240px] w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
         <div id="vertical-nav-links" class="space-y-1">
             <!-- Links populated by JS --></div>
     </nav>
@@ -84,14 +155,15 @@
     </button>
 
     <script>
-        // --- 1. CORE DATA (JSON) ---
-        const VALUE_ENGINE_DATA = [
+        // --- 1. CORE DATA DEFINITIONS (Using original content for Value Promised) ---
+        
+        // Value Promised (Pre-Sales) - 5 Stages from original file
+        const PRE_SALES_DATA = [
             {
                 id: 'prepare',
                 title: 'Strategic Preparation',
-                navTitle: 'Prep', // Shortened title for navigation
+                navTitle: 'Prep', 
                 description: 'Develop a Value Hypothesis—a well-researched insight into a potential high-impact objective(s) we can help the customer achieve.',
-                // ICON UPDATED TO IMAGE PATH
                 icon: '/images/data.png', 
                 tools: [
                     {
@@ -123,9 +195,8 @@
             {
                 id: 'engage',
                 title: 'Engage & Validate',
-                navTitle: 'Engage', // Shortened title for navigation
+                navTitle: 'Engage', 
                 description: 'Achieve Problem Validation by securing mutual agreement that the prospect\'s pain(s) is urgent, solvable, and worthy of our joint investment.',
-                // ICON UPDATED TO IMAGE PATH
                 icon: '/images/convo.png',
                 tools: [
                     {
@@ -149,9 +220,8 @@
             {
                 id: 'quantify',
                 title: 'Quantify the Impact',
-                navTitle: 'Quantify', // Shortened title for navigation
+                navTitle: 'Quantify', 
                 description: 'Establish Quantified Outcomes by converting qualitative pain into the measurable financial and operational metrics the prospect is committed to changing (the ROI baseline).',
-                // ICON UPDATED TO IMAGE PATH
                 icon: '/images/story.png',
                 tools: [
                     {
@@ -175,9 +245,8 @@
             {
                 id: 'cocreate',
                 title: 'Co-Create the Case',
-                navTitle: 'Case', // Shortened title for navigation
+                navTitle: 'Case', 
                 description: 'Secure Contractual Commitment by anchoring the final agreement (price and terms) directly to the projected value in the co-created Business Case.',
-                // ICON UPDATED TO IMAGE PATH
                 icon: '/images/case.png',
                 tools: [
                     {
@@ -201,9 +270,8 @@
             {
                 id: 'continuousreturn',
                 title: 'Drive Continuous Return',
-                navTitle: 'Realize', // Shortened title for navigation
+                navTitle: 'Realize', 
                 description: 'Develop and execute a comprehensive success plan, tracking customer objectives and KPIs to proactively uncover new needs and drive long-term loyalty.',
-                // ICON UPDATED TO IMAGE PATH
                 icon: '/images/story.png',
                 tools: [
                     {
@@ -234,98 +302,201 @@
             }
         ];
 
+        // Value Realized (Post-Sales) - 5 Placeholder Stages (Burgundy Theme)
+        const POST_SALES_DATA = [
+            {
+                id: 'onboarding',
+                title: 'Onboarding & Deployment',
+                navTitle: 'Deploy', 
+                description: 'Ensure a smooth transition from sale to production, achieving initial technical milestones and setting the stage for value measurement.',
+                icon: '/images/launch.png', 
+                tools: [
+                    { name: 'Initial Success Tracker', type: 'Data Tool', status: 'Coming Soon', link: '#', description: 'Tracks key technical deployment metrics.', tip: 'Use in first 30-60 days to affirm quick time-to-value.' },
+                    { name: 'Technical Handoff Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Automates the creation of a structured document for the technical handover.', tip: 'Essential for internal teams alignment.' }
+                ]
+            },
+            {
+                id: 'tracking',
+                title: 'Tracking & Measurement',
+                navTitle: 'Track', 
+                description: 'Systematically monitor and capture the actual financial and operational results against the value initially promised.',
+                icon: '/images/monitor.png', 
+                tools: [
+                    { name: 'KPI Alignment Tool', type: 'Data Tool', status: 'Coming Soon', link: '#', description: 'A tool to map validated business objectives to specific data points.', tip: 'Focus on Top 3 KPIs.' },
+                    { name: 'Value Dashboard Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Generates a customer-ready snapshot of realized value.', tip: 'Perfect for QBRs.' }
+                ]
+            },
+            {
+                id: 'optimize',
+                title: 'Optimization & Expansion',
+                navTitle: 'Expand', 
+                description: 'Proactively leverage realized value data to identify areas for improved usage, product adoption, and new expansion opportunities.',
+                icon: '/images/magnify.png', 
+                tools: [
+                    { name: 'Success Story Builder', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Assists in drafting internal and external case studies.', tip: 'Use verified savings and revenue acceleration numbers.' },
+                    { name: 'Opportunity Identifier', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Analyzes usage patterns against the installed base to highlight underutilized products.', tip: 'Use this coach 90 days before renewal.' }
+                ]
+            },
+            {
+                id: 'advocacy',
+                title: 'Advocacy & Evangelism',
+                navTitle: 'Advocacy', 
+                description: 'Solidify the customer relationship through documented success, ensuring renewal conversations are value-driven and expansion-focused.',
+                icon: '/images/handshake.png', 
+                tools: [
+                    { name: 'Renewal Prep Coach', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Guides the Customer Success team through compiling realized value evidence.', tip: 'Focus on realized value metrics anchored to ROI.' },
+                    { name: 'Executive Value Presentation Generator', type: 'Content Generator', status: 'Coming Soon', link: '#', description: 'Generates a draft structure for a Value-focused QBR.', tip: 'Customize content to focus on customer objectives.' }
+                ]
+            },
+            {
+                id: 'transformation',
+                title: 'Strategic Transformation',
+                navTitle: 'Transform',
+                description: 'Elevate the partnership to a strategic level by aligning with long-term business evolution and digital strategy.',
+                icon: '/images/cycle.png',
+                tools: [
+                    { name: 'Executive Briefing Planner', type: 'AI GEM', status: 'Coming Soon', link: '#', description: 'Agendas for C-level strategy days focusing on future growth.', tip: 'Focus on 3-5 year horizon.' },
+                    { name: 'Innovation Workshop Guide', type: 'Resource', status: 'Coming Soon', link: '#', description: 'Framework for co-innovation sessions and roadmapping.', tip: 'Involve product management for future solutions.' }
+                ]
+            }
+        ];
+
+
+        let activeData = PRE_SALES_DATA; // Default active data set
+        let activeTabId = 'pre-sales';   // Default active tab ID
+
+
         // --- 2. RENDER HUB CONTENT AND NAVIGATION ---
 
         function getToolTag(type) {
-            if (type.toUpperCase().includes('COACH') || type.toUpperCase().includes('GEM')) return 'COACH';
-            if (type.toUpperCase().includes('GENERATOR') || type.toUpperCase().includes('ASSESSMENT') || type.toUpperCase().includes('BUILDER')) return 'GENERATOR';
-            if (type.toUpperCase().includes('TOOL') || type.toUpperCase().includes('MODELER') || type.toUpperCase().includes('TRACKER')) return 'TOOL';
+            const t = type.toUpperCase();
+            if (t.includes('COACH') || t.includes('GEM')) return 'COACH';
+            if (t.includes('GENERATOR') || t.includes('ASSESSMENT') || t.includes('BUILDER')) return 'GENERATOR';
+            if (t.includes('TOOL') || t.includes('MODELER') || t.includes('TRACKER')) return 'TOOL';
             return 'RESOURCE';
         }
         
-        // Helper function to generate icon/image HTML based on whether it's an SVG or a path
+        // Helper function to generate icon/image HTML with fallback emojis
         function generateIconHtml(iconSource, isLarge) {
-            // Determine size classes
             const sizeClass = isLarge ? 'w-12 h-12 mb-3' : 'w-8 h-8';
-            const extraClasses = isLarge ? '' : ' mr-3'; // Add margin to small icon for spacing next to title
+            const extraClasses = isLarge ? '' : ' mr-3'; 
+            let placeholderText = 'A';
+            if (iconSource.includes('launch')) placeholderText = '🚀';
+            else if (iconSource.includes('monitor')) placeholderText = '📊';
+            else if (iconSource.includes('magnify')) placeholderText = '🔎';
+            else if (iconSource.includes('handshake')) placeholderText = '🤝';
+            else if (iconSource.includes('cycle')) placeholderText = '🔄';
+            else if (iconSource.includes('data')) placeholderText = '🧠';
+            else if (iconSource.includes('convo')) placeholderText = '💬';
+            else if (iconSource.includes('story')) placeholderText = '📈';
+            else if (iconSource.includes('case')) placeholderText = '💼';
 
+            // Fallback color is a neutral grey
+            const fallbackSrc = `https://placehold.co/${isLarge ? '48x48' : '32x32'}/cccccc/ffffff?text=${placeholderText}`;
+            
             if (iconSource.includes('/images/')) {
-                // If it's an image path, render an <img> tag
-                return `<img src="${iconSource}" alt="Category Icon" class="${sizeClass}${extraClasses}">`;
+                // Image path with onerror fallback
+                return `<img src="${iconSource}" alt="Icon" class="${sizeClass}${extraClasses}" onerror="this.onerror=null; this.src='${fallbackSrc}';">`;
             } else {
-                // If it's SVG code, render the raw SVG (replaces old size classes with the new ones)
-                // We use a regex to replace old size classes more robustly
+                // If it's intended to be SVG, render with current classes
                 let svg = iconSource;
-                // Add the appropriate classes to the SVG string
                 svg = svg.replace(/class="[^"]*"/, `class="${sizeClass}${extraClasses}"`);
                 return svg;
             }
         }
 
-        function renderEngineContent() {
+        function renderEngineContent(data, theme) {
             const cardContainer = document.getElementById('card-grid');
             const contentContainer = document.getElementById('engine-content');
-            const navContainer = document.getElementById('vertical-nav-links'); // Target for vertical nav
+            const navContainer = document.getElementById('vertical-nav-links');
+            const exploreHeader = document.getElementById('explore-header');
             
             let contentHtml = '';
             let navHtml = '';
             let cardHtml = '';
 
-            VALUE_ENGINE_DATA.forEach(category => {
-                // 1. Build Vertical Navigation Link (Simplified) - using navTitle
+            const isPreSales = theme === 'pre-sales';
+            
+            // --- DYNAMIC STYLES BASED ON THEME ---
+            // Colors: Pre-Sales = Orange (#F38020), Post-Sales = Burgundy (#960c3e)
+            
+            // Text Colors
+            const primaryColorHex = isPreSales ? '#F38020' : '#960c3e'; 
+            const headerTextColor = isPreSales ? 'text-gray-800' : 'text-[#960c3e]';
+            
+            // Card Styles (Tailwind arbitrary values for Burgundy)
+            const cardBg = isPreSales ? 'bg-orange-50' : 'bg-[#fff0f5]'; // Custom light pink/burgundy bg
+            const cardBorder = isPreSales ? 'border-orange-200' : 'border-[#960c3e]/30';
+            const cardHoverBorder = isPreSales ? 'hover:border-[#F38020]' : 'hover:border-[#960c3e]';
+            
+            // Tips Box
+            const tipBg = isPreSales ? 'bg-orange-50' : 'bg-[#fff0f5]';
+            const tipBorder = isPreSales ? 'border-orange-200' : 'border-[#960c3e]/20';
+            const tipTitleColor = isPreSales ? 'text-[#F38020]' : 'text-[#960c3e]';
+
+            // Tags
+            const tagBg = isPreSales ? 'bg-gray-200' : 'bg-[#960c3e]/10';
+            const tagText = isPreSales ? 'text-gray-700' : 'text-[#960c3e]';
+
+            // Vertical Nav Class
+            const navActiveClass = isPreSales ? 'nav-active-orange' : 'nav-active-burgundy';
+
+            // Update Header Text
+            const phaseTitle = isPreSales ? 'Value Promised Stages' : 'Value Realized Stages';
+            // Determine placeholder icon color based on theme
+            const iconFallbackColor = isPreSales ? 'F38020' : '960c3e'; 
+            const headerIcon = `<img src="/images/play.png" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/28/${iconFallbackColor}/fff?text=▶️';">`;
+            
+            exploreHeader.innerHTML = `${headerIcon} <span class="${headerTextColor}">${phaseTitle}</span>`;
+
+            // Back to top button update (always uses Brand Orange)
+            document.getElementById('back-to-top').style.backgroundColor = '#F38020';
+
+            data.forEach(category => {
+                // 1. Vertical Nav
                 navHtml += `
                     <a href="#${category.id}" data-section-id="${category.id}" class="side-nav-item block text-sm px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100 rounded transition duration-150">
                         <span class="truncate">${category.navTitle}</span>
                     </a>
                 `;
 
-                // 2. Build Card Grid Item (Now with bg-orange-50)
+                // 2. Top Card
                 cardHtml += `
-                    <a href="#${category.id}" class="block p-6 bg-orange-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-orange-200 text-center">
+                    <a href="#${category.id}" class="section-anchor block p-6 ${cardBg} rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border ${cardBorder} ${cardHoverBorder} text-center">
                         <div class="flex flex-col items-center">
-                            ${generateIconHtml(category.icon, true)} <!-- Use large icon/image --><h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
+                            ${generateIconHtml(category.icon, true)}
+                            <h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
                         </div>
                     </a>
                 `;
 
-
-                // 3. Build Detailed Content Section (Scroll Target)
+                // 3. Content Section
                 contentHtml += `
-                    <!-- Category Section: ${category.title} --><div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
+                    <div id="${category.id}" class="section-anchor rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
                         <div class="flex items-center mb-4">
-                            ${generateIconHtml(category.icon, false)} <!-- Use small icon/image --><h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
+                            ${generateIconHtml(category.icon, false)}
+                            <h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
                         </div>
                         <p class="text-gray-600 mb-6">${category.description}</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             ${category.tools.map(tool => `
-                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for consistent button alignment) --><div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
-                                    
-                                    <!-- Header: Title and Tag side-by-side using Flexbox --><div class="flex justify-between items-start mb-4">
-                                        <!-- Title: Constrained width to prevent it from pushing the tag, uses pr-4 for spacing --><h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
-                                        
-                                        <!-- Tool Tag: Uses flex-shrink-0 to maintain position --><span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 uppercase flex-shrink-0 mt-0.5">
-                                            ${getToolTag(tool.type)}
-                                        </span>
+                                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
+                                        <span class="text-xs font-semibold px-3 py-1 rounded-full ${tagBg} ${tagText} uppercase flex-shrink-0 mt-0.5">${getToolTag(tool.type)}</span>
                                     </div>
-
-                                    <!-- Short Description --><p class="text-sm text-gray-600 mb-4">${tool.description}</p>
-
-                                    <!-- Tips to Use (Highlighted) --><div class="p-3 mb-4 rounded-lg bg-orange-50 border border-orange-200">
-                                        <p class="text-xs font-semibold text-[#F38020] mb-1">Tips to Use:</p>
+                                    <p class="text-sm text-gray-600 mb-4">${tool.description}</p>
+                                    <div class="p-3 mb-4 rounded-lg ${tipBg} border ${tipBorder}">
+                                        <p class="text-xs font-semibold ${tipTitleColor} mb-1">Tips to Use:</p>
                                         <p class="text-sm text-gray-700">${tool.tip}</p>
                                     </div>
-
-                                    <!-- Button and Status: Uses mt-auto to push to the bottom --><div class="flex items-center justify-between mt-auto">
-                                        <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-red-600'}">
-                                            Status: ${tool.status}
-                                        </span>
-                                        <a href="${tool.link}" target="_blank" class="py-2 px-4 rounded-lg font-semibold bg-[#F38020] text-white hover:bg-[#FF9900] transition duration-200 text-center ${tool.status !== 'Active' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">
-                                            Start Using
-                                        </a>
+                                    <div class="flex items-center justify-between mt-auto">
+                                        <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-gray-400'}">Status: ${tool.status}</span>
+                                        <a href="${tool.link}" target="_blank" style="background-color: ${primaryColorHex};" class="py-2 px-4 rounded-lg font-semibold text-white hover:opacity-90 transition duration-200 text-center ${tool.status !== 'Active' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">Start Using</a>
                                     </div>
                                 </div>
-                                <!-- END TOOL CARD LAYOUT -->`).join('')}
+                            `).join('')}
                         </div>
                     </div>
                 `;
@@ -334,33 +505,53 @@
             navContainer.innerHTML = navHtml;
             cardContainer.innerHTML = cardHtml;
             contentContainer.innerHTML = contentHtml;
+
+            // Store active class for scroll spy
+            window.activeNavClass = navActiveClass;
+            handleScroll();
         }
 
-        // --- 3. INITIALIZATION & UTILITIES (Dynamic Year) ---
+        // --- 3. TAB LOGIC ---
+        function switchTab(tabId, clickedBtn) {
+            activeTabId = tabId;
+            activeData = tabId === 'pre-sales' ? PRE_SALES_DATA : POST_SALES_DATA;
+            
+            // Reset Tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active-orange', 'tab-active-burgundy', 'bg-gray-50');
+                btn.classList.add('text-gray-500');
+            });
+
+            // Activate Clicked Tab
+            const activeClass = tabId === 'pre-sales' ? 'tab-active-orange' : 'tab-active-burgundy';
+            clickedBtn.classList.add(activeClass, 'bg-gray-50');
+            clickedBtn.classList.remove('text-gray-500');
+
+            renderEngineContent(activeData, tabId);
+            
+            // Scroll to main content (just below the tabs)
+            const exploreSection = document.getElementById('explore');
+            if(exploreSection) exploreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // --- 4. UTILITIES ---
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         
         function setDynamicYear() {
             const currentYear = new Date().getFullYear();
             const footerElement = document.getElementById('copyright-text');
             if (footerElement) {
-                // Get the existing text and inject the current year after the copyright symbol
                 const originalText = footerElement.innerHTML;
-                // Replace the copyright symbol with the symbol followed by the current year
                 footerElement.innerHTML = originalText.replace('&copy;', `&copy; ${currentYear}`);
             }
         }
 
-        // --- 4. NAVIGATION UTILITIES (Back to Top & Scroll Spy) ---
-
-        function scrollToTop() {
-            // Smoothly scroll to the top of the 'app' container
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
         function handleScroll() {
             const backToTopButton = document.getElementById('back-to-top');
             
-            // Back to Top Button Visibility
-            if (window.scrollY > 300) { // Show button after scrolling 300px
+            if (window.scrollY > 300) {
                 backToTopButton.classList.remove('invisible', 'opacity-0');
                 backToTopButton.classList.add('visible', 'opacity-100');
             } else {
@@ -369,44 +560,54 @@
             }
 
             // Scroll Spy Logic
-            const sections = document.querySelectorAll('#engine-content > div');
+            if (activeData.length === 0) return;
+            
+            const sections = document.querySelectorAll('#engine-content > div.section-anchor');
             const navLinks = document.querySelectorAll('.side-nav-item');
-            // Offset adjusted to account for the fixed header height and the improved spacing
-            const scrollOffset = 180; 
+            const scrollOffset = 250; 
 
-            let currentSectionId = null;
+            let currentId = null;
 
-            // Iterate sections backwards to find the one whose top edge is currently highest 
-            // but still below the scrollOffset.
             for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
-                const rect = section.getBoundingClientRect();
-                
+                const rect = sections[i].getBoundingClientRect();
                 if (rect.top <= scrollOffset) {
-                    currentSectionId = section.id;
+                    currentId = sections[i].id;
                     break;
                 }
             }
+            
+            if (!currentId && activeData.length > 0) {
+                // If scroll is near the top, highlight the first item
+                const exploreRect = document.getElementById('explore').getBoundingClientRect();
+                if (exploreRect.top <= scrollOffset) {
+                    currentId = activeData[0].id;
+                }
+            }
+
 
             // Apply active styles
+            const navActiveClass = window.activeNavClass || 'nav-active';
             navLinks.forEach(link => {
-                link.classList.remove('nav-active', 'text-white', 'text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
+                link.className = 'side-nav-item block text-sm px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100 rounded transition duration-150'; // Reset
                 
-                if (link.dataset.sectionId === currentSectionId) {
-                    link.classList.add('nav-active');
-                } else {
-                    link.classList.add('text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
+                if (link.dataset.sectionId === currentId) {
+                    link.classList.add(...navActiveClass.split(' ')); // Apply dynamic active class
+                    link.classList.remove('text-gray-700', 'hover:bg-gray-100');
                 }
             });
         }
 
         window.onload = () => {
-            renderEngineContent();
             setDynamicYear();
-            handleScroll(); // Check position on load
+            
+            // Initialize with Pre-Sales and set active tab style
+            const preSalesBtn = document.getElementById('tab-pre-sales');
+            preSalesBtn.classList.add('tab-active-orange', 'bg-gray-50');
+            preSalesBtn.classList.remove('text-gray-500');
+            switchTab('pre-sales', preSalesBtn); 
+            
+            window.onscroll = handleScroll; 
         };
-
-        window.onscroll = handleScroll; // Attach scroll handler
     </script>
 </body>
 </html>
