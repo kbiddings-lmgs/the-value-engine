@@ -95,6 +95,11 @@
         .btn-cf-primary:hover {
             background-color: #E6761B;
         }
+
+        .active-checklist-section {
+            border-left: 4px solid var(--cf-orange);
+            background: rgba(243, 128, 32, 0.02);
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -105,33 +110,32 @@
             <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold text-sm">Help & Feedback</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
         </button>
-        <div id="support-menu" class="absolute bottom-16 right-0 w-64 bg-white rounded-lg shadow-xl border border-gray-200 p-4 hidden animate-fade-in">
+        <div id="support-menu" class="absolute bottom-16 right-0 w-64 bg-white rounded-lg shadow-xl border border-gray-200 p-4 hidden animate-fade-in text-center">
             <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Support Hub</p>
             <div class="space-y-2">
                 <a href="#" class="flex items-center gap-3 p-2 rounded hover:bg-orange-50 transition-colors group">
                     <div class="p-1.5 bg-orange-100 text-orange-600 rounded group-hover:bg-orange-600 group-hover:text-white transition-all">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.6,4.7c-0.3-0.5-0.8-0.8-1.4-0.8H2.8C2.2,3.9,1.7,4.2,1.4,4.7c-0.3,0.5-0.3,1.1,0,1.6l8.8,12.8c0.4,0.6,1.1,1,1.8,1s1.4-0.4,1.8-1l8.8-12.8C22.9,5.8,22.9,5.2,22.6,4.7z"/></svg>
                     </div>
-                    <span class="text-sm font-semibold text-gray-700">#value-engine</span>
+                    <span class="text-xs font-semibold text-gray-700">#value-engine</span>
                 </a>
             </div>
         </div>
     </div>
 
     <!-- HERO SECTION -->
-    <header class="hero-banner text-white text-center py-12 md:py-16 px-4 shadow-xl">
+    <header class="hero-banner text-white text-center py-8 md:py-12 px-4 shadow-xl">
         <div class="max-w-5xl mx-auto relative z-10">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-2 tracking-tight">
                 The Value Engine
             </h1>
             <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
-                Your unified hub for AI-powered value-selling. <br>
                 Accelerating deals from pipe to <span class="text-orange-500 font-bold">Closed Won</span>.
             </p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 -mt-6 mb-20 relative z-20">
+    <main class="max-w-7xl mx-auto px-4 -mt-4 mb-20 relative z-20">
         
         <!-- ONBOARDING SECTION -->
         <section class="bg-white rounded-lg shadow-md p-6 md:p-8 mb-8 border border-gray-200" style="border-top: 3px solid var(--cf-orange);">
@@ -144,14 +148,12 @@
                         <h2 class="text-xl font-extrabold text-gray-900 flex items-center gap-3 tracking-tight">
                             New to the Value Engine?
                         </h2>
-                        <p class="text-gray-500 text-sm">Grasp the Why, How, and What in 3 steps.</p>
+                        <p class="text-gray-500 text-sm font-medium">Understand the Why, How, and What in 3 steps.</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <button id="onboarding-toggle-btn" class="bg-gray-50 hover:bg-orange-50 text-gray-400 p-2 rounded">
-                        <svg id="toggle-icon" class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                </div>
+                <button id="onboarding-toggle-btn" class="bg-gray-50 hover:bg-orange-50 text-gray-400 p-2 rounded">
+                    <svg id="toggle-icon" class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
             </div>
 
             <div id="onboarding-content">
@@ -159,7 +161,7 @@
                     <!-- PAGE 1: THE WHY -->
                     <div id="ob-page-1" class="onboarding-page active space-y-6">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">Step 01: The Core Philosophy</h3>
+                            <h3 class="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-4">Step 01: The Core Philosophy</h3>
                             <p class="text-sm text-gray-700 leading-relaxed max-w-5xl mb-6">
                                 Most deals fail because customers don't see a reason to move. To win, you must prove that staying the same is riskier than evolving with Cloudflare. The Value Engine helps you build that case, using AI Coaches to answer the three critical questions:
                             </p>
@@ -182,17 +184,12 @@
                             <div class="p-2 bg-white/20 rounded">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                             </div>
-                            <div>
-                                <h5 class="text-xs font-black uppercase tracking-widest mb-0.5">The Golden Rule</h5>
-                                <p class="text-sm font-medium opacity-95">If any one of these three answers is missing — the deal is at risk of Status Quo.</p>
-                            </div>
+                            <p class="text-sm font-medium"><strong>The Golden Rule:</strong> If any one of these three answers is missing — the deal is at risk of Status Quo.</p>
                         </div>
                     </div>
-
-                    <!-- PAGE 2: THE WHAT -->
                     <div id="ob-page-2" class="onboarding-page space-y-8">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-2">Step 02: The What - Coaches & Generators</h3>
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">Step 02: The What - Coaches & Generators</h3>
                             <p class="text-sm text-gray-700 leading-relaxed max-w-4xl">
                                 The Engine is a connected ecosystem. Your strategic research in the **Insights Coach** fuels both phase-specific assets and synergistic deal prep tools.
                             </p>
@@ -226,102 +223,118 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- PAGE 3: THE HOW -->
                     <div id="ob-page-3" class="onboarding-page space-y-8">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-2">Step 03: The How - Engaging Gemini</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed max-w-4xl">
-                                Activating the Engine is simple. Follow these steps for every coaching session.
-                            </p>
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">Step 03: The How - Engaging Gemini</h3>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                             <div class="space-y-4">
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">1</div>
-                                    <p class="text-sm text-gray-700 font-medium">Select a Phase and click any <strong>Coach</strong> or <strong>Generator</strong> button.</p>
-                                </div>
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">2</div>
-                                    <p class="text-sm text-gray-700 font-medium">When the <strong>Gemini</strong> interface opens, simply hit <span class="bg-gray-200 px-2 py-0.5 rounded font-mono font-bold border border-gray-300">ENTER</span> to start.</p>
-                                </div>
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">3</div>
-                                    <p class="text-sm text-gray-700 font-medium">Review the intelligence and refine it with your own POV.</p>
-                                </div>
+                                <div class="flex gap-4"><div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">1</div><p class="text-sm text-gray-700 font-medium text-xs">Select a Phase and click any <strong>Coach</strong> or <strong>Generator</strong> button.</p></div>
+                                <div class="flex gap-4"><div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">2</div><p class="text-sm text-gray-700 font-medium text-xs">When Gemini opens, simply hit <span class="bg-gray-200 px-2 py-0.5 rounded font-mono font-bold border border-gray-300">ENTER</span> to start.</p></div>
+                                <div class="flex gap-4"><div class="w-8 h-8 rounded bg-black text-white flex items-center justify-center font-bold flex-shrink-0 text-sm">3</div><p class="text-sm text-gray-700 font-medium text-xs">Review the intelligence and refine it with your own POV.</p></div>
                             </div>
                             <div class="bg-blue-600 text-white p-8 rounded shadow-lg relative overflow-hidden">
-                                <div class="absolute -right-4 -bottom-4 opacity-10">
-                                    <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                                </div>
-                                <h4 class="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-80">Pro Tip for GEMs</h4>
-                                <p class="text-xl font-bold leading-tight">"Don't type a prompt. Just hit ENTER as soon as Gemini loads — the engine already knows what to do."</p>
+                                <p class="text-xl font-bold leading-tight">"Just hit ENTER as soon as Gemini loads — the engine already knows what to do."</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Navigation Controls -->
                     <div class="absolute bottom-0 right-0 left-0 flex items-center justify-between pt-6 border-t border-gray-100">
-                        <button onclick="changeOnboardingPage(-1)" id="ob-prev" class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-orange-600 transition-colors opacity-50 cursor-not-allowed" disabled>Back</button>
-                        <div id="pagination-dots" class="flex gap-2 px-4 py-1.5 bg-gray-50 rounded-full">
-                            <div onclick="goToOnboardingPage(1)" class="w-2.5 h-2.5 rounded-full bg-orange-500 transition-all duration-300 cursor-pointer hover:scale-125"></div>
-                            <div onclick="goToOnboardingPage(2)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer hover:scale-125"></div>
-                            <div onclick="goToOnboardingPage(3)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer hover:scale-125"></div>
+                        <button onclick="changeOnboardingPage(-1)" id="ob-prev" class="flex items-center gap-2 text-xs font-bold text-gray-400 disabled:opacity-50 transition-colors">Back</button>
+                        <div id="pagination-dots" class="flex gap-2">
+                            <div onclick="goToOnboardingPage(1)" class="w-2.5 h-2.5 rounded-full bg-orange-500 cursor-pointer transition-all"></div>
+                            <div onclick="goToOnboardingPage(2)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer"></div>
+                            <div onclick="goToOnboardingPage(3)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer"></div>
                         </div>
-                        <button onclick="changeOnboardingPage(1)" id="ob-next" class="flex items-center gap-2 text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors">Next Step</button>
+                        <button onclick="changeOnboardingPage(1)" id="ob-next" class="flex items-center gap-2 text-xs font-bold text-orange-600 transition-colors">Next Step</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NAVIGATION -->
-        <nav id="phase-nav" class="flex flex-wrap md:flex-nowrap gap-3 mb-10">
-            <button onclick="showPhase(1)" id="btn-p1" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-200">
-                <span class="block text-[10px] uppercase font-black opacity-60 mb-1">Phase 01</span>
-                <span class="text-base font-bold tracking-tight">Strategic Prep</span>
-            </button>
-            <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-200">
-                <span class="block text-[10px] uppercase font-black opacity-60 mb-1">Phase 02</span>
-                <span class="text-base font-bold tracking-tight">Validate & Differentiate</span>
-            </button>
-            <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-200">
-                <span class="block text-[10px] uppercase font-black opacity-60 mb-1">Phase 03</span>
-                <span class="text-base font-bold tracking-tight">Quantify & Close</span>
-            </button>
-        </nav>
+        <!-- DASHBOARD GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT CONTENT AREA -->
+            <div class="lg:col-span-8 space-y-4">
+                <!-- 1. PHASE NAVIGATION -->
+                <nav id="phase-nav" class="flex flex-wrap md:flex-nowrap gap-3 mb-2">
+                    <button onclick="showPhase(1)" id="btn-p1" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white border border-transparent">
+                        <span class="block text-[10px] font-black opacity-60 mb-1">PHASE 01</span>
+                        <span class="text-base font-bold tracking-tight">Strategic Prep</span>
+                    </button>
+                    <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white border border-transparent">
+                        <span class="block text-[10px] font-black opacity-60 mb-1">PHASE 02</span>
+                        <span class="text-base font-bold tracking-tight">Differentiate</span>
+                    </button>
+                    <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white border border-transparent">
+                        <span class="block text-[10px] font-black opacity-60 mb-1">PHASE 03</span>
+                        <span class="text-base font-bold tracking-tight">Quantify & Close</span>
+                    </button>
+                </nav>
 
-        <!-- CONTENT AREA -->
-        <div id="phase-content">
-            <!-- Dynamic Injection -->
+                <!-- 2. PHASE PHILOSOPHY & STRATEGY -->
+                <div id="phase-strategy-header" class="bg-gray-100/60 rounded-lg border border-gray-200 p-6 md:p-8 animate-fade-in mb-6">
+                    <!-- Phase strategy injected here -->
+                </div>
+
+                <!-- 3. ACTIONABLE TOOLKIT -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 px-2">
+                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Actionable Toolkit</h4>
+                        <div class="flex-grow h-px bg-gray-200"></div>
+                    </div>
+                    <div id="phase-content" class="animate-fade-in">
+                        <!-- Tool Cards Injected Here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: MASTER READINESS HUB (Persistent State) -->
+            <aside class="lg:col-span-4 sticky top-6 space-y-6">
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 border-b border-gray-200 p-5 flex items-center justify-between">
+                        <h4 class="text-[10px] font-black uppercase text-gray-900 tracking-widest flex items-center gap-2">
+                            <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            Master Readiness Hub
+                        </h4>
+                    </div>
+                    
+                    <div id="master-checklist" class="p-6 space-y-8">
+                        <!-- All Checklists Rendered Together Here -->
+                    </div>
+
+                    <!-- 3 WHYs STATUS -->
+                    <div class="bg-gray-50 border-t border-gray-200 p-5 space-y-4">
+                        <h5 class="text-[9px] font-black text-gray-400 uppercase tracking-widest">3 WHYs Health</h5>
+                        <div class="flex gap-2">
+                            <div id="thread-dot-1" class="flex-1 h-1.5 rounded-full bg-gray-200 transition-all duration-500 shadow-sm border border-black/5"></div>
+                            <div id="thread-dot-2" class="flex-1 h-1.5 rounded-full bg-gray-200 transition-all duration-500 shadow-sm border border-black/5"></div>
+                            <div id="thread-dot-3" class="flex-1 h-1.5 rounded-full bg-gray-200 transition-all duration-500 shadow-sm border border-black/5"></div>
+                        </div>
+                        <div class="flex justify-between text-[8px] font-black uppercase text-gray-400 tracking-tighter">
+                            <span>Why Change</span>
+                            <span>Why Us</span>
+                            <span>Why Now</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
         </div>
 
-        <!-- AI GUARDRAILS SECTION -->
-        <section class="mt-20 bg-[#050505] text-white p-10 md:p-12 rounded-lg shadow-2xl relative overflow-hidden group">
+        <!-- AI GUARDRAILS -->
+        <section class="mt-20 bg-[#050505] text-white p-10 md:p-12 rounded-lg shadow-2xl relative overflow-hidden group border border-white/5">
             <div class="absolute top-0 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-[80px] pointer-events-none"></div>
-            
             <div class="relative z-10 max-w-4xl mx-auto">
                 <div class="flex items-center gap-4 mb-10">
-                    <div class="p-2.5 bg-orange-500 rounded">
+                    <div class="p-2 bg-orange-500 rounded">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight uppercase tracking-widest">
-                        AI Guardrails & Usage
-                    </h3>
+                    <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight uppercase tracking-widest">AI Guardrails & Usage</h3>
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-sm text-gray-400 leading-relaxed">
-                    <div class="space-y-3">
-                        <p class="text-orange-500 font-bold uppercase text-xs tracking-wider">01. Data Privacy</p>
-                        <p>Never input sensitive customer data, PII, or internal trade secrets into public AI models. Stick to internal instances.</p>
-                    </div>
-                    <div class="space-y-3">
-                        <p class="text-orange-500 font-bold uppercase text-xs tracking-wider">02. Accountability</p>
-                        <p>Review all output meticulously. You are the final editor and author of all material produced here.</p>
-                    </div>
-                    <div class="space-y-3">
-                        <p class="text-orange-500 font-bold uppercase text-xs tracking-wider">03. Verification</p>
-                        <p>Cross-check technical claims with documentation. AI can hallucinate specific platform capabilities.</p>
-                    </div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">01. Data Privacy</p><p>Never input sensitive customer data or internal trade secrets into public AI models.</p></div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">02. Accountability</p><p>You are the final author. Review all output meticulously for accuracy.</p></div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">03. Verification</p><p>Cross-check claims with internal documentation. Verify technical specs.</p></div>
                 </div>
             </div>
         </section>
@@ -334,42 +347,79 @@
 
     <script>
         let currentOnboardingPage = 1;
+        let checkedItems = {};
+        let currentActivePhase = 1;
 
         const contentMap = {
             1: {
                 title: "Strategic Prep", subtitle: "Establish 'Why Change?'", layout: 'linear',
-                primaryTool: { name: 'Insights Coach', type: 'REQUIRED START', desc: 'Research disruptive insights and build POV.', cta: 'Launch Coach' },
+                primaryTool: { name: 'Insights Coach', type: 'REQUIRED START', desc: 'Research disruptive insights and build POV hypothesis.', cta: 'Launch Coach' },
                 followUpTools: [
-                    { name: 'Value Map Gen', type: 'NEXT STEP', desc: 'Turn Insights output into a visual outcome map.', cta: 'Generate Map' },
-                    { name: 'Role-Play Coach', type: 'REFINEMENT', desc: 'Practice your hook using the hypothesis you built.', cta: 'Practice Hook' }
+                    { name: 'Value Map Gen', type: 'NEXT STEP', desc: 'Turn Insights into a visual outcome map.', cta: 'Generate Map' },
+                    { name: 'Role-Play Coach', type: 'REFINEMENT', desc: 'Practice your hook using the hypothesis.', cta: 'Practice Hook' }
                 ],
-                checklist: ["POV on business priorities?", "Cost of Doing Nothing named?", "Thread: Established Why Change?"],
-                strategyDesc: "Prove you understand their business priorities. Disrupt the status quo.",
+                checklist: ["POV on business priorities?", "Cost of Doing Nothing named?", "3 WHYs: Established Why Change?"],
+                strategyDesc: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
                 busyMove: "Lead with one specific peer benchmark to earn the right to the meeting."
             },
             2: {
                 title: "Validate & Differentiate", subtitle: "Establish 'Why You?'", layout: 'independent',
                 tools: [
-                    { name: 'Discovery Prep Coach', type: 'DISCOVERY', desc: 'Tailor questions to isolate the "Unique Wedge".', cta: 'Build Discovery Kit' },
-                    { name: 'Competitive Takeout', type: 'STRATEGY', desc: 'Isolate displacement strategies for specific incumbents found in discovery.', cta: 'Get Playbook' }
+                    { name: 'Discovery Prep Coach', type: 'DISCOVERY', desc: 'Tailor questions to isolate the "Unique Wedge" based on pain points.', cta: 'Build Discovery Kit' },
+                    { name: 'Competitive Takeout', type: 'STRATEGY', desc: 'Isolate displacement strategies for specific incumbents.', cta: 'Get Playbook' }
                 ],
-                checklist: ["Current way preventing goals?", "Identified a 'Unique Wedge'?", "Thread: Established Why Us?"],
-                strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities.",
+                checklist: ["Current way preventing goals?", "Identified a 'Unique Wedge'?", "3 WHYs: Established Why Us?"],
+                strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
                 busyMove: "In every demo, ask: 'How would having this change your daily outcome?'"
             },
             3: {
                 title: "Quantify & Close", subtitle: "Establish 'Why Now?'", layout: 'linear',
-                primaryTool: { name: 'Business Case Coach', type: 'REQUIRED START', desc: 'Synthesize the value thread into narrative.', cta: 'Start Coaching' },
-                followUpTools: [{ name: 'Executive Case-on-a-Page', type: 'GENERATOR', desc: 'Convert output into a summary for the Board.', cta: 'Generate PDF' }],
-                checklist: ["Dollar amount attached to problem?", "Champion 'owns' this business case?", "Thread: Established Why Now?"],
-                strategyDesc: "Create mathematical urgency for the CFO. Software is discretionary, outcomes are not.",
+                primaryTool: { name: 'Business Case Coach', type: 'REQUIRED START', desc: 'Synthesize the deal logic into narrative.', cta: 'Start Coaching' },
+                followUpTools: [{ name: 'Executive Case-on-a-Page', type: 'GENERATOR', desc: 'Convert into a summary for the Board.', cta: 'Generate PDF' }],
+                checklist: ["Dollar amount attached to problem?", "Champion 'owns' this business case?", "3 WHYs: Established Why Now?"],
+                strategyDesc: "Create mathematical urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
                 busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what do we tell them?'"
             }
         };
 
+        // CORE LOGIC: Reactive Checkbox Toggling
+        window.toggleItem = function(itemKey) {
+            checkedItems[itemKey] = !checkedItems[itemKey];
+            updateHealthIndicator();
+        }
+
+        // The "3 WHYs Health" Reactive Updater
+        function updateHealthIndicator() {
+            for (let pNum = 1; pNum <= 3; pNum++) {
+                const data = contentMap[pNum];
+                const checkedCount = data.checklist.filter(item => checkedItems[item]).length;
+                const totalItems = data.checklist.length;
+                const dot = document.getElementById(`thread-dot-${pNum}`);
+                
+                if (dot) {
+                    if (checkedCount === 0) {
+                        dot.style.backgroundColor = '#E5E7EB'; // Empty
+                        dot.style.boxShadow = 'none';
+                    } else if (checkedCount < totalItems) {
+                        // Partial color based on phase
+                        const tintColor = pNum === 1 ? '#FED7AA' : pNum === 2 ? '#BFDBFE' : '#FECACA';
+                        dot.style.backgroundColor = tintColor;
+                        dot.style.boxShadow = 'none';
+                    } else {
+                        // Full Brand Color
+                        const solidColor = pNum === 1 ? '#F38020' : pNum === 2 ? '#0051C3' : '#991B1B';
+                        dot.style.backgroundColor = solidColor;
+                        dot.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+                    }
+                }
+            }
+        }
+
         function showPhase(num) {
+            currentActivePhase = num;
             const data = contentMap[num];
             const content = document.getElementById('phase-content');
+            const strategyHeader = document.getElementById('phase-strategy-header');
             
             document.querySelectorAll('.phase-tab').forEach(btn => {
                 btn.classList.remove('active', 'shadow-md');
@@ -392,11 +442,34 @@
                 return '';
             };
 
+            strategyHeader.innerHTML = `
+                <div class="flex items-center justify-between mb-6">
+                    <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Phase Philosophy & Goal</h4>
+                    <span class="text-[10px] font-bold text-orange-600 uppercase">Phase 0${num} Focus</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-black text-gray-900 leading-tight tracking-tight">${data.title}</h3>
+                        <p class="text-orange-600 font-bold text-xs italic tracking-wide uppercase">"${data.subtitle}"</p>
+                        <p class="text-gray-700 font-medium text-sm leading-relaxed border-l-2 border-orange-200 pl-4">${data.strategyDesc}</p>
+                    </div>
+                    <div class="p-6 rounded border border-orange-200 shadow-sm busy-seller-move">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-1.5 bg-orange-100 rounded text-orange-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h4 class="text-[11px] font-black uppercase tracking-widest text-orange-600">The Busy Seller Move</h4>
+                        </div>
+                        <p class="text-gray-900 font-bold text-sm leading-snug">${data.busyMove}</p>
+                    </div>
+                </div>
+            `;
+
             let toolMarkup = data.layout === 'linear' ? `
-                <div class="space-y-4">
+                <div class="space-y-4 mb-8">
                     <div class="bg-white p-1 rounded shadow-md border-[3px] border-orange-500 animate-fade-in relative overflow-hidden ring-4 ring-orange-500/5">
                         <div class="bg-gray-50 border-b border-gray-100 px-6 py-2 font-black text-[9px] uppercase tracking-widest text-gray-400">Step 01: Primary Action</div>
-                        <div class="p-8 bg-orange-50/5 relative">
+                        <div class="p-8 relative">
                             ${getToolIcon(data.primaryTool.name)}
                             <h4 class="text-xl font-extrabold text-gray-900 mb-2">${data.primaryTool.name}</h4>
                             <p class="text-gray-600 text-sm mb-6 max-w-2xl leading-relaxed">${data.primaryTool.desc}</p>
@@ -415,11 +488,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         ${data.followUpTools.map(tool => `
                             <div class="bg-white p-6 rounded shadow-sm border border-gray-200 flex flex-col h-full hover:shadow-md relative">
+                                ${getToolIcon(tool.name)}
                                 <span class="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-3">Step 02</span>
                                 <h5 class="text-lg font-bold mb-1.5 text-gray-900">${tool.name}</h5>
                                 <p class="text-xs text-gray-500 mb-6 flex-grow leading-relaxed">${tool.desc}</p>
                                 <div class="flex items-center gap-4">
-                                    <button class="flex-grow py-2 bg-gray-50 text-gray-900 rounded text-[11px] font-bold border border-gray-100 uppercase">${tool.cta}</button>
+                                    <button class="flex-grow py-2 bg-gray-50 text-gray-900 rounded text-[11px] font-bold border border-gray-100 uppercase tracking-tight">${tool.cta}</button>
                                     <a href="#" class="text-orange-500 text-[10px] font-bold underline">Demo</a>
                                 </div>
                             </div>
@@ -427,7 +501,7 @@
                     </div>
                 </div>
             ` : `
-                <div class="relative">
+                <div class="relative mb-8">
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block pointer-events-none">
                         <svg class="w-32 h-10 text-gray-200" viewBox="0 0 100 20">
                             <path d="M0 10 H80" stroke="currentColor" stroke-width="4" stroke-dasharray="4 4" /><path d="M75 3 L85 10 L75 17" stroke="currentColor" stroke-width="4" fill="none" />
@@ -436,6 +510,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
                         ${data.tools.map((tool, idx) => `
                             <div class="bg-white ${idx === 0 ? `border-orange-500 border-[3px] ring-4 ring-orange-500/5` : 'border-gray-200 border-t-[3px]'} p-7 rounded shadow-sm hover:shadow-md relative">
+                                ${getToolIcon(tool.name)}
                                 <span class="text-[9px] font-black text-orange-500 uppercase mb-4 tracking-widest">${tool.type}</span>
                                 <h4 class="text-xl font-bold text-gray-900 mb-2">${tool.name}</h4>
                                 <p class="text-xs text-gray-500 mb-8 leading-relaxed">${tool.desc}</p>
@@ -449,64 +524,57 @@
                 </div>
             `;
 
-            content.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fade-in items-start">
-                    <div class="lg:col-span-2 order-2 lg:order-1">${toolMarkup}</div>
-                    <div class="lg:col-span-1 space-y-5 order-1 lg:order-2 sticky top-8">
-                        <div class="bg-white p-6 rounded shadow-sm border border-gray-200">
-                             <h4 class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-3">Phase Strategy</h4>
-                             <h3 class="text-xl font-black text-gray-900 mb-1 tracking-tight">${data.title}</h3>
-                             <p class="text-orange-600 font-bold text-xs mb-5 italic">"${data.subtitle}"</p>
-                             <div class="space-y-5 border-t border-gray-100 pt-5">
-                                <div><h4 class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2">The Strategy</h4><p class="text-[13px] text-gray-700 leading-relaxed font-semibold">${data.strategyDesc}</p></div>
-                                <div class="p-4 rounded border border-orange-100 bg-orange-50/30 busy-seller-move">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <div class="p-1.5 bg-orange-100 rounded text-orange-600">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                        </div>
-                                        <h4 class="text-[10px] font-black uppercase tracking-[0.1em] text-orange-600">The Busy Seller Move</h4>
-                                    </div>
-                                    <p class="text-gray-900 font-bold text-[12px] leading-snug">${data.busyMove}</p>
-                                </div>
-                             </div>
-                        </div>
-                        <div class="bg-white p-6 rounded shadow-sm border border-gray-200">
-                            <h4 class="text-[10px] font-black uppercase tracking-widest mb-5 flex items-center justify-between">Readiness Checklist <span class="bg-green-100 text-green-600 px-2 py-0.5 rounded text-[9px] font-bold">Progress</span></h4>
-                            <ul class="space-y-3.5 mb-6">
-                                ${data.checklist.map(item => `
-                                    <li class="checklist-item flex items-start group">
-                                        <label class="flex items-start cursor-pointer"><input type="checkbox" class="mt-0.5 h-3.5 w-3.5 rounded-sm border-gray-300 text-orange-600 cursor-pointer transition-all"><span class="ml-3 text-[12px] text-gray-600 group-hover:text-gray-900 transition-colors font-medium">${item}</span></label>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                            <div class="mt-6 pt-5 border-t border-gray-100">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-[9px] font-black uppercase tracking-tighter ${num >= 1 ? 'text-orange-500' : 'text-gray-300'}">Why Change?</span>
-                                    <span class="text-[9px] font-black uppercase tracking-tighter ${num >= 2 ? 'text-orange-600' : 'text-gray-300'}">Why You?</span>
-                                    <span class="text-[9px] font-black uppercase tracking-tighter ${num >= 3 ? 'text-red-700' : 'text-gray-300'}">Why Now?</span>
-                                </div>
-                                <div class="w-full h-1 bg-gray-100 rounded overflow-hidden flex gap-0.5">
-                                    <div class="h-full transition-all duration-700 ease-out ${num >= 1 ? 'bg-orange-500' : 'bg-transparent'}" style="width: 33.33%"></div>
-                                    <div class="h-full transition-all duration-700 ease-out ${num >= 2 ? 'bg-orange-600' : 'bg-transparent'}" style="width: 33.33%"></div>
-                                    <div class="h-full transition-all duration-700 ease-out ${num >= 3 ? 'bg-red-700' : 'bg-transparent'}" style="width: 33.34%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            content.innerHTML = toolMarkup;
+            renderMasterChecklist(num);
+            updateHealthIndicator();
         }
 
-        function toggleOnboarding() {
+        function renderMasterChecklist(activeNum) {
+            const container = document.getElementById('master-checklist');
+            let html = '';
+            
+            [1, 2, 3].forEach(pNum => {
+                const data = contentMap[pNum];
+                const isActive = pNum === activeNum;
+                
+                html += `
+                    <div class="space-y-4 pb-2 transition-all duration-300 ${isActive ? 'active-checklist-section p-4 -mx-4 rounded shadow-sm' : ''}">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded flex items-center justify-center text-[11px] font-black border-2 ${isActive ? 'border-orange-500 text-orange-600 bg-orange-50' : 'border-gray-200 text-gray-300'}">
+                                    0${pNum}
+                                </div>
+                                <span class="text-[10px] font-black uppercase tracking-widest ${isActive ? 'text-gray-900' : 'text-gray-400'}">PHASE 0${pNum}</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3.5 pl-9">
+                            ${data.checklist.map(item => `
+                                <li class="checklist-item flex items-start group">
+                                    <label class="flex items-start cursor-pointer">
+                                        <input type="checkbox" 
+                                               class="checklist-input mt-0.5 h-3.5 w-3.5 rounded-sm border-gray-300 text-orange-600 cursor-pointer transition-all" 
+                                               ${checkedItems[item] ? 'checked' : ''} 
+                                               onchange="toggleItem('${item.replace(/'/g, "\\'")}')">
+                                        <span class="ml-3 text-[12px] ${isActive ? 'text-gray-700 font-semibold' : 'text-gray-400 font-medium'} group-hover:text-gray-900 transition-colors leading-tight">${item}</span>
+                                    </label>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        window.toggleOnboarding = function() {
             const content = document.getElementById('onboarding-content');
             const icon = document.getElementById('toggle-icon');
             content.classList.toggle('open');
             icon.classList.toggle('rotate-180');
         }
 
-        function goToOnboardingPage(pageNumber) {
-            const totalPages = 3;
-            if (pageNumber < 1 || pageNumber > totalPages) return;
+        window.goToOnboardingPage = function(pageNumber) {
+            if (pageNumber < 1 || pageNumber > 3) return;
             document.querySelectorAll('.onboarding-page').forEach(p => p.classList.remove('active'));
             document.getElementById(`ob-page-${pageNumber}`).classList.add('active');
             const dots = document.getElementById('pagination-dots').children;
@@ -518,16 +586,17 @@
             const nextBtn = document.getElementById('ob-next');
             prevBtn.disabled = pageNumber === 1;
             prevBtn.classList.toggle('opacity-50', pageNumber === 1);
-            nextBtn.innerHTML = pageNumber === totalPages ? 'Get Started' : 'Next Step';
+            nextBtn.innerHTML = pageNumber === 3 ? 'Get Started' : 'Next Step';
             currentOnboardingPage = pageNumber;
         }
 
-        function changeOnboardingPage(direction) {
-            if (currentOnboardingPage + direction > 3) toggleOnboarding();
-            else goToOnboardingPage(currentOnboardingPage + direction);
+        window.changeOnboardingPage = function(direction) {
+            let next = currentOnboardingPage + direction;
+            if (next > 3) toggleOnboarding();
+            else goToOnboardingPage(next);
         }
 
-        function toggleSupportMenu() { document.getElementById('support-menu').classList.toggle('hidden'); }
+        window.toggleSupportMenu = function() { document.getElementById('support-menu').classList.toggle('hidden'); }
 
         window.onload = () => {
             showPhase(1);
