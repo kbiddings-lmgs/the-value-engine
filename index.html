@@ -21,10 +21,15 @@
             color: var(--cf-dark);
             scroll-behavior: smooth;
         }
-
-        /* Hero styling restored from original version */
+        .hero-container {
+            max-width: 80rem; /* max-w-7xl approx */
+            margin: 1.5rem auto 0 auto;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
         .hero-banner {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/hero-banner.png');
+            background-image: url('/images/hero-banner.png');
             background-size: cover;
             background-position: center;
             background-color: #000; /* Fallback */
