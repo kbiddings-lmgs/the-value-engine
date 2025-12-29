@@ -224,49 +224,111 @@
         const phases = {
             1: {
                 title: "Strategic Prep",
-                subtitle: "The Goal: Why should I even listen to you?",
-                action: "Don't ask what keeps them up at night; tell them what should be keeping them up.",
-                busyMove: "Spend 15 minutes finding one 'Insight' (a peer benchmark or a missed trend) to lead with.",
+                subtitle: "Establish 'Why Change?'",
+                why: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
+                how: "Research goals and benchmarks to build a 'Why Change' hypothesis that makes technical debt and business pain visible.",
+                busyMove: "Lead with one specific peer benchmark to earn the right to the meeting.",
+                learning: [
+                    { name: 'POV Building Method', link: '#', type: 'Strategy' },
+                    { name: 'Phase 1 Execution Demo', link: '#', type: 'Video' }
+                ],
                 checklist: [
-                    "Do I have a Point of View (POV) on their business?",
-                    "Can I name the Cost of Doing Nothing?",
+                    "Do I have a Point of View (POV) on their business priorities?",
+                    "Can I name the Cost of Doing Nothing based on their goals?",
                     "The Thread: Established Why Change?"
                 ],
                 tools: [
-                    { name: 'Targeting & Insights Coach', type: 'AI COACH', link: '#', desc: 'Sharpen research strategy and generate value hypotheses.' },
-                    { name: 'Value Map Generator', type: 'GENERATOR', link: '#', desc: 'Align product capabilities to customer objectives.' }
+                    { 
+                        name: 'Targeting & Insights Coach', 
+                        type: 'AI COACH', 
+                        link: '#', 
+                        desc: 'Research disruptive insights and build your value hypothesis.',
+                        step: 1,
+                        output: 'Value Hypothesis'
+                    },
+                    { 
+                        name: 'Value Map Generator', 
+                        type: 'GENERATOR', 
+                        link: '#', 
+                        desc: 'Turn your hypothesis into a visual outcome map.',
+                        step: 2,
+                        input: 'Value Hypothesis',
+                        linked: true
+                    },
+                    { 
+                        name: 'Role-Play Coach', 
+                        type: 'AI COACH', 
+                        link: '#', 
+                        desc: 'Practice your disruptive hook before you dial.',
+                        step: 3
+                    }
                 ]
             },
             2: {
                 title: "Validate & Differentiate",
-                subtitle: "The Goal: Why are you better than the other guys?",
-                action: "Stop 'spraying and praying' features. Only demo the capabilities that fix the pains found in Phase 1.",
-                busyMove: "Every time you show a feature, ask: 'How would having this specifically change your daily outcome?'",
+                subtitle: "Establish 'Why You?'",
+                why: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
+                how: "Isolate our 'Unique Wedge.' Map platform capabilities directly to the business challenges agreed upon earlier.",
+                busyMove: "In every demo, ask: 'How would having this change your daily outcome?'",
+                learning: [
+                    { name: 'Identifying the Wedge', link: '#', type: 'Strategy' },
+                    { name: 'Competitive Battlecards', link: '#', type: 'Asset' }
+                ],
                 checklist: [
-                    "Did the customer agree that their current way is 'broken'?",
-                    "Have I identified a 'Unique Wedge' (something only we do)?",
+                    "Did they agree their current way is preventing their goals?",
+                    "Have I identified a 'Unique Wedge' (only we do it)?",
                     "The Thread: Established Why Us?"
                 ],
                 tools: [
-                    { name: 'Discovery Prep Coach', type: 'AI COACH', link: '#', desc: 'Rapid preparation sprint for high-impact discovery.' },
-                    { name: 'Competitive Takeout Sheet', type: 'GENERATOR', link: '#', desc: 'Tailored data sheets for strategic displacement.' }
+                    { 
+                        name: 'Discovery Prep Coach', 
+                        type: 'AI COACH', 
+                        link: '#', 
+                        desc: 'Tailor your opener, discovery questions, and closer.',
+                        step: 1
+                    },
+                    { 
+                        name: 'Competitive Takeout Sheet', 
+                        type: 'GENERATOR', 
+                        link: '#', 
+                        desc: 'Isolate displacement strategies for specific incumbents.',
+                        step: 2
+                    }
                 ]
             },
             3: {
                 title: "Quantify & Close",
-                subtitle: "The Goal: Why should I spend the money right now?",
-                action: "Stop 'selling' and start 'consulting.' Build the business case with them, not for them.",
-                busyMove: "Ask your champion: 'If the CFO asks why we can’t wait until next year to buy this, what do we tell them?'",
+                subtitle: "Establish 'Why Now?'",
+                why: "Create mathematical urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
+                how: "Co-create the business case with your champion. Attach dollar amounts to priorities to prove the exact cost of delay.",
+                busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what do we tell them?'",
+                learning: [
+                    { name: 'CFO-Ready Metrics', link: '#', type: 'Finance' },
+                    { name: 'The Executive Presentation', link: '#', type: 'Asset' }
+                ],
                 checklist: [
                     "Is there a dollar amount attached to the problem?",
-                    "Does the Champion feel like they 'own' this business case?",
+                    "Does the Champion 'own' this business case?",
                     "The Thread: Established Why Now?"
                 ],
                 tools: [
-                    { name: 'Impact Modeler', type: 'TOOL', link: '#', desc: 'Interactive ROI modeling based on customer data.' },
-                    { name: 'Case & Negotiation Coach', type: 'AI COACH', link: '#', desc: 'Refine narrative and practice value-anchored negotiation.' }
-                ]
-            }
+                    { 
+                        name: 'Impact Modeler', 
+                        type: 'TOOL', 
+                        link: '#', 
+                        desc: 'Quantify ROI and the cost of delay using customer data.',
+                        step: 1,
+                        output: 'ROI Metrics'
+                    },
+                    { 
+                        name: 'Case & Negotiation Coach', 
+                        type: 'AI COACH', 
+                        link: '#', 
+                        desc: 'Refine your narrative for board-level sign-off.',
+                        step: 2,
+                        input: 'ROI Metrics',
+                        linked: true
+                    }
         };
 
         function toggleOnboarding() {
