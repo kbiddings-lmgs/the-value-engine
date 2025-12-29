@@ -31,7 +31,6 @@
             overflow: hidden;
         }
 
-        /* Adding a subtle overlay to the hero to ensure readability if image is missing */
         .hero-banner::before {
             content: '';
             position: absolute;
@@ -87,11 +86,43 @@
         .animate-fade-in {
             animation: fadeIn 0.4s ease-out forwards;
         }
+
+        .support-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- HERO SECTION -->
+    <!-- FLOATING SUPPORT BUTTON -->
+    <div class="support-fab">
+        <button onclick="toggleSupportMenu()" class="bg-orange-600 hover:bg-orange-700 text-white p-4 rounded-full shadow-2xl transition-all flex items-center gap-3 group">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold text-sm">Help & Feedback</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </button>
+        <div id="support-menu" class="absolute bottom-16 right-0 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 hidden animate-fade-in">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Support Hub</p>
+            <div class="space-y-2">
+                <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-orange-50 transition-colors group">
+                    <div class="p-2 bg-orange-100 text-orange-600 rounded-lg group-hover:bg-orange-600 group-hover:text-white transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.6,4.7c-0.3-0.5-0.8-0.8-1.4-0.8H2.8C2.2,3.9,1.7,4.2,1.4,4.7c-0.3,0.5-0.3,1.1,0,1.6l8.8,12.8c0.4,0.6,1.1,1,1.8,1s1.4-0.4,1.8-1l8.8-12.8C22.9,5.8,22.9,5.2,22.6,4.7z"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-gray-700">#value-engine</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors group">
+                    <div class="p-2 bg-blue-100 text-blue-600 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-gray-700">Help Center</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION (EXACT AS PROVIDED) -->
     <header class="hero-banner text-white text-center py-24 px-4 shadow-2xl">
         <div class="max-w-5xl mx-auto relative z-10">
             <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
@@ -105,7 +136,7 @@
 
     <main class="max-w-6xl mx-auto px-4 -mt-12 mb-20 relative z-20">
         
-        <!-- COLLAPSIBLE ONBOARDING: THE 3 WHYS -->
+        <!-- COLLAPSIBLE ONBOARDING: THE 3 WHYS (EXACT AS PROVIDED) -->
         <section class="bg-white rounded-3xl shadow-xl p-6 md:p-10 mb-12 value-thread-card border border-gray-100">
             <div class="flex items-center justify-between cursor-pointer group" onclick="toggleOnboarding()">
                 <div class="flex items-center gap-4">
@@ -187,14 +218,7 @@
             </div>
         </section>
 
-        <!-- NAVIGATION: THE JOURNEY -->
-        <div class="mb-6 flex items-center justify-between">
-            <h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                Execution Workflow
-                <span class="w-12 h-px bg-gray-200"></span>
-            </h3>
-        </div>
-        
+        <!-- NAVIGATION -->
         <nav class="flex flex-wrap md:flex-nowrap gap-4 mb-10">
             <button onclick="showPhase(1)" id="btn-p1" class="phase-tab active flex-1 py-5 px-8 text-left rounded-2xl transition-all duration-300">
                 <span class="block text-xs uppercase font-bold opacity-60 mb-1">Phase 01</span>
@@ -202,7 +226,7 @@
             </button>
             <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-5 px-8 text-left rounded-2xl transition-all duration-300 text-gray-400 hover:bg-white hover:shadow-lg">
                 <span class="block text-xs uppercase font-bold opacity-60 mb-1">Phase 02</span>
-                <span class="text-lg font-bold">Validate & Differentiate</span>
+                <span class="text-lg font-bold">Differentiate</span>
             </button>
             <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-5 px-8 text-left rounded-2xl transition-all duration-300 text-gray-400 hover:bg-white hover:shadow-lg">
                 <span class="block text-xs uppercase font-bold opacity-60 mb-1">Phase 03</span>
@@ -211,63 +235,27 @@
         </nav>
 
         <!-- CONTENT AREA -->
-        <div id="phase-content" class="min-h-[500px]">
+        <div id="phase-content">
             <!-- Dynamic Injection -->
         </div>
 
-        <!-- AI GUARDRAILS -->
-        <section class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div class="bg-gray-900 text-white p-10 rounded-3xl shadow-2xl relative overflow-hidden group">
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all"></div>
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                    AI Guardrails
-                </h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li class="flex items-start gap-4">
-                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-xs font-bold">1</span>
-                        Never input sensitive customer data into public AI models.
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-xs font-bold">2</span>
-                        Review all output—you are the final editor and author.
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-xs font-bold">3</span>
-                        Stick to Cloudflare-approved tools and internal instances.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-                <h3 class="text-2xl font-bold mb-6 text-gray-900">Quick Access Hub</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <a href="#" class="group p-4 bg-gray-50 rounded-2xl flex flex-col gap-2 hover:bg-orange-50 transition-all border border-transparent hover:border-orange-100">
-                        <span class="text-xs font-bold text-gray-400 uppercase group-hover:text-orange-500">Coach</span>
-                        <span class="font-bold text-gray-800">Targeting Hub</span>
-                    </a>
-                    <a href="#" class="group p-4 bg-gray-50 rounded-2xl flex flex-col gap-2 hover:bg-orange-50 transition-all border border-transparent hover:border-orange-100">
-                        <span class="text-xs font-bold text-gray-400 uppercase group-hover:text-orange-500">Generator</span>
-                        <span class="font-bold text-gray-800">Value Map Gen</span>
-                    </a>
-                    <a href="#" class="group p-4 bg-gray-50 rounded-2xl flex flex-col gap-2 hover:bg-orange-50 transition-all border border-transparent hover:border-orange-100">
-                        <span class="text-xs font-bold text-gray-400 uppercase group-hover:text-orange-500">Prep</span>
-                        <span class="font-bold text-gray-800">Discovery Kit</span>
-                    </a>
-                    <a href="#" class="group p-4 bg-gray-50 rounded-2xl flex flex-col gap-2 hover:bg-orange-50 transition-all border border-transparent hover:border-orange-100">
-                        <span class="text-xs font-bold text-gray-400 uppercase group-hover:text-orange-500">Metrics</span>
-                        <span class="font-bold text-gray-800">Impact Modeler</span>
-                    </a>
-                </div>
+        <!-- GUARDRAILS -->
+        <section class="mt-20 bg-gray-900 text-white p-8 rounded-3xl shadow-2xl relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all"></div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                AI Guardrails
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-400 text-xs leading-relaxed">
+                <p>1. Never input sensitive customer data into public AI models.</p>
+                <p>2. Review all output—you are the final editor and author.</p>
+                <p>3. Stick to Cloudflare-approved tools and internal instances.</p>
             </div>
         </section>
     </main>
 
-    <footer class="bg-white py-16 text-center text-gray-400 text-sm border-t border-gray-100">
-        <div class="max-w-xs mx-auto opacity-50 mb-6">
-            <svg viewBox="0 0 24 24" class="h-8 mx-auto fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 12.5c0 1.9-1.5 3.4-3.4 3.4-1.2 0-2.3-.6-2.9-1.6l-.3-.5c-.1-.1-.2-.1-.3-.1-.1 0-.2.1-.2.2 0 .1 0 .2.1.2.2.5.3 1 .3 1.5 0 2.2-1.8 4-4 4s-4-1.8-4-4c0-.5.1-1 .3-1.5 0-.1.1-.2.1-.2s-.1-.2-.2-.2c-.1 0-.2 0-.3.1l-.3.5c-.6 1-1.7 1.6-2.9 1.6-1.9 0-3.4-1.5-3.4-3.4 0-1.2.6-2.3 1.6-2.9l.5-.3c.1-.1.1-.2.1-.3 0-.1-.1-.2-.2-.2s-.2 0-.2.1c-.5.2-1 .3-1.5.3-2.2 0-4-1.8-4-4s1.8-4 4-4c.5 0 1 .1 1.5.3.1 0 .2 0 .2.1.1 0 .2-.1.2-.2s0-.2-.1-.2l-.3-.5C3.1 4.6 4.2 4 5.4 4c1.9 0 3.4 1.5 3.4 3.4 0 1.2-.6 2.3-1.6 2.9l-.5.3c-.1.1-.1.2-.1.3 0 .1.1.2.2.2s.2 0 .2-.1c.2-.2.4-.3.7-.4.5-.3 1.1-.4 1.7-.4 2.2 0 4 1.8 4 4 0 .6-.1 1.2-.4 1.7-.1.2-.2.4-.4.7 0 .1 0 .2.1.2s.2.1.2.2c0 .1.1.2.3.1l.5-.3c1-.6 2.1-1.2 2.9-1.2 1.9 0 3.4 1.5 3.4 3.4z"/></svg>
-        </div>
-        <p>&copy; 2025 Cloudflare, Inc. Built for Sales Velocity.</p>
+    <footer class="py-12 text-center text-gray-400 text-xs">
+        &copy; 2025 Cloudflare, Inc. Built for Sales Velocity.
     </footer>
 
     <script>
@@ -275,13 +263,16 @@
             1: {
                 title: "Strategic Prep",
                 subtitle: "Establish 'Why Change?'",
-                strategyDesc: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
-                navigationDesc: "Research goals and benchmarks to build a 'Why Change' hypothesis that makes technical debt and business pain visible.",
-                busyMove: "Lead with one specific peer benchmark to earn the right to the meeting.",
-                tools: [
-                    { name: 'Insights Coach', type: 'AI COACH', desc: 'Research disruptive insights and build your value hypothesis.' },
-                    { name: 'Value Map Gen', type: 'GENERATOR', desc: 'Turn your hypothesis into a visual outcome map.' },
-                    { name: 'Role-Play Coach', type: 'AI COACH', desc: 'Practice your disruptive hook before you dial.' }
+                layout: 'linear',
+                primaryTool: {
+                    name: 'Insights Coach',
+                    type: 'REQUIRED START',
+                    desc: 'Research disruptive insights and build your initial value hypothesis. This output fuels the rest of your prep.',
+                    cta: 'Launch Coach'
+                },
+                followUpTools: [
+                    { name: 'Value Map Gen', type: 'NEXT STEP', desc: 'Turn your Insights Coach output into a visual outcome map.', cta: 'Generate Map' },
+                    { name: 'Role-Play Coach', type: 'REFINEMENT', desc: 'Practice your hook using the hypothesis you built.', cta: 'Practice Hook' }
                 ],
                 checklist: [
                     "Do I have a Point of View (POV) on their business priorities?",
@@ -289,19 +280,20 @@
                     "The Thread: Established Why Change?"
                 ],
                 learning: [
-                    { name: "POV Building Masterclass", type: "Video", link: "#" },
-                    { name: "Benchmarking Guide", type: "PDF", link: "#" }
-                ]
+                    { name: "POV Masterclass", type: "Video", link: "#" },
+                    { name: "Peer Benchmark PDF", type: "Document", link: "#" }
+                ],
+                strategyDesc: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
+                navigationDesc: "Research goals and benchmarks to build a 'Why Change' hypothesis that makes technical debt visible.",
+                busyMove: "Lead with one specific peer benchmark to earn the right to the meeting."
             },
             2: {
                 title: "Validate & Differentiate",
                 subtitle: "Establish 'Why You?'",
-                strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
-                navigationDesc: "Isolate our 'Unique Wedge.' Map platform capabilities directly to the business challenges agreed upon earlier.",
-                busyMove: "In every demo, ask: 'How would having this change your daily outcome?'",
+                layout: 'independent',
                 tools: [
-                    { name: 'Discovery Prep Coach', type: 'AI COACH', desc: 'Tailor your opener, discovery questions, and closer.' },
-                    { name: 'Competitive Takeout', type: 'GENERATOR', desc: 'Isolate displacement strategies for specific incumbents.' }
+                    { name: 'Discovery Prep Coach', type: 'DISCOVERY', desc: 'Tailor your discovery questions to isolate the "Unique Wedge" based on agreed pain points.', cta: 'Build Discovery Kit' },
+                    { name: 'Competitive Takeout', type: 'STRATEGY', desc: 'Isolate displacement strategies for specific incumbents found in discovery.', cta: 'Get Playbook' }
                 ],
                 checklist: [
                     "Did they agree their current way is preventing their goals?",
@@ -309,19 +301,25 @@
                     "The Thread: Established Why Us?"
                 ],
                 learning: [
-                    { name: "Identifying the Unique Wedge", type: "Strategy Guide", link: "#" },
-                    { name: "Winning Discovery Demo", type: "Video", link: "#" }
-                ]
+                    { name: "Winning Discovery", type: "Video", link: "#" },
+                    { name: "Cloudflare Unique Wedge Guide", type: "Web", link: "#" }
+                ],
+                strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
+                navigationDesc: "Isolate our 'Unique Wedge.' Map platform capabilities directly to business challenges.",
+                busyMove: "In every demo, ask: 'How would having this change your daily outcome?'"
             },
             3: {
                 title: "Quantify & Close",
                 subtitle: "Establish 'Why Now?'",
-                strategyDesc: "Create mathematical urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
-                navigationDesc: "Co-create the business case with your champion. Attach dollar amounts to priorities to prove the exact cost of delay.",
-                busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what do we tell them?'",
-                tools: [
-                    { name: 'Impact Modeler', type: 'TOOL', desc: 'Quantify ROI and the cost of delay using customer data.' },
-                    { name: 'Negotiation Coach', type: 'AI COACH', desc: 'Refine your narrative for board-level sign-off.' }
+                layout: 'linear',
+                primaryTool: {
+                    name: 'Business Case Coach',
+                    type: 'REQUIRED START',
+                    desc: 'Synthesize the value thread into a compelling executive narrative. This is the foundation of your CFO sign-off.',
+                    cta: 'Start Coaching'
+                },
+                followUpTools: [
+                    { name: 'Business Case-on-a-Page', type: 'GENERATOR', desc: 'Convert your Business Case Coach output into a one-page summary for the Board.', cta: 'Generate PDF' }
                 ],
                 checklist: [
                     "Is there a dollar amount attached to the problem?",
@@ -329,9 +327,12 @@
                     "The Thread: Established Why Now?"
                 ],
                 learning: [
-                    { name: "CFO-Ready Metrics Cheat Sheet", type: "PDF", link: "#" },
-                    { name: "Co-Creating the Business Case", type: "Best Practice", link: "#" }
-                ]
+                    { name: "CFO Business Case Prep", type: "Video", link: "#" },
+                    { name: "Metrics Cheat Sheet", type: "PDF", link: "#" }
+                ],
+                strategyDesc: "Create mathematical urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
+                navigationDesc: "Co-create the business case with your champion to prove the exact cost of delay.",
+                busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what do we tell them?'"
             }
         };
 
@@ -342,11 +343,15 @@
             icon.classList.toggle('rotate-180');
         }
 
+        function toggleSupportMenu() {
+            const menu = document.getElementById('support-menu');
+            menu.classList.toggle('hidden');
+        }
+
         function showPhase(num) {
             const data = phases[num];
             const content = document.getElementById('phase-content');
             
-            // Update Navigation
             document.querySelectorAll('.phase-tab').forEach(btn => {
                 btn.classList.remove('active', 'shadow-lg');
                 btn.classList.add('text-gray-400');
@@ -354,113 +359,170 @@
             document.getElementById(`btn-p${num}`).classList.add('active', 'shadow-lg');
             document.getElementById(`btn-p${num}`).classList.remove('text-gray-400');
 
-            // Render Phase Content
-            content.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fade-in">
-                    <!-- Main Content Section -->
-                    <div class="lg:col-span-2 space-y-6">
-                        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-                            <h3 class="text-4xl font-extrabold mb-3 text-gray-900">${data.title}</h3>
-                            <p class="text-orange-600 font-bold text-xl mb-10 italic">"${data.subtitle}"</p>
-                            
-                            <div class="space-y-10">
-                                <div>
-                                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-3 tracking-widest">The Strategy</h4>
-                                    <p class="text-xl text-gray-800 leading-relaxed font-semibold">${data.strategyDesc}</p>
-                                </div>
+            let toolMarkup = '';
 
-                                <div>
-                                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-3 tracking-widest">How to Navigate</h4>
-                                    <p class="text-lg text-gray-600 leading-relaxed font-medium">${data.navigationDesc}</p>
+            if (data.layout === 'linear') {
+                toolMarkup = `
+                    <div class="space-y-4">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                            Step-by-Step Workflow
+                        </h3>
+                        
+                        <div class="bg-white p-1 rounded-3xl shadow-xl border-2 border-orange-500 group">
+                            <div class="bg-orange-500 text-white px-6 py-2 rounded-t-2xl font-bold text-[10px] tracking-widest uppercase flex justify-between items-center">
+                                <span>Step 01: Primary Action</span>
+                                <span class="bg-white/20 px-2 py-0.5 rounded">${data.primaryTool.type}</span>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div>
+                                        <h4 class="text-2xl font-extrabold text-gray-900 mb-2">${data.primaryTool.name}</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-lg">${data.primaryTool.desc}</p>
+                                    </div>
+                                    <div class="hidden md:block p-3 bg-orange-50 rounded-2xl text-orange-500">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                    </div>
                                 </div>
-
-                                <div class="busy-seller-move p-8 rounded-2xl border border-orange-100 shadow-sm relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 p-4 opacity-10">
-                                        <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                                    </div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <span class="p-1 bg-orange-600 rounded text-white"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
-                                        <h4 class="text-xs font-bold text-orange-600 uppercase tracking-widest">The Busy Seller Move</h4>
-                                    </div>
-                                    <p class="text-gray-900 font-bold text-lg leading-snug relative z-10">${data.busyMove}</p>
+                                <div class="flex items-center gap-6">
+                                    <button class="w-full md:w-max px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-orange-600 transition-all flex items-center justify-center gap-2">
+                                        ${data.primaryTool.cta}
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                    </button>
+                                    <a href="#" class="text-orange-500 hover:text-orange-700 text-xs font-normal underline flex items-center gap-1 transition-colors">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        Demo
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            ${data.tools.map(tool => `
-                                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all group">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <div class="flex flex-col">
-                                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded-md font-bold text-gray-500 mb-2 w-max uppercase">${tool.type}</span>
-                                            <h5 class="text-xl font-bold text-gray-900">${tool.name}</h5>
-                                        </div>
+                        <div class="flex justify-center py-2">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 0V32" stroke="var(--cf-orange)" stroke-width="2" stroke-linecap="round" />
+                                <path d="M14 26L20 32L26 26" stroke="var(--cf-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${data.followUpTools.map(tool => `
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-orange-200 transition-all flex flex-col h-full">
+                                    <span class="text-[9px] font-extrabold text-orange-500 uppercase tracking-widest mb-3">Step 02: ${tool.type}</span>
+                                    <h5 class="text-lg font-bold text-gray-900 mb-2">${tool.name}</h5>
+                                    <p class="text-xs text-gray-500 mb-6 leading-relaxed flex-grow">${tool.desc}</p>
+                                    <div class="flex items-center gap-4 mt-auto">
+                                        <button class="flex-grow py-2.5 bg-gray-50 text-gray-900 rounded-lg text-xs font-bold hover:bg-orange-50 hover:text-orange-600 border border-gray-100 transition-all">
+                                            ${tool.cta}
+                                        </button>
+                                        <a href="#" class="text-orange-500 hover:text-orange-700 text-[11px] font-normal underline transition-colors">Demo</a>
                                     </div>
-                                    <p class="text-sm text-gray-500 mb-8 leading-relaxed">${tool.desc}</p>
-                                    <a href="#" class="flex items-center justify-center w-full py-4 bg-gray-900 text-white rounded-2xl text-sm font-bold hover:bg-orange-600 transition-colors">
-                                        Start Using
-                                    </a>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
+                `;
+            } else {
+                toolMarkup = `
+                    <div class="space-y-4">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                            Independent Toolkit
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${data.tools.map(tool => `
+                                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:border-orange-500 border-t-4 transition-all flex flex-col h-full">
+                                    <span class="text-[10px] font-extrabold text-orange-500 uppercase tracking-widest mb-4">${tool.type}</span>
+                                    <h4 class="text-2xl font-bold text-gray-900 mb-3">${tool.name}</h4>
+                                    <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">${tool.desc}</p>
+                                    <div class="flex items-center gap-4 mt-auto">
+                                        <button class="flex-grow py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-orange-600 transition-all">
+                                            ${tool.cta}
+                                        </button>
+                                        <a href="#" class="text-orange-500 hover:text-orange-700 text-xs font-normal underline transition-colors">Demo</a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 animate-fade-in items-start">
+                    <!-- Main Content -->
+                    <div class="lg:col-span-2 order-2 lg:order-1">
+                        ${toolMarkup}
+                    </div>
 
                     <!-- Sidebar Section -->
-                    <div class="lg:col-span-1">
-                        <div class="sticky top-8 space-y-6">
-                            <!-- Readiness Checklist -->
-                            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-                                <h4 class="text-sm font-bold text-gray-900 uppercase mb-8 flex items-center justify-between">
-                                    Readiness Checklist
-                                    <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-[10px] uppercase font-bold">Progress</span>
-                                </h4>
-                                <ul class="space-y-6">
-                                    ${data.checklist.map((item, idx) => `
-                                        <li class="checklist-item flex items-start group">
-                                            <label class="flex items-start cursor-pointer">
-                                                <input type="checkbox" class="mt-1 h-5 w-5 rounded-md border-gray-300 text-orange-600 focus:ring-orange-500 cursor-pointer transition-all">
-                                                <span class="ml-4 text-sm text-gray-600 font-medium leading-tight group-hover:text-gray-900 transition-colors">${item}</span>
-                                            </label>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                                
-                                <!-- Visual 3 Whys Indicator -->
-                                <div class="mt-10 pt-8 border-t border-gray-100">
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 1 ? 'text-orange-500' : 'text-gray-300'}">Why Change?</span>
-                                        <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 2 ? 'text-orange-700' : 'text-gray-300'}">Why You?</span>
-                                        <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 3 ? 'text-red-900' : 'text-gray-300'}">Why Now?</span>
-                                    </div>
-                                    <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden flex gap-0.5">
-                                        <!-- Phase 1: Orange -->
-                                        <div class="h-full transition-all duration-700 ease-out ${num >= 1 ? 'bg-orange-500' : 'bg-transparent'}" style="width: 33.33%"></div>
-                                        <!-- Phase 2: Deeper Rust -->
-                                        <div class="h-full transition-all duration-700 ease-out ${num >= 2 ? 'bg-orange-700' : 'bg-transparent'}" style="width: 33.33%"></div>
-                                        <!-- Phase 3: Maroon -->
-                                        <div class="h-full transition-all duration-700 ease-out ${num >= 3 ? 'bg-red-900' : 'bg-transparent'}" style="width: 33.34%"></div>
-                                    </div>
+                    <div class="lg:col-span-1 space-y-6 order-1 lg:order-2 sticky top-8">
+                        <!-- Strategy Reference Card -->
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Phase Strategy</h4>
+                             <h3 class="text-2xl font-extrabold text-gray-900 mb-1">${data.title}</h3>
+                             <p class="text-orange-600 font-bold text-sm mb-6 italic">"${data.subtitle}"</p>
+                             
+                             <div class="space-y-6 border-t border-gray-100 pt-6">
+                                <div>
+                                    <h4 class="text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">The Strategy</h4>
+                                    <p class="text-sm text-gray-800 leading-relaxed font-semibold">${data.strategyDesc}</p>
                                 </div>
-                            </div>
+                                <div class="busy-seller-move p-5 rounded-2xl border border-orange-100 relative overflow-hidden">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="p-1 bg-orange-600 rounded text-white"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+                                        <h4 class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Busy Seller Move</h4>
+                                    </div>
+                                    <p class="text-gray-900 font-bold text-sm leading-snug relative z-10">${data.busyMove}</p>
+                                </div>
+                             </div>
+                        </div>
 
-                            <!-- Learning & Support -->
-                            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-                                <h4 class="text-sm font-bold text-gray-900 uppercase mb-6 flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                    Learning & Support
-                                </h4>
-                                <div class="space-y-4">
-                                    ${data.learning.map(item => `
-                                        <a href="${item.link}" class="flex items-center justify-between p-3 rounded-xl border border-gray-50 bg-gray-50/50 hover:bg-blue-50 hover:border-blue-100 transition-all group">
-                                            <div class="flex flex-col">
-                                                <span class="text-xs font-bold text-gray-800 group-hover:text-blue-700">${item.name}</span>
-                                                <span class="text-[10px] text-gray-400">${item.type}</span>
-                                            </div>
-                                            <svg class="w-4 h-4 text-gray-300 group-hover:text-blue-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                                        </a>
-                                    `).join('')}
+                        <!-- Readiness Checklist Card -->
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                            <h4 class="text-xs font-bold text-gray-900 uppercase mb-6 flex items-center justify-between">
+                                Readiness Checklist
+                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-[10px] uppercase font-bold">Progress</span>
+                            </h4>
+                            <ul class="space-y-4">
+                                ${data.checklist.map((item, idx) => `
+                                    <li class="checklist-item flex items-start group">
+                                        <label class="flex items-start cursor-pointer">
+                                            <input type="checkbox" class="mt-1 h-4 w-4 rounded-md border-gray-300 text-orange-600 focus:ring-orange-500 cursor-pointer transition-all">
+                                            <span class="ml-3 text-xs text-gray-600 font-medium leading-tight group-hover:text-gray-900 transition-colors">${item}</span>
+                                        </label>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                            
+                            <!-- Visual 3 Whys Indicator -->
+                            <div class="mt-8 pt-6 border-t border-gray-100">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 1 ? 'text-orange-500' : 'text-gray-300'}">Why Change?</span>
+                                    <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 2 ? 'text-orange-700' : 'text-gray-300'}">Why You?</span>
+                                    <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 3 ? 'text-red-900' : 'text-gray-300'}">Why Now?</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden flex gap-0.5">
+                                    <div class="h-full transition-all duration-700 ease-out ${num >= 1 ? 'bg-orange-500' : 'bg-transparent'}" style="width: 33.33%"></div>
+                                    <div class="h-full transition-all duration-700 ease-out ${num >= 2 ? 'bg-orange-700' : 'bg-transparent'}" style="width: 33.33%"></div>
+                                    <div class="h-full transition-all duration-700 ease-out ${num >= 3 ? 'bg-red-900' : 'bg-transparent'}" style="width: 33.34%"></div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- LEARNING & SUPPORT SECTION -->
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-6">Learning & Support</h4>
+                             <div class="space-y-3">
+                                ${data.learning.map(item => `
+                                    <a href="${item.link}" class="flex items-center justify-between p-3 rounded-xl border border-gray-50 bg-gray-50 hover:bg-orange-50 hover:border-orange-100 transition-all group">
+                                        <div class="flex flex-col">
+                                            <span class="text-[11px] font-bold text-gray-800 group-hover:text-orange-700">${item.name}</span>
+                                            <span class="text-[9px] text-gray-400 uppercase font-bold">${item.type}</span>
+                                        </div>
+                                        <svg class="w-4 h-4 text-gray-300 group-hover:text-orange-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </a>
+                                `).join('')}
+                             </div>
                         </div>
                     </div>
                 </div>
