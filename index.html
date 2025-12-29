@@ -23,7 +23,7 @@
         }
 
         .hero-banner {
-            background-image: url('/images/hero-banner.png');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072');
             background-size: cover;
             background-position: center;
             background-color: #000;
@@ -70,6 +70,15 @@
             margin-top: 2rem;
         }
 
+        .onboarding-page {
+            display: none;
+        }
+
+        .onboarding-page.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -114,7 +123,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (EXACT AS PROVIDED) -->
+    <!-- HERO SECTION -->
     <header class="hero-banner text-white text-center py-24 px-4 shadow-2xl">
         <div class="max-w-5xl mx-auto relative z-10">
             <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
@@ -128,7 +137,7 @@
 
     <main class="max-w-6xl mx-auto px-4 -mt-12 mb-20 relative z-20">
         
-        <!-- COLLAPSIBLE ONBOARDING: THE 3 WHYS (EXACT AS PROVIDED) -->
+        <!-- MULTI-PAGE COLLAPSIBLE ONBOARDING -->
         <section class="bg-white rounded-3xl shadow-xl p-6 md:p-10 mb-12 value-thread-card border border-gray-100">
             <div class="flex items-center justify-between cursor-pointer group" onclick="toggleOnboarding()">
                 <div class="flex items-center gap-4">
@@ -139,72 +148,112 @@
                         <h2 class="text-2xl font-extrabold text-gray-900 flex items-center gap-3">
                             New to the Value Engine?
                         </h2>
-                        <p class="text-gray-500 text-sm">Click to Learn More...</p>
+                        <p class="text-gray-500 text-sm">A 3-step guide to mastering value selling</p>
                     </div>
                 </div>
-                <button id="onboarding-toggle-btn" class="bg-gray-50 hover:bg-orange-50 text-gray-400 hover:text-orange-600 transition-all p-3 rounded-full">
-                    <svg id="toggle-icon" class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </button>
+                <div class="flex items-center gap-4">
+                    <button id="onboarding-toggle-btn" class="bg-gray-50 hover:bg-orange-50 text-gray-400 hover:text-orange-600 transition-all p-3 rounded-full">
+                        <svg id="toggle-icon" class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
             </div>
 
             <div id="onboarding-content">
-                <div class="mb-10 border-t border-gray-100 pt-8">
-                    <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">
-                        Most deals fail because customers don't see a reason to move. To win, you must prove that staying the same is riskier than evolving with Cloudflare. 
-                        <strong>The Value Engine</strong> provides specialized AI-driven Coaches to accelerate every step.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Pillar 1 -->
-                    <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100 hover:border-orange-200 transition-colors">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="pillar-icon p-2 rounded-xl">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">Why Change?</h3>
+                <div class="relative min-h-[400px]">
+                    <!-- PAGE 1: THE PHILOSOPHY -->
+                    <div id="ob-page-1" class="onboarding-page active space-y-8">
+                        <div class="border-t border-gray-100 pt-8">
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-2">Step 01: The Core Philosophy</h3>
+                            <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">
+                                To win, you must prove that staying the same is riskier than evolving with Cloudflare. We focus on three critical "Whys" that drive every successful deal.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            <span class="font-bold text-gray-800">The Problem:</span> Identify technical debt and hidden risks. Prove that doing nothing is no longer an option.
-                        </p>
-                    </div>
-
-                    <!-- Pillar 2 -->
-                    <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100 hover:border-orange-200 transition-colors">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="pillar-icon p-2 rounded-xl">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+                                <h4 class="font-bold text-gray-900 mb-2">Why Change?</h4>
+                                <p class="text-xs text-gray-500">Expose technical debt and the risk of the status quo.</p>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900">Why You?</h3>
+                            <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+                                <h4 class="font-bold text-gray-900 mb-2">Why You?</h4>
+                                <p class="text-xs text-gray-500">Identify our Unique Wedge vs. all alternatives.</p>
+                            </div>
+                            <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+                                <h4 class="font-bold text-gray-900 mb-2">Why Now?</h4>
+                                <p class="text-xs text-gray-500">Attach our capabilities to their urgent business drivers.</p>
+                            </div>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            <span class="font-bold text-gray-800">The Solution:</span> Differentiate our architecture. Show how we solve pain points better than any alternative.
-                        </p>
                     </div>
 
-                    <!-- Pillar 3 -->
-                    <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100 hover:border-orange-200 transition-colors">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="pillar-icon p-2 rounded-xl">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">Why Now?</h3>
+                    <!-- PAGE 2: AI-POWERED COACHES -->
+                    <div id="ob-page-2" class="onboarding-page space-y-8">
+                        <div class="border-t border-gray-100 pt-8">
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-2">Step 02: AI-Powered Coaching</h3>
+                            <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">
+                                The Value Engine isn't just a database — it's a suite of specialized AI Coaches designed to augment your expertise throughout the sales cycle.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            <span class="font-bold text-gray-800">The Urgency:</span> Align capabilities with business drivers. Identify trigger events that mandate a priority shift.
-                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex gap-4 p-5 bg-orange-50/50 rounded-2xl border border-orange-100">
+                                <div class="bg-white p-2 h-max rounded-lg shadow-sm text-orange-500">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Synthesis over Search</h4>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Don't spend hours researching. Our coaches synthesize internal knowledge and external signals instantly.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 p-5 bg-blue-50/50 rounded-2xl border border-blue-100">
+                                <div class="bg-white p-2 h-max rounded-lg shadow-sm text-blue-500">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Tailored Outputs</h4>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Every output is tailored to your specific customer, account goals, and the phase of your deal.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="mt-8 bg-orange-500 text-white p-6 rounded-2xl flex items-center gap-6">
-                    <div class="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+
+                    <!-- PAGE 3: THE GOLDEN RULE -->
+                    <div id="ob-page-3" class="onboarding-page space-y-8">
+                        <div class="border-t border-gray-100 pt-8">
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-2">Step 03: Driving Outcomes</h3>
+                            <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">
+                                Success isn't measured by features shown — it's measured by outcomes promised. If you can't quantify the problem, you can't justify the solution.
+                            </p>
+                        </div>
+                        <div class="bg-orange-500 text-white p-8 rounded-3xl flex items-center gap-8 shadow-lg">
+                            <div class="hidden md:block bg-white/20 p-5 rounded-2xl backdrop-blur-md">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-[0.2em] mb-2 opacity-80">The Golden Rule</h4>
+                                <p class="text-xl font-bold leading-tight">
+                                    "Software is discretionary. But failing to meet a business priority is not."
+                                </p>
+                                <p class="mt-4 text-sm opacity-90 leading-relaxed">Use the Business Case Coach in Phase 3 to make your solution mandatory, not optional.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest opacity-80 mb-1">The Golden Rule</p>
-                        <p class="text-lg font-semibold leading-snug">
-                            If any one of these three answers is missing — your deal is at risk of falling back to "Status Quo."
-                        </p>
+
+                    <!-- Navigation Controls -->
+                    <div class="absolute bottom-0 right-0 left-0 flex items-center justify-between pt-8 border-t border-gray-50">
+                        <button onclick="changeOnboardingPage(-1)" id="ob-prev" class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-orange-600 transition-colors opacity-50 cursor-not-allowed" disabled>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                            Back
+                        </button>
+                        
+                        <!-- Clickable Pagination Dots -->
+                        <div id="pagination-dots" class="flex gap-1.5 px-3 py-1 bg-gray-50 rounded-full">
+                            <div onclick="goToOnboardingPage(1)" class="w-2 h-2 rounded-full bg-orange-500 transition-all duration-300 cursor-pointer hover:scale-125"></div>
+                            <div onclick="goToOnboardingPage(2)" class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer hover:scale-125"></div>
+                            <div onclick="goToOnboardingPage(3)" class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer hover:scale-125"></div>
+                        </div>
+
+                        <button onclick="changeOnboardingPage(1)" id="ob-next" class="flex items-center gap-2 text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors">
+                            Next Step
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -251,6 +300,9 @@
     </footer>
 
     <script>
+        // Global State
+        let currentOnboardingPage = 1;
+
         const phases = {
             1: {
                 title: "Strategic Prep",
@@ -271,10 +323,6 @@
                     "Can I name the Cost of Doing Nothing based on their goals?",
                     "The Thread: Established Why Change?"
                 ],
-                learning: [
-                    { name: "POV Masterclass", type: "Video", link: "#" },
-                    { name: "Peer Benchmark PDF", type: "Document", link: "#" }
-                ],
                 strategyDesc: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
                 navigationDesc: "Research goals and benchmarks to build a 'Why Change' hypothesis that makes technical debt visible.",
                 busyMove: "Lead with one specific peer benchmark to earn the right to the meeting."
@@ -291,10 +339,6 @@
                     "Did they agree their current way is preventing their goals?",
                     "Have I identified a 'Unique Wedge' (only we do it)?",
                     "The Thread: Established Why Us?"
-                ],
-                learning: [
-                    { name: "Winning Discovery", type: "Video", link: "#" },
-                    { name: "Cloudflare Unique Wedge Guide", type: "Web", link: "#" }
                 ],
                 strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
                 navigationDesc: "Isolate our 'Unique Wedge.' Map platform capabilities directly to business challenges.",
@@ -318,10 +362,6 @@
                     "Does the Champion 'own' this business case?",
                     "The Thread: Established Why Now?"
                 ],
-                learning: [
-                    { name: "CFO Business Case Prep", type: "Video", link: "#" },
-                    { name: "Metrics Cheat Sheet", type: "PDF", link: "#" }
-                ],
                 strategyDesc: "Create mathematical urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
                 navigationDesc: "Co-create the business case with your champion to prove the exact cost of delay.",
                 busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what do we tell them?'"
@@ -333,6 +373,50 @@
             const icon = document.getElementById('toggle-icon');
             content.classList.toggle('open');
             icon.classList.toggle('rotate-180');
+        }
+
+        function goToOnboardingPage(pageNumber) {
+            const totalPages = 3;
+            if (pageNumber < 1 || pageNumber > totalPages) return;
+
+            document.querySelectorAll('.onboarding-page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`ob-page-${pageNumber}`).classList.add('active');
+            
+            const dots = document.getElementById('pagination-dots').children;
+            Array.from(dots).forEach((dot, idx) => {
+                dot.classList.remove('bg-orange-500', 'bg-gray-300');
+                dot.classList.add(idx === pageNumber - 1 ? 'bg-orange-500' : 'bg-gray-300');
+            });
+
+            const prevBtn = document.getElementById('ob-prev');
+            const nextBtn = document.getElementById('ob-next');
+
+            if (pageNumber === 1) {
+                prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                prevBtn.disabled = true;
+            } else {
+                prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                prevBtn.disabled = false;
+            }
+
+            if (pageNumber === totalPages) {
+                nextBtn.innerHTML = 'Get Started <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+            } else {
+                nextBtn.innerHTML = 'Next Step <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>';
+            }
+
+            currentOnboardingPage = pageNumber;
+        }
+
+        function changeOnboardingPage(direction) {
+            const totalPages = 3;
+            const targetPage = currentOnboardingPage + direction;
+
+            if (targetPage >= 1 && targetPage <= totalPages) {
+                goToOnboardingPage(targetPage);
+            } else if (targetPage > totalPages) {
+                toggleOnboarding();
+            }
         }
 
         function toggleSupportMenu() {
@@ -441,19 +525,15 @@
 
             content.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 animate-fade-in items-start">
-                    <!-- Main Content -->
                     <div class="lg:col-span-2 order-2 lg:order-1">
                         ${toolMarkup}
                     </div>
 
-                    <!-- Sidebar Section -->
                     <div class="lg:col-span-1 space-y-6 order-1 lg:order-2 sticky top-8">
-                        <!-- Strategy Reference Card -->
                         <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                              <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Phase Strategy</h4>
                              <h3 class="text-2xl font-extrabold text-gray-900 mb-1">${data.title}</h3>
                              <p class="text-orange-600 font-bold text-sm mb-6 italic">"${data.subtitle}"</p>
-                             
                              <div class="space-y-6 border-t border-gray-100 pt-6">
                                 <div>
                                     <h4 class="text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">The Strategy</h4>
@@ -469,7 +549,6 @@
                              </div>
                         </div>
 
-                        <!-- Readiness Checklist Card -->
                         <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                             <h4 class="text-xs font-bold text-gray-900 uppercase mb-6 flex items-center justify-between">
                                 Readiness Checklist
@@ -485,8 +564,6 @@
                                     </li>
                                 `).join('')}
                             </ul>
-                            
-                            <!-- Visual 3 Whys Indicator -->
                             <div class="mt-8 pt-6 border-t border-gray-100">
                                 <div class="flex justify-between mb-2">
                                     <span class="text-[9px] font-extrabold uppercase tracking-tighter ${num >= 1 ? 'text-orange-500' : 'text-gray-300'}">Why Change?</span>
@@ -499,22 +576,6 @@
                                     <div class="h-full transition-all duration-700 ease-out ${num >= 3 ? 'bg-red-900' : 'bg-transparent'}" style="width: 33.34%"></div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- LEARNING & SUPPORT SECTION -->
-                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                             <h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-6">Learning & Support</h4>
-                             <div class="space-y-3">
-                                ${data.learning.map(item => `
-                                    <a href="${item.link}" class="flex items-center justify-between p-3 rounded-xl border border-gray-50 bg-gray-50 hover:bg-orange-50 hover:border-orange-100 transition-all group">
-                                        <div class="flex flex-col">
-                                            <span class="text-[11px] font-bold text-gray-800 group-hover:text-orange-700">${item.name}</span>
-                                            <span class="text-[9px] text-gray-400 uppercase font-bold">${item.type}</span>
-                                        </div>
-                                        <svg class="w-4 h-4 text-gray-300 group-hover:text-orange-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                                    </a>
-                                `).join('')}
-                             </div>
                         </div>
                     </div>
                 </div>
