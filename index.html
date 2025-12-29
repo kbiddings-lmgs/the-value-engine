@@ -33,6 +33,14 @@
             overflow: hidden;
         }
 
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(5, 5, 5, 0.9) 0%, rgba(15, 23, 42, 0.6) 100%);
+            z-index: 1;
+        }
+
         .phase-tab.active {
             border-bottom: 3px solid var(--cf-orange);
             color: var(--cf-orange);
@@ -92,6 +100,19 @@
             border-left: 4px solid var(--cf-orange);
             background: rgba(243, 128, 32, 0.02);
         }
+
+        /* Tool Card Hover Effects */
+        .tool-card-interactive {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-card-interactive:hover {
+            border-color: var(--cf-orange);
+            box-shadow: 0 10px 15px -3px rgba(243, 128, 32, 0.1), 0 4px 6px -2px rgba(243, 128, 32, 0.05);
+        }
+
+        .primary-action-hover:hover {
+            box-shadow: 0 0 0 4px rgba(243, 128, 32, 0.15);
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -150,7 +171,6 @@
 
             <div id="onboarding-content">
                 <div class="relative min-h-[460px]">
-                    <!-- PAGE 1: THE WHY -->
                     <div id="ob-page-1" class="onboarding-page active space-y-6">
                         <div class="border-t border-gray-100 pt-6">
                             <h3 class="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-4">Step 01: The Core Philosophy</h3>
@@ -318,7 +338,7 @@
             <div class="absolute top-0 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-[80px] pointer-events-none"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
                 <div class="flex items-center gap-4 mb-10">
-                    <div class="p-2 bg-orange-500 rounded">
+                    <div class="p-2 bg-orange-50 rounded">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight uppercase tracking-widest">AI Guardrails & Usage</h3>
@@ -358,7 +378,7 @@
                 title: "Validate & Differentiate", subtitle: "Establish 'Why You?'", layout: 'independent',
                 tools: [
                     { name: 'Discovery Prep Coach', type: 'DISCOVERY', desc: 'Tailor questions to isolate the "Unique Wedge" based on pain points.', cta: 'Build Discovery Kit' },
-                    { name: 'Competitive Takeout', type: 'STRATEGY', desc: 'Isolate displacement strategies for specific incumbents.', cta: 'Get Playbook' }
+                    { name: 'Competitive Takeout', type: 'STRATEGY', desc: 'Isolate displacement strategies for specific incumbents found in discovery.', cta: 'Get Playbook' }
                 ],
                 checklist: ["Current way preventing goals?", "Identified a 'Unique Wedge'?", "3 WHYs: Established Why Us?"],
                 strategyDesc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates the pains identified in discovery.",
@@ -459,7 +479,7 @@
 
             let toolMarkup = data.layout === 'linear' ? `
                 <div class="space-y-4 mb-8">
-                    <div class="bg-white p-1 rounded shadow-md border-[3px] border-orange-500 animate-fade-in relative overflow-hidden ring-4 ring-orange-500/5">
+                    <div class="bg-white p-1 rounded shadow-md border-[3px] border-orange-500 animate-fade-in relative overflow-hidden ring-4 ring-orange-500/5 tool-card-interactive primary-action-hover">
                         <div class="bg-gray-50 border-b border-gray-100 px-6 py-2 font-black text-[9px] uppercase tracking-widest text-gray-400">Step 01: Primary Action</div>
                         <div class="p-8 relative">
                             ${getToolIcon(data.primaryTool.name)}
@@ -479,7 +499,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         ${data.followUpTools.map(tool => `
-                            <div class="bg-white p-6 rounded shadow-sm border border-gray-200 flex flex-col h-full hover:shadow-md relative">
+                            <div class="bg-white p-6 rounded shadow-sm border border-gray-200 flex flex-col h-full tool-card-interactive hover:shadow-md relative">
                                 ${getToolIcon(tool.name)}
                                 <span class="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-3">Step 02</span>
                                 <h5 class="text-lg font-bold mb-1.5 text-gray-900">${tool.name}</h5>
@@ -501,7 +521,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
                         ${data.tools.map((tool, idx) => `
-                            <div class="bg-white ${idx === 0 ? `border-orange-500 border-[3px] ring-4 ring-orange-500/5` : 'border-gray-200 border-t-[3px]'} p-7 rounded shadow-sm hover:shadow-md relative">
+                            <div class="bg-white border-gray-200 border-t-[3px] p-7 rounded shadow-sm tool-card-interactive hover:shadow-md relative">
                                 ${getToolIcon(tool.name)}
                                 <span class="text-[9px] font-black text-orange-500 uppercase mb-4 tracking-widest">${tool.type}</span>
                                 <h4 class="text-xl font-bold text-gray-900 mb-2">${tool.name}</h4>
@@ -585,7 +605,10 @@
         window.changeOnboardingPage = function(direction) {
             let next = currentOnboardingPage + direction;
             if (next > 3) toggleOnboarding();
-            else goToOnboardingPage(next);
+            else {
+                currentOnboardingPage = next;
+                goToOnboardingPage(next);
+            }
         }
 
         window.toggleSupportMenu = function() { document.getElementById('support-menu').classList.toggle('hidden'); }
