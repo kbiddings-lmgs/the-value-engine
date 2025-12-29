@@ -284,7 +284,7 @@
                 <!-- 3. ACTIONABLE TOOLKIT -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3 px-2">
-                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Actionable Toolkit</h4>
+                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Coaches & Generators</h4>
                         <div class="flex-grow h-px bg-gray-200"></div>
                     </div>
                     <div id="phase-content" class="animate-fade-in">
@@ -356,11 +356,11 @@
 
         const contentMap = {
             1: {
-                title: "Strategic Prep", subtitle: "Establish 'Why Change?'", layout: 'linear',
-                primaryTool: { name: 'Insights Coach', type: 'REQUIRED START', desc: 'Research disruptive insights and build POV hypothesis.', cta: 'Launch Coach' },
+                title: "Strategic Prep", subtitle: "Why Change?", layout: 'linear',
+                primaryTool: { name: 'Insights Coach', type: 'REQUIRED START', desc: 'Research disruptive insights and build POV hypothesis.', cta: 'Start Using' },
                 followUpTools: [
-                    { name: 'Value Map Gen', type: 'NEXT STEP', desc: 'Turn Insights into a visual outcome map.', cta: 'Generate Map' },
-                    { name: 'Role-Play Coach', type: 'REFINEMENT', desc: 'Practice your hook using the hypothesis.', cta: 'Practice Hook' }
+                    { name: 'Value Map Gen', type: 'NEXT STEP', desc: 'Turn Insights into a visual outcome map.', cta: 'Start Using' },
+                    { name: 'Role-Play Coach', type: 'REFINEMENT', desc: 'Practice your hook using the hypothesis.', cta: 'Start Using' }
                 ],
                 checklist: ["POV on business priorities?", "Cost of Doing Nothing named?", "3 WHYs: Established Why Change?"],
                 strategyDesc: "Prove you understand their business priorities. Disrupt the status quo by showing that their current way of working is a liability.",
@@ -448,8 +448,7 @@
 
             strategyHeader.innerHTML = `
                 <div class="flex items-center justify-between mb-6">
-                    <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Phase Philosophy & Goal</h4>
-                    <span class="text-[10px] font-bold text-orange-600 uppercase">Phase 0${num} Focus</span>
+                    <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Phase</h4>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div class="space-y-4">
