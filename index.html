@@ -33,14 +33,6 @@
             overflow: hidden;
         }
 
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(5, 5, 5, 0.9) 0%, rgba(15, 23, 42, 0.6) 100%);
-            z-index: 1;
-        }
-
         .phase-tab.active {
             border-bottom: 3px solid var(--cf-orange);
             color: var(--cf-orange);
@@ -142,8 +134,8 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-2 tracking-tight">
                 The Value Engine
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium leading-relaxed">
-                Accelerating deals from pipe to <span class="text-orange-500 font-bold">Closed Won</span>.
+            <p class="text-lg md:text-xl text-white-300 max-w-3xl mx-auto font-medium leading-relaxed">
+                Your Unified Hub for AI-powered value conversations.
             </p>
         </div>
     </header>
@@ -161,7 +153,7 @@
                         <h2 class="text-xl font-extrabold text-gray-900 flex items-center gap-3 tracking-tight">
                             New to the Value Engine?
                         </h2>
-                        <p class="text-gray-500 text-sm font-medium">Understand the Why, How, and What in 3 steps.</p>
+                        <p class="text-gray-500 text-sm font-medium">Click to learn the why, how, and what...</p>
                     </div>
                 </div>
                 <button id="onboarding-toggle-btn" class="bg-gray-50 hover:bg-orange-50 text-gray-400 p-2 rounded">
@@ -173,7 +165,7 @@
                 <div class="relative min-h-[460px]">
                     <div id="ob-page-1" class="onboarding-page active space-y-6">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-4">Step 01: The Core Philosophy</h3>
+                            <h3 class="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-4">WHY: Every Deal Requires the 3 WHYs</h3>
                             <p class="text-sm text-gray-700 leading-relaxed max-w-5xl mb-6">
                                 Most deals fail because customers don't see a reason to move. To win, you must prove that staying the same is riskier than evolving with Cloudflare. The Value Engine helps you build that case, using AI Coaches to answer the three critical questions:
                             </p>
@@ -201,7 +193,7 @@
                     </div>
                     <div id="ob-page-2" class="onboarding-page space-y-8">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">Step 02: The What - Coaches & Generators</h3>
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">WHAT: Coaches & Generators</h3>
                             <p class="text-sm text-gray-700 leading-relaxed max-w-4xl">
                                 The Engine is a connected ecosystem. Your strategic research in the **Insights Coach** fuels both phase-specific assets and synergistic deal prep tools.
                             </p>
@@ -237,7 +229,7 @@
                     </div>
                     <div id="ob-page-3" class="onboarding-page space-y-8">
                         <div class="border-t border-gray-100 pt-6">
-                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">Step 03: The How - Engaging Gemini</h3>
+                            <h3 class="text-orange-600 text-xs font-extrabold uppercase tracking-widest mb-4">HOW: To Use the Engine & Engage Gemini</h3>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                             <div class="space-y-4">
@@ -257,7 +249,7 @@
                             <div onclick="goToOnboardingPage(2)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer"></div>
                             <div onclick="goToOnboardingPage(3)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 cursor-pointer"></div>
                         </div>
-                        <button onclick="changeOnboardingPage(1)" id="ob-next" class="flex items-center gap-2 text-xs font-bold text-orange-600 transition-colors">Next Step</button>
+                        <button onclick="changeOnboardingPage(1)" id="ob-next" class="flex items-center gap-2 text-xs font-bold text-orange-600 transition-colors">Next</button>
                     </div>
                 </div>
             </div>
@@ -276,11 +268,11 @@
                     </button>
                     <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white border border-transparent">
                         <span class="block text-[10px] font-black opacity-60 mb-1">PHASE 02</span>
-                        <span class="text-base font-bold tracking-tight">Differentiate</span>
+                        <span class="text-base font-bold tracking-tight">Validate & Differentiate</span>
                     </button>
                     <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-4 px-6 text-left rounded transition-all duration-200 text-gray-400 hover:bg-white border border-transparent">
                         <span class="block text-[10px] font-black opacity-60 mb-1">PHASE 03</span>
-                        <span class="text-base font-bold tracking-tight">Quantify & Close</span>
+                        <span class="text-base font-bold tracking-tight">Co-Create the Case</span>
                     </button>
                 </nav>
 
@@ -344,9 +336,9 @@
                     <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight uppercase tracking-widest">AI Guardrails & Usage</h3>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-sm text-gray-400 leading-relaxed">
-                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">01. Data Privacy</p><p>Never input sensitive customer data or internal trade secrets into public AI models.</p></div>
-                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">02. Accountability</p><p>You are the final author. Review all output meticulously for accuracy.</p></div>
-                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">03. Verification</p><p>Cross-check claims with internal documentation. Verify technical specs.</p></div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">01. Data Privacy</p><p>Everyone has a responsibility to protect customer data in any and every situation.</p></div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">02. Accountability</p><p>You still own the output. Read, understand, and approve all AI-generated work.</p></div>
+                    <div class="space-y-3"><p class="text-orange-500 font-bold uppercase text-xs">03. Tooling</p><p>Only use approved tools for work.</p></div>
                 </div>
             </div>
         </section>
