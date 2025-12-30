@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            --cf-orange: #EA580C; /* Updated to match Tailwind orange-600 used in the Pro Tip box */
+            --cf-orange: #EA580C; /* Tailwind orange-600 */
             --cf-orange-hover: #FAAD6E; 
             --cf-blue: #0051C3;
             --cf-dark: #050505;
@@ -113,6 +113,7 @@
         /* Action Buttons */
         .btn-start {
             background-color: var(--cf-orange);
+            color: white;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .btn-start:hover {
@@ -120,9 +121,33 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
         }
-        .btn-start:active {
+
+        /* Neutral Button Style */
+        .btn-neutral {
+            background-color: #E2E8F0; /* Slate 200 */
+            color: #475569; /* Slate 600 */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-neutral:hover {
+            background-color: var(--cf-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
+        }
+        
+        .btn-start:active, .btn-neutral:active {
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(243, 128, 32, 0.1);
+        }
+
+        /* Floating Animation for Hero Graphic */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-graphic {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -184,27 +209,66 @@
         </div>
     </div>
 
-    <!-- HERO HEADER -->
-    <header class="bg-slate-950 text-white pt-20 pb-28 px-4 overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-orange-500/10 to-transparent"></div>
-        <div class="max-w-7xl mx-auto relative z-10 text-center md:text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                <span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">AI Enablement Active</span>
+    <!-- HERO HEADER (Ultra Compact) -->
+    <header class="bg-white text-slate-900 pt-8 pb-14 px-6 overflow-hidden relative border-b border-gray-100">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-orange-50/40 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-center md:text-left flex-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 mb-4">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+                    </span>
+                    <span class="text-slate-500 text-[10px] font-bold uppercase tracking-widest">AI Enablement Active</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight leading-[1.1] text-slate-900">
+                    Own the <br class="hidden md:block"> <span class="text-orange-600">Value Conversation.</span>
+                </h1>
+                <p class="text-base text-slate-600 max-w-xl font-medium leading-relaxed">
+                    Unified prep, discovery, and business case tooling to stop status-quo deals.
+                </p>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-5 tracking-tight leading-[1.1]">
-                Own the <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Value Conversation.</span>
-            </h1>
-            <p class="text-lg text-slate-400 max-w-2xl font-medium">
-                Unified prep, discovery, and business case tooling to stop status-quo deals.
-            </p>
+
+            <!-- Fun Cloudflare-inspired Graphic (Scaled down for shorter height) -->
+            <div class="flex-1 w-full max-w-[240px] hidden md:flex items-center justify-center pointer-events-none floating-graphic">
+                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-2xl">
+                    <!-- Geometric Network Base -->
+                    <circle cx="200" cy="200" r="160" stroke="#FEE2E2" stroke-width="1" stroke-dasharray="8 8" />
+                    <circle cx="200" cy="200" r="100" stroke="#FFEDD5" stroke-width="1" />
+                    
+                    <!-- Nodes and Paths -->
+                    <path d="M200 60 L320 140 L280 300 L120 300 L80 140 Z" stroke="#F38020" stroke-width="2" opacity="0.3" />
+                    <path d="M200 60 L280 300 M320 140 L120 300 M80 140 L280 300" stroke="#0051C3" stroke-width="1.5" opacity="0.1" />
+
+                    <!-- Insights Pulse Points -->
+                    <circle cx="200" cy="60" r="8" fill="#F38020">
+                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="320" cy="140" r="6" fill="#0051C3" />
+                    <circle cx="280" cy="300" r="10" fill="#F38020" opacity="0.8" />
+                    <circle cx="120" cy="300" r="6" fill="#0051C3" opacity="0.6" />
+                    <circle cx="80" cy="140" r="5" fill="#F38020" opacity="0.5" />
+                    
+                    <!-- Central Hub -->
+                    <rect x="175" y="175" width="50" height="50" rx="10" fill="white" stroke="#F38020" stroke-width="3" />
+                    <path d="M190 200 L197 207 L210 194" stroke="#F38020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    
+                    <!-- Flow Particles -->
+                    <circle r="3" fill="#F38020">
+                        <animateMotion path="M200 60 L320 140 L280 300 L200 200" dur="4s" repeatCount="indefinite" />
+                    </circle>
+                    <circle r="2" fill="#0051C3">
+                        <animateMotion path="M80 140 L120 300 L200 200" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 -mt-12 relative z-20">
+    <main class="max-w-7xl mx-auto px-4 -mt-10 relative z-20">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
@@ -381,29 +445,33 @@
             }, 150);
 
             // Tool Cards
-            document.getElementById('phase-content').innerHTML = data.tools.map(tool => `
-                <div class="tool-card bg-white p-8 rounded-2xl flex flex-col h-full relative ${tool.isPhaseStart ? 'border-2 border-orange-500 ring-4 ring-orange-500/5' : ''}">
-                    ${tool.isPhaseStart ? `
-                        <div class="absolute -top-3 left-6 bg-orange-600 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-widest z-10">
-                            Phase Start
+            document.getElementById('phase-content').innerHTML = data.tools.map(tool => {
+                const buttonClass = tool.isPhaseStart ? 'btn-start' : 'btn-neutral';
+                
+                return `
+                    <div class="tool-card bg-white p-8 rounded-2xl flex flex-col h-full relative ${tool.isPhaseStart ? 'border-2 border-orange-500 ring-4 ring-orange-500/5' : ''}">
+                        ${tool.isPhaseStart ? `
+                            <div class="absolute -top-3 left-6 bg-orange-600 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-widest z-10">
+                                Phase Start
+                            </div>
+                        ` : ''}
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-widest">
+                                ${tool.type}
+                            </span>
+                            ${tool.isPhaseStart ? '<svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>' : ''}
                         </div>
-                    ` : ''}
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-[10px] font-black px-2.5 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-widest">
-                            ${tool.type}
-                        </span>
-                        ${tool.isPhaseStart ? '<svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>' : ''}
+                        <h4 class="text-xl font-extrabold text-gray-900 mb-2">${tool.name}</h4>
+                        <p class="text-sm text-gray-500 font-medium leading-relaxed mb-8 flex-grow">${tool.desc}</p>
+                        <div class="flex items-center gap-4">
+                            <button class="${buttonClass} flex-grow py-3 rounded-xl font-bold shadow-md">
+                                Start Using
+                            </button>
+                            <a href="#" class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors">Demo</a>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-extrabold text-gray-900 mb-2">${tool.name}</h4>
-                    <p class="text-sm text-gray-500 font-medium leading-relaxed mb-8 flex-grow">${tool.desc}</p>
-                    <div class="flex items-center gap-4">
-                        <button class="btn-start flex-grow py-3 rounded-xl font-bold text-white shadow-md">
-                            Start Using
-                        </button>
-                        <a href="#" class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors">Demo</a>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
             renderChecklist(num);
         }
