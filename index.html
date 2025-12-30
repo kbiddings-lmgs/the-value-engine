@@ -9,7 +9,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            --cf-orange: #F38020;
+            --cf-orange: #EA580C; /* Updated to match Tailwind orange-600 used in the Pro Tip box */
+            --cf-orange-hover: #FAAD6E; 
             --cf-blue: #0051C3;
             --cf-dark: #050505;
             --cf-navy: #0F172A;
@@ -107,6 +108,21 @@
         .glass-panel {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
+        }
+
+        /* Action Buttons */
+        .btn-start {
+            background-color: var(--cf-orange);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-start:hover {
+            background-color: var(--cf-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
+        }
+        .btn-start:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(243, 128, 32, 0.1);
         }
     </style>
 </head>
@@ -381,7 +397,7 @@
                     <h4 class="text-xl font-extrabold text-gray-900 mb-2">${tool.name}</h4>
                     <p class="text-sm text-gray-500 font-medium leading-relaxed mb-8 flex-grow">${tool.desc}</p>
                     <div class="flex items-center gap-4">
-                        <button class="flex-grow py-3 rounded-xl font-bold transition-all bg-slate-900 text-white hover:bg-slate-800 shadow-md">
+                        <button class="btn-start flex-grow py-3 rounded-xl font-bold text-white shadow-md">
                             Start Using
                         </button>
                         <a href="#" class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors">Demo</a>
