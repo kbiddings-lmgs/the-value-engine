@@ -1,412 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ513B8SVC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ513B8SVC');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Value Engine</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter font --><style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    <title>The Value Engine | Cloudflare Enablement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --cf-orange: #EA580C; /* Tailwind orange-600 */
+            --cf-orange-hover: #FAAD6E; 
+            --cf-blue: #0051C3;
+            --cf-dark: #050505;
+            --cf-navy: #0F172A;
+            --cf-bg: #F8FAFC;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* Light background */
-            color: #1f2937; /* Dark text */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cf-bg);
+            color: #1E293B;
+            scroll-behavior: smooth;
         }
-        /* Enable smooth scrolling */
-        html {
-            scroll-behavior: smooth; 
+
+        /* Unified Navigation & Playbook Drawer */
+        #onboarding-wrap {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+            border-bottom: 0px solid transparent;
         }
-        /* Custom class for active vertical navigation link */
-        .nav-active {
-            background-color: #F38020; /* Cloudflare Orange */
-            color: white !important; /* !important to override default text color */
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        #onboarding-wrap.active {
+            max-height: 800px;
+            opacity: 1;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .nav-btn-active {
+            background-color: var(--cf-orange) !important;
+            color: white !important;
+            border-color: var(--cf-orange) !important;
+        }
+
+        /* Modern Phase Tabs */
+        .phase-tab {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .phase-tab.active {
+            background: white;
+            color: var(--cf-orange);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+            border-bottom: 2px solid var(--cf-orange);
+            transform: translateY(-2px);
+        }
+        .phase-tab:not(.active) {
+            opacity: 0.6;
+        }
+
+        /* Tool Cards */
+        .tool-card {
+            transition: all 0.25s ease;
+            border: 1px solid #E2E8F0;
+        }
+        .tool-card:hover {
+            border-color: var(--cf-orange);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(243, 128, 32, 0.05);
+        }
+
+        /* Custom Checkbox */
+        .checklist-input {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #CBD5E1;
+            border-radius: 4px;
+            cursor: pointer;
+            display: grid;
+            place-content: center;
+            transition: 120ms;
+        }
+        .checklist-input::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--cf-orange);
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        .checklist-input:checked {
+            border-color: var(--cf-orange);
+        }
+        .checklist-input:checked::before {
+            transform: scale(1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slideUp 0.5s ease forwards; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+
+        /* Action Buttons */
+        .btn-start {
+            background-color: var(--cf-orange);
+            color: white;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-start:hover {
+            background-color: var(--cf-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
+        }
+
+        /* Neutral Button Style */
+        .btn-neutral {
+            background-color: #E2E8F0; /* Slate 200 */
+            color: #475569; /* Slate 600 */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-neutral:hover {
+            background-color: var(--cf-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
+        }
+        
+        .btn-start:active, .btn-neutral:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(243, 128, 32, 0.1);
+        }
+
+        /* Floating Animation for Hero Graphic */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-graphic {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="min-h-screen p-4 sm:p-8">
+<body class="min-h-screen pb-20">
 
-    <div id="app" class="max-w-7xl mx-auto">
-        <!-- HEADER: Updated to include image background styles and path --><header 
-            class="text-center py-10 rounded-xl mb-6 shadow-md border border-gray-200 bg-cover bg-center" 
-            style="background-image: url('/images/hero-banner.png');"
-        >
-            <!-- Title: Text color set to white for visibility against a background image --><h1 class="text-5xl font-extrabold text-white mb-3">The Value Engine</h1>
-            <!-- Sub-header: Text color set to white for visibility against a background image --><p class="text-xl text-white">Your Unified Hub for AI-Powered Value Selling</p>
-        </header>
-        
-        <!-- EXPLORE THE ARSENAL (CARD GRID - primary navigation) --><section class="mb-16" id="explore">
-            <h2 class="text-3xl font-bold text-[#F38020] mb-3 pb-1 flex items-center text-gray-800">
-                <!-- EXPLORE ICON: Local image --><img src="/images/play.png" alt="Explore Icon" class="w-7 h-7 mr-3">
-                Get Started
-            </h2>
-            <p class="text-gray-600 mb-8">Select an action below to start driving value throughout the customer journey.</p>
-            
-            <!-- Card Grid populated by JS --><div id="card-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Cards injected by JavaScript --></div>
-        </section>
+    <!-- INTEGRATED HEADER & PLAYBOOK -->
+    <div class="sticky top-0 z-50 glass-panel border-b border-gray-200">
+        <nav class="py-4 px-6 max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-[#F38020] rounded-md flex items-center justify-center text-white font-bold">V</div>
+                <span class="font-extrabold tracking-tight text-xl">The Value Engine</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="guide-toggle" onclick="toggleOnboarding()" class="flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full border border-gray-200 text-gray-500 hover:border-orange-500 hover:text-orange-600 transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    How it works
+                </button>
+                <a href="#" class="hidden md:block bg-slate-950 text-white text-[10px] uppercase tracking-widest font-black px-5 py-2 rounded-full border border-slate-900 hover:bg-slate-800 transition-all">Support</a>
+            </div>
+        </nav>
 
-        <!-- UPDATED: AI PRINCIPLES CALLOUT (Icon removed) --><section class="mb-16 p-4 bg-gray-50 border-l-4 border-gray-200 rounded-lg shadow-sm" id="ai-principles">
-            <h2 class="text-lg font-bold text-gray-800 mb-2">Remember: Smart AI Use</h2>
-            <ul class="list-disc ml-7 space-y-1 text-sm text-gray-700">
-                <li>Everyone has a responsibility to <strong>protect customer data</strong> in any and every situation.</li>
-                <li>You still <strong>own the output</strong>. Read, understand, and approve all AI-generated work.</li>
-                <li>Only use <strong>approved tools</strong> for work.</li>
-            </ul>
-        </section>
-        <!-- END UPDATED SECTION --><!-- DETAILED ENGINE CONTENT SECTIONS (Scroll Targets) --><section class="mb-12" id="content-sections">
-            <div id="engine-content" class="space-y-16">
-                <!-- Detailed Content injected by JavaScript --></div>
-        </section>
-
-        <!-- Footer updated with ID for dynamic year insertion --><footer class="text-center text-gray-500 pt-8 border-t border-gray-300">
-            <p id="copyright-text">&copy; Cloudflare. The Value Engine. Built for Value Selling.</p>
-        </footer>
+        <!-- PLAYBOOK DRAWER -->
+        <div id="onboarding-wrap">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 border-t border-gray-100">
+                <div class="p-8 space-y-3">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] font-black">1</span>
+                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Methodology</span>
+                    </div>
+                    <h4 class="font-bold text-base text-gray-900">Win the 3 WHYs</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Identify Why Change, Why Us, and Why Now to disrupt the status quo. Use the <strong>Readiness Hub</strong> to track your deal health.
+                    </p>
+                </div>
+                <div class="p-8 space-y-3 bg-slate-50/30">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] font-black">2</span>
+                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Toolset</span>
+                    </div>
+                    <h4 class="font-bold text-base text-gray-900">Coaches & Generators</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        <strong>Coaches</strong> build your POV and discovery strategy. <strong>Generators</strong> turn that intelligence into visuals and business cases.
+                    </p>
+                </div>
+                <div class="p-8 space-y-3">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] font-black">3</span>
+                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Interaction</span>
+                    </div>
+                    <h4 class="font-bold text-base text-gray-900">Hit ENTER to Begin</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Click any tool and hit <kbd class="bg-gray-100 px-1 py-0.5 rounded border border-gray-300 font-bold">ENTER</kbd> when Gemini opens. The engine has your context pre-loaded.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-3 border-t border-gray-100 flex justify-center">
+                <button onclick="toggleOnboarding()" class="text-[9px] font-black uppercase tracking-widest text-gray-400 hover:text-orange-600 transition-colors">Close Playbook Guide</button>
+            </div>
+        </div>
     </div>
-    
-    <!-- Vertical Side Navigation (Fixed Right, only for MD+ screens) --><nav id="vertical-nav" class="fixed right-4 top-1/4 w-44 p-4 bg-white rounded-xl shadow-2xl border border-gray-200 z-20 hidden md:block">
-        <div id="vertical-nav-links" class="space-y-1">
-            <!-- Links populated by JS --></div>
-    </nav>
-    
-    <!-- Fixed "Back to Top" Button (Positioned slightly left to accommodate the fixed nav) --><button id="back-to-top" class="fixed bottom-6 right-52 p-3 rounded-full bg-[#F38020] text-white shadow-xl hover:bg-[#FF9900] transition duration-300 opacity-0 invisible" aria-label="Back to Top" onclick="scrollToTop()">
-        <!-- Up Arrow Icon --><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-    </button>
+
+    <!-- HERO HEADER (Ultra Compact) -->
+    <header class="bg-white text-slate-900 pt-8 pb-14 px-6 overflow-hidden relative border-b border-gray-100">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-orange-50/40 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-center md:text-left flex-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 mb-4">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+                    </span>
+                    <span class="text-slate-500 text-[10px] font-bold uppercase tracking-widest">AI-Powered Value Selling</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight leading-[1.1] text-slate-900">
+                    Own the <br class="hidden md:block"> <span class="text-orange-600">Value Conversation.</span>
+                </h1>
+                <p class="text-base text-slate-600 max-w-xl font-medium leading-relaxed">
+                    Unified prep, discovery, and business case tooling to stop losing to the status-quo.
+                </p>
+            </div>
+
+            <!-- Fun Cloudflare-inspired Graphic (Scaled down for shorter height) -->
+            <div class="flex-1 w-full max-w-[240px] hidden md:flex items-center justify-center pointer-events-none floating-graphic">
+                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-2xl">
+                    <!-- Geometric Network Base -->
+                    <circle cx="200" cy="200" r="160" stroke="#FEE2E2" stroke-width="1" stroke-dasharray="8 8" />
+                    <circle cx="200" cy="200" r="100" stroke="#FFEDD5" stroke-width="1" />
+                    
+                    <!-- Nodes and Paths -->
+                    <path d="M200 60 L320 140 L280 300 L120 300 L80 140 Z" stroke="#F38020" stroke-width="2" opacity="0.3" />
+                    <path d="M200 60 L280 300 M320 140 L120 300 M80 140 L280 300" stroke="#0051C3" stroke-width="1.5" opacity="0.1" />
+
+                    <!-- Insights Pulse Points -->
+                    <circle cx="200" cy="60" r="8" fill="#F38020">
+                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="320" cy="140" r="6" fill="#0051C3" />
+                    <circle cx="280" cy="300" r="10" fill="#F38020" opacity="0.8" />
+                    <circle cx="120" cy="300" r="6" fill="#0051C3" opacity="0.6" />
+                    <circle cx="80" cy="140" r="5" fill="#F38020" opacity="0.5" />
+                    
+                    <!-- Central Hub -->
+                    <rect x="175" y="175" width="50" height="50" rx="10" fill="white" stroke="#F38020" stroke-width="3" />
+                    <path d="M190 200 L197 207 L210 194" stroke="#F38020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    
+                    <!-- Flow Particles -->
+                    <circle r="3" fill="#F38020">
+                        <animateMotion path="M200 60 L320 140 L280 300 L200 200" dur="4s" repeatCount="indefinite" />
+                    </circle>
+                    <circle r="2" fill="#0051C3">
+                        <animateMotion path="M80 140 L120 300 L200 200" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 -mt-10 relative z-20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT: TOOL CONTENT -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- PHASE NAVIGATION -->
+                <div class="flex p-1.5 bg-gray-200/50 rounded-xl backdrop-blur-sm">
+                    <button onclick="showPhase(1)" id="btn-p1" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all active">
+                        Phase 01: Prep
+                    </button>
+                    <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all">
+                        Phase 02: Validate
+                    </button>
+                    <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all">
+                        Phase 03: Quantify
+                    </button>
+                </div>
+
+                <!-- STRATEGY HEADER -->
+                <div id="phase-strategy" class="animate-slide-up">
+                    <!-- Dynamic Content -->
+                </div>
+
+                <!-- TOOLS CONTAINER -->
+                <div id="phase-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Dynamic Tool Cards -->
+                </div>
+
+            </div>
+
+            <!-- RIGHT: PERSISTENT SIDEBAR -->
+            <aside class="lg:col-span-4 sticky top-24 space-y-6">
+                
+                <!-- READINESS HUB -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                        <h4 class="font-extrabold text-sm tracking-tight text-gray-900">Business Case Progress</h4>
+                        <span id="health-percentage" class="text-[10px] font-bold bg-gray-100 px-2 py-1 rounded text-gray-500 uppercase">0% Complete</span>
+                    </div>
+                    
+                    <div id="master-checklist" class="p-6 space-y-8">
+                        <!-- Checklists -->
+                    </div>
+
+                    <!-- 3 WHYs VISUALIZER -->
+                    <div class="p-6 bg-slate-50 border-t border-gray-100">
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">Pipeline Health</span>
+                            <span class="text-[10px] font-bold text-orange-600">The 3 WHYs</span>
+                        </div>
+                        <div class="flex gap-1.5 h-2">
+                            <div id="why-bar-1" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
+                            <div id="why-bar-2" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
+                            <div id="why-bar-3" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
+                        </div>
+                        <div class="flex justify-between mt-3 text-[9px] font-bold text-gray-400">
+                            <span>CHANGE?</span>
+                            <span>US?</span>
+                            <span>NOW?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUICK TIP (Now Dynamic) -->
+                <div class="p-6 bg-orange-600 rounded-2xl text-white shadow-lg relative overflow-hidden group">
+                    <svg class="absolute -right-4 -bottom-4 w-24 h-24 text-white/10 rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Enablement Pro-Tip</p>
+                    <p id="dynamic-pro-tip" class="text-sm font-semibold leading-relaxed transition-all duration-300">
+                        <!-- Content Injected via JS -->
+                    </p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- AI GUARDRAILS -->
+        <footer class="mt-24 py-16 border-t border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+                <div class="col-span-1 md:col-span-2">
+                    <h5 class="font-bold text-gray-900 mb-4 text-sm">AI Usage Guidelines</h5>
+                    <ul class="text-sm text-gray-500 space-y-2 inline-block md:block text-left list-disc pl-5 max-w-md leading-relaxed">
+                        <li><strong>Accuracy:</strong> AI is a co-pilot, not an auto-pilot. You are responsible for the accuracy of all results.</li>
+                        <li><strong>Privacy:</strong> Protect customer data; never input sensitive PII or confidential materials into prompts.</li>
+                        <li><strong>Review:</strong> Always verify and refine AI-generated content before sharing with champions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-4">Resources</h5>
+                    <ul class="text-xs space-y-3 font-bold text-slate-700">
+                        <li><a href="#" class="hover:text-orange-600 transition-colors">#value-engine-slack</a></li>
+                        <li><a href="#" class="hover:text-orange-600 transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-4">Privacy</h5>
+                    <p class="text-[10px] text-gray-400 leading-tight">
+                        &copy; 2025 Cloudflare, Inc. <br>All prompts and logic are internal intellectual property.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </main>
 
     <script>
-        // --- 1. CORE DATA (JSON) ---
-        const VALUE_ENGINE_DATA = [
-            {
-                id: 'prepare',
-                title: 'Strategic Preparation',
-                navTitle: 'Prep', // Shortened title for navigation
-                description: 'Develop a Value Hypothesis—a well-researched insight into a potential high-impact objective(s) we can help the customer achieve.',
-                // ICON UPDATED TO IMAGE PATH
-                icon: '/images/data.png', 
+        let checkedItems = {};
+        const phases = {
+            1: {
+                title: "Strategic Prep",
+                subtitle: "Why Change?",
+                desc: "Establish that the Status Quo is more dangerous than the transition. Focus on business outcomes, not features.",
+                busyMove: "Send one 'In-the-News' benchmark to your champion 24 hours before the first call.",
+                proTip: "Don't over-prep. Run the Insights Coach, spend 5 mins refining the POV, and get to the meeting. Speed is a wedge.",
                 tools: [
-                    {
-                        name: 'Targeting & Insights Coach',
-                        type: 'AI GEM',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1sCn_oVIj2oe3c4almMaopDii5mWxX7W4?usp=sharing',
-                        description: 'The Targeting & Insights Coach runs a simulated planning session to sharpen your research strategy. It instantly generates personalized value hypotheses and compelling event summaries from your account data and deep research, ensuring every outreach is precise and highly relevant.',
-                        tip: 'Take the time to work through each section with the coach. Then take your summary to the <strong> Value Map Generator </strong> to create a customer-facing version.'
-                    },
-                    {
-                        name: 'Value Map Generator',
-                        type: 'Content Generator',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1iGzPeCbCrXkCQ5YfPStD65pAYGu25jXI?usp=sharing',
-                        description: 'Leverage coach-led insights to build precision value maps. This process aligns your product capabilities directly with critical customer objectives and desired business outcomes, giving you a clear, customized framework to validate directly with your customers and drive deeper engagement.',
-                        tip: 'Use your completed Value Map to facilitate deeper, business value-focused outreach and discovery conversations.'
-                    },
-                    {
-                        name: 'Role-Play Coach',
-                        type: 'AI GEM',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing',
-                        description: 'Real-World Ready Practice. The Role-Play Coach simulates a live situation where it dynamically embodies your target persona. It uses your refined research—including personalized value hypotheses and compelling event summaries—to ensure the practice is hyper-relevant, preparing you to engage the real account with confidence and precision.',
-                        tip: 'Use your insights from the Targeting & Insights or Discovery coaches to create a more realistic situation.'
-                    }
-                ]
+                    { name: 'Insights Coach', type: 'Coach', isPhaseStart: true, desc: 'Synthesize disruptive research into a Point-of-View hypothesis.' },
+                    { name: 'Value Map Generator', type: 'Generator', isPhaseStart: false, desc: 'Transform your POV into a visual slide for the technical champion.' },
+                    { name: 'Role-Play Coach', type: 'Coach', isPhaseStart: false, desc: 'Pressure-test your opening hook against a skeptical CFO persona.' }
+                ],
+                checklist: ["POV on business priorities set", "Cost of Doing Nothing quantified", "3 WHYs: Defined 'Why Change?'"]
             },
-            {
-                id: 'engage',
-                title: 'Engage & Validate',
-                navTitle: 'Engage', // Shortened title for navigation
-                description: 'Achieve Problem Validation by securing mutual agreement that the prospect\'s pain(s) is urgent, solvable, and worthy of our joint investment.',
-                // ICON UPDATED TO IMAGE PATH
-                icon: '/images/convo.png',
+            2: {
+                title: "Validate & Differentiate",
+                subtitle: "Why Us?",
+                desc: "Secure technical agreement that only Cloudflare solves their specific priorities and eliminates identified pains.",
+                busyMove: "In every demo, ask: 'How would having this change your specific daily workflow?'",
+                proTip: "Great discovery isn't about asking questions—it's about confirming hypotheses. Use the coach to build yours before the call.",
                 tools: [
-                    {
-                        name: 'Discovery Prep Coach',
-                        type: 'AI GEM + Content Generator',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1MyDycPlHlpJHakJ81KLbaJJ3VwK69fWf?usp=sharing',
-                        description: 'This coach helps guide you through a rapid, preparation sprint for your upcoming discovery meeting, working together to develop the opener, discovery questions, talking points, closer, and immediate next steps.',
-                        tip: 'Give this coach your executive summary from the Targeting & Insights Coach to create a more specific, targeted discovery approach.'
-                    },
-                    {
-                        name: 'Akamai Takeout Data Sheet',
-                        type: 'Prompt + Generator',
-                        status: 'Active',
-                        link: 'https://gemini.google.com/gem/1kV2nIhjghwp8dEJJRqTFHqqfqWkceyps?usp=sharing',
-                        description: 'Generate a customer-facing data sheet to displace Akamai that is tailored to your prospect\'s goals and challenges, providing quantified and compelling reasons for further engagement.',
-                        tip: 'Use this sheet as a door-opener that introduces the Cloudflare value prop, or as a "leave-behind" to reinforce the strategic nature of your validated problem.'
-                    }
-                ]
+                    { name: 'Discovery Prep Coach', type: 'Coach', isPhaseStart: true, desc: 'Isolate the "Unique Wedge" based on competitive incumbent pain.' },
+                    { name: 'Competitive Takeout Coach', type: 'Coach', isPhaseStart: false, desc: 'Playbooks for displacing legacy firewall and MPLS vendors.' }
+                ],
+                checklist: ["Identified a 'Unique Wedge'", "Incumbent pain-points confirmed", "3 WHYs: Defined 'Why Us?'"]
             },
-            {
-                id: 'quantify',
-                title: 'Quantify the Impact',
-                navTitle: 'Quantify', // Shortened title for navigation
-                description: 'Establish Quantified Outcomes by converting qualitative pain into the measurable financial and operational metrics the prospect is committed to changing (the ROI baseline).',
-                // ICON UPDATED TO IMAGE PATH
-                icon: '/images/story.png',
+            3: {
+                title: "Quantify & Close",
+                subtitle: "Why Now?",
+                desc: "Create quantified urgency for the CFO. Software is discretionary, but failing to meet financial outcomes is not.",
+                busyMove: "Ask: 'If the CFO asks why we can’t wait 12 months, what is our response?'",
+                proTip: "Software is discretionary; business outcomes are not. Map every Cloudflare capability to a dollar saved or a risk mitigated.",
                 tools: [
-                    {
-                        name: 'Qualification Coach',
-                        type: 'AI GEM',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'A coach that guides you through the necessary financial and business metrics to qualify the deal based on potential value.',
-                        tip: 'Ensure you have metrics for operational cost, risk reduction, and revenue acceleration ready before engaging.'
-                    },
-                    {
-                        name: 'Impact Modeler',
-                        type: 'Data Tool',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'An interactive tool to generate impact stats, case studies, and do light ROI modeling of Cloudflare solutions based on customer data.',
-                        tip: 'Only use this tool once you have successfully validated the quantifiable business metrics with the customer.'
-                    }
-                ]
-            },
-            {
-                id: 'cocreate',
-                title: 'Co-Create the Case',
-                navTitle: 'Case', // Shortened title for navigation
-                description: 'Secure Contractual Commitment by anchoring the final agreement (price and terms) directly to the projected value in the co-created Business Case.',
-                // ICON UPDATED TO IMAGE PATH
-                icon: '/images/case.png',
-                tools: [
-                    {
-                        name: 'Case & Negotiation Coach',
-                        type: 'AI GEM',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'This coach will help you refine your business case narrative and practice negotiation strategies anchored to the projected value.',
-                        tip: 'Practice negotiating a pricing increase by referring back to the mutually agreed-upon value metrics.'
-                    },
-                    {
-                        name: 'Lite Business Value Assessment',
-                        type: 'Content Generator',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'A quick-generation tool for creating a high-level assessment of the customer\'s current state and the financial uplift from the proposed solution.',
-                        tip: 'Keep the assessment high-level for C-level executives; focus on 3 key financial metrics.'
-                    }
-                ]
-            },
-            {
-                id: 'continuousreturn',
-                title: 'Drive Continuous Return',
-                navTitle: 'Realize', // Shortened title for navigation
-                description: 'Develop and execute a comprehensive success plan, tracking customer objectives and KPIs to proactively uncover new needs and drive long-term loyalty.',
-                // ICON UPDATED TO IMAGE PATH
-                icon: '/images/story.png',
-                tools: [
-                    {
-                        name: 'Handoff Coach',
-                        type: 'AI GEM',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'A coach that is there to structure the perfect handoff, ensuring the Customer Success team is equipped with the validated value hypothesis and KPIs.',
-                        tip: 'Use the output from the Lite Business Value Assessment to structure the handoff document.'
-                    },
-                    {
-                        name: 'Renewal & Growth Coach',
-                        type: 'AI GEM',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'Provides strategies and talking points to maximize renewal rates and identify expansion opportunities based on realized value.',
-                        tip: 'Focus on realized value metrics (KPIs) tracked over the past year to anchor the renewal conversation.'
-                    },
-                    {
-                        name: 'QBR Content Generator',
-                        type: 'Content Generator',
-                        status: 'Coming Soon',
-                        link: '#',
-                        description: 'Generates a draft structure and key content points for a Value-focused Quarterly Business Review (QBR).',
-                        tip: 'Customize the content to focus on the customer\'s objectives, not just product features.'
-                    }
-                ]
+                    { name: 'Business Case Coach', type: 'Coach', isPhaseStart: true, desc: 'Synthesize deal logic into a Board-ready executive narrative.' },
+                    { name: 'Executive Summary Gen', type: 'Generator', isPhaseStart: false, desc: 'Convert your findings into a one-page Executive brief.' }
+                ],
+                checklist: ["Dollar amount attached to problem", "Champion 'owns' this business case", "3 WHYs: Defined 'Why Now?'"]
             }
-        ];
+        };
 
-        // --- 2. RENDER HUB CONTENT AND NAVIGATION ---
-
-        function getToolTag(type) {
-            if (type.toUpperCase().includes('COACH') || type.toUpperCase().includes('GEM')) return 'COACH';
-            if (type.toUpperCase().includes('GENERATOR') || type.toUpperCase().includes('ASSESSMENT') || type.toUpperCase().includes('BUILDER')) return 'GENERATOR';
-            if (type.toUpperCase().includes('TOOL') || type.toUpperCase().includes('MODELER') || type.toUpperCase().includes('TRACKER')) return 'TOOL';
-            return 'RESOURCE';
-        }
-        
-        // Helper function to generate icon/image HTML based on whether it's an SVG or a path
-        function generateIconHtml(iconSource, isLarge) {
-            // Determine size classes
-            const sizeClass = isLarge ? 'w-12 h-12 mb-3' : 'w-8 h-8';
-            const extraClasses = isLarge ? '' : ' mr-3'; // Add margin to small icon for spacing next to title
-
-            if (iconSource.includes('/images/')) {
-                // If it's an image path, render an <img> tag
-                return `<img src="${iconSource}" alt="Category Icon" class="${sizeClass}${extraClasses}">`;
-            } else {
-                // If it's SVG code, render the raw SVG (replaces old size classes with the new ones)
-                // We use a regex to replace old size classes more robustly
-                let svg = iconSource;
-                // Add the appropriate classes to the SVG string
-                svg = svg.replace(/class="[^"]*"/, `class="${sizeClass}${extraClasses}"`);
-                return svg;
-            }
-        }
-
-        function renderEngineContent() {
-            const cardContainer = document.getElementById('card-grid');
-            const contentContainer = document.getElementById('engine-content');
-            const navContainer = document.getElementById('vertical-nav-links'); // Target for vertical nav
+        function showPhase(num) {
+            const data = phases[num];
             
-            let contentHtml = '';
-            let navHtml = '';
-            let cardHtml = '';
+            // UI State for Tabs
+            document.querySelectorAll('.phase-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-p${num}`).classList.add('active');
 
-            VALUE_ENGINE_DATA.forEach(category => {
-                // 1. Build Vertical Navigation Link (Simplified) - using navTitle
-                navHtml += `
-                    <a href="#${category.id}" data-section-id="${category.id}" class="side-nav-item block text-sm px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100 rounded transition duration-150">
-                        <span class="truncate">${category.navTitle}</span>
-                    </a>
-                `;
+            // Strategy Header
+            document.getElementById('phase-strategy').innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-center bg-white p-8 rounded-2xl border border-gray-100">
+                    <div class="md:col-span-2">
+                        <p class="text-orange-600 text-xs font-extrabold uppercase tracking-[0.2em] mb-3">${data.subtitle}</p>
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-3">${data.title}</h2>
+                        <p class="text-gray-500 font-medium leading-relaxed">${data.desc}</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                        <p class="text-[10px] font-black text-orange-600 uppercase mb-2">The Busy Seller Move</p>
+                        <p class="text-sm font-bold text-gray-900 leading-snug">"${data.busyMove}"</p>
+                    </div>
+                </div>
+            `;
 
-                // 2. Build Card Grid Item (Now with bg-orange-50)
-                cardHtml += `
-                    <a href="#${category.id}" class="block p-6 bg-orange-50 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-orange-200 text-center">
-                        <div class="flex flex-col items-center">
-                            ${generateIconHtml(category.icon, true)} <!-- Use large icon/image --><h3 class="text-lg font-bold text-gray-800 mt-2">${category.title}</h3>
+            // Update Dynamic Pro-Tip
+            const tipEl = document.getElementById('dynamic-pro-tip');
+            tipEl.style.opacity = 0;
+            setTimeout(() => {
+                tipEl.innerText = data.proTip;
+                tipEl.style.opacity = 1;
+            }, 150);
+
+            // Tool Cards
+            document.getElementById('phase-content').innerHTML = data.tools.map(tool => {
+                const buttonClass = tool.isPhaseStart ? 'btn-start' : 'btn-neutral';
+                
+                return `
+                    <div class="tool-card bg-white p-8 rounded-2xl flex flex-col h-full relative ${tool.isPhaseStart ? 'border-2 border-orange-500 ring-4 ring-orange-500/5' : ''}">
+                        ${tool.isPhaseStart ? `
+                            <div class="absolute -top-3 left-6 bg-orange-600 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-widest z-10">
+                                Phase Start
+                            </div>
+                        ` : ''}
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-[10px] font-black px-2.5 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-widest">
+                                ${tool.type}
+                            </span>
+                            ${tool.isPhaseStart ? '<svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>' : ''}
                         </div>
-                    </a>
-                `;
-
-
-                // 3. Build Detailed Content Section (Scroll Target)
-                contentHtml += `
-                    <!-- Category Section: ${category.title} --><div id="${category.id}" class="rounded-xl bg-white p-6 shadow-lg border border-gray-200 pt-12 -mt-12">
-                        <div class="flex items-center mb-4">
-                            ${generateIconHtml(category.icon, false)} <!-- Use small icon/image --><h3 class="text-2xl font-bold ml-3 text-gray-800">${category.title}</h3>
-                        </div>
-                        <p class="text-gray-600 mb-6">${category.description}</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            ${category.tools.map(tool => `
-                                <!-- START TOOL CARD LAYOUT (Modified to use Flexbox for consistent button alignment) --><div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col h-full">
-                                    
-                                    <!-- Header: Title and Tag side-by-side using Flexbox --><div class="flex justify-between items-start mb-4">
-                                        <!-- Title: Constrained width to prevent it from pushing the tag, uses pr-4 for spacing --><h4 class="text-xl font-bold text-gray-800 leading-tight pr-4" style="max-width: 75%;">${tool.name}</h4> 
-                                        
-                                        <!-- Tool Tag: Uses flex-shrink-0 to maintain position --><span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 uppercase flex-shrink-0 mt-0.5">
-                                            ${getToolTag(tool.type)}
-                                        </span>
-                                    </div>
-
-                                    <!-- Short Description --><p class="text-sm text-gray-600 mb-4">${tool.description}</p>
-
-                                    <!-- Tips to Use (Highlighted) --><div class="p-3 mb-4 rounded-lg bg-orange-50 border border-orange-200">
-                                        <p class="text-xs font-semibold text-[#F38020] mb-1">Tips to Use:</p>
-                                        <p class="text-sm text-gray-700">${tool.tip}</p>
-                                    </div>
-
-                                    <!-- Button and Status: Uses mt-auto to push to the bottom --><div class="flex items-center justify-between mt-auto">
-                                        <span class="text-sm font-medium ${tool.status === 'Active' ? 'text-green-600' : 'text-red-600'}">
-                                            Status: ${tool.status}
-                                        </span>
-                                        <a href="${tool.link}" target="_blank" class="py-2 px-4 rounded-lg font-semibold bg-[#F38020] text-white hover:bg-[#FF9900] transition duration-200 text-center ${tool.status !== 'Active' ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}">
-                                            Start Using
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- END TOOL CARD LAYOUT -->`).join('')}
+                        <h4 class="text-xl font-extrabold text-gray-900 mb-2">${tool.name}</h4>
+                        <p class="text-sm text-gray-500 font-medium leading-relaxed mb-8 flex-grow">${tool.desc}</p>
+                        <div class="flex items-center gap-4">
+                            <button class="${buttonClass} flex-grow py-3 rounded-xl font-bold shadow-md">
+                                Start Using
+                            </button>
+                            <a href="#" class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors">Demo</a>
                         </div>
                     </div>
                 `;
+            }).join('');
+
+            renderChecklist(num);
+        }
+
+        function renderChecklist(activeNum) {
+            const container = document.getElementById('master-checklist');
+            container.innerHTML = [1, 2, 3].map(pNum => {
+                const isActive = pNum === activeNum;
+                return `
+                    <div class="transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-40'}">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-[9px] font-black text-gray-400">PHASE 0${pNum}</span>
+                            <div class="h-px flex-grow bg-gray-100"></div>
+                        </div>
+                        <ul class="space-y-4">
+                            ${phases[pNum].checklist.map(item => `
+                                <li class="flex items-start gap-3">
+                                    <input type="checkbox" class="checklist-input mt-0.5" 
+                                        ${checkedItems[item] ? 'checked' : ''} 
+                                        onchange="toggleCheck('${item.replace(/'/g, "\\'")}')">
+                                    <span class="text-xs font-semibold text-gray-700 leading-tight">${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }).join('');
+            updateBars();
+        }
+
+        function toggleCheck(item) {
+            checkedItems[item] = !checkedItems[item];
+            updateBars();
+            renderChecklist(getCurrentPhase());
+        }
+
+        function updateBars() {
+            let total = 0;
+            let checked = 0;
+            [1,2,3].forEach(p => {
+                const items = phases[p].checklist;
+                total += items.length;
+                const pChecked = items.filter(i => checkedItems[i]).length;
+                checked += pChecked;
+                
+                const bar = document.getElementById(`why-bar-${p}`);
+                if (pChecked === items.length) bar.className = "flex-1 rounded-full bg-orange-600 transition-all duration-700";
+                else if (pChecked > 0) bar.className = "flex-1 rounded-full bg-orange-200 transition-all duration-700";
+                else bar.className = "flex-1 rounded-full bg-gray-200 transition-all duration-700";
             });
 
-            navContainer.innerHTML = navHtml;
-            cardContainer.innerHTML = cardHtml;
-            contentContainer.innerHTML = contentHtml;
+            const percent = Math.round((checked / total) * 100);
+            document.getElementById('health-percentage').innerText = `${percent}% Ready`;
         }
 
-        // --- 3. INITIALIZATION & UTILITIES (Dynamic Year) ---
-        
-        function setDynamicYear() {
-            const currentYear = new Date().getFullYear();
-            const footerElement = document.getElementById('copyright-text');
-            if (footerElement) {
-                // Get the existing text and inject the current year after the copyright symbol
-                const originalText = footerElement.innerHTML;
-                // Replace the copyright symbol with the symbol followed by the current year
-                footerElement.innerHTML = originalText.replace('&copy;', `&copy; ${currentYear}`);
-            }
+        function getCurrentPhase() {
+            const active = document.querySelector('.phase-tab.active');
+            if (!active) return 1;
+            return parseInt(active.id.replace('btn-p', ''));
         }
 
-        // --- 4. NAVIGATION UTILITIES (Back to Top & Scroll Spy) ---
-
-        function scrollToTop() {
-            // Smoothly scroll to the top of the 'app' container
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        function handleScroll() {
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            // Back to Top Button Visibility
-            if (window.scrollY > 300) { // Show button after scrolling 300px
-                backToTopButton.classList.remove('invisible', 'opacity-0');
-                backToTopButton.classList.add('visible', 'opacity-100');
-            } else {
-                backToTopButton.classList.remove('visible', 'opacity-100');
-                backToTopButton.classList.add('invisible', 'opacity-0');
-            }
-
-            // Scroll Spy Logic
-            const sections = document.querySelectorAll('#engine-content > div');
-            const navLinks = document.querySelectorAll('.side-nav-item');
-            // Offset adjusted to account for the fixed header height and the improved spacing
-            const scrollOffset = 180; 
-
-            let currentSectionId = null;
-
-            // Iterate sections backwards to find the one whose top edge is currently highest 
-            // but still below the scrollOffset.
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
-                const rect = section.getBoundingClientRect();
-                
-                if (rect.top <= scrollOffset) {
-                    currentSectionId = section.id;
-                    break;
-                }
-            }
-
-            // Apply active styles
-            navLinks.forEach(link => {
-                link.classList.remove('nav-active', 'text-white', 'text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
-                
-                if (link.dataset.sectionId === currentSectionId) {
-                    link.classList.add('nav-active');
-                } else {
-                    link.classList.add('text-gray-700', 'hover:bg-gray-100', 'hover:text-[#F38020]');
-                }
-            });
+        function toggleOnboarding() {
+            const wrap = document.getElementById('onboarding-wrap');
+            const btn = document.getElementById('guide-toggle');
+            wrap.classList.toggle('active');
+            btn.classList.toggle('nav-btn-active');
         }
 
         window.onload = () => {
-            renderEngineContent();
-            setDynamicYear();
-            handleScroll(); // Check position on load
+            showPhase(1);
         };
-
-        window.onscroll = handleScroll; // Attach scroll handler
     </script>
 </body>
 </html>
