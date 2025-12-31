@@ -232,38 +232,11 @@
             </div>
 
             <!-- Fun Cloudflare-inspired Graphic (Scaled down for shorter height) -->
-            <div class="flex-1 w-full max-w-[240px] hidden md:flex items-center justify-center pointer-events-none floating-graphic">
-                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-2xl">
-                    <!-- Geometric Network Base -->
-                    <circle cx="200" cy="200" r="160" stroke="#FEE2E2" stroke-width="1" stroke-dasharray="8 8" />
-                    <circle cx="200" cy="200" r="100" stroke="#FFEDD5" stroke-width="1" />
-                    
-                    <!-- Nodes and Paths -->
-                    <path d="M200 60 L320 140 L280 300 L120 300 L80 140 Z" stroke="#F38020" stroke-width="2" opacity="0.3" />
-                    <path d="M200 60 L280 300 M320 140 L120 300 M80 140 L280 300" stroke="#0051C3" stroke-width="1.5" opacity="0.1" />
-
-                    <!-- Insights Pulse Points -->
-                    <circle cx="200" cy="60" r="8" fill="#F38020">
-                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="320" cy="140" r="6" fill="#0051C3" />
-                    <circle cx="280" cy="300" r="10" fill="#F38020" opacity="0.8" />
-                    <circle cx="120" cy="300" r="6" fill="#0051C3" opacity="0.6" />
-                    <circle cx="80" cy="140" r="5" fill="#F38020" opacity="0.5" />
-                    
-                    <!-- Central Hub -->
-                    <rect x="175" y="175" width="50" height="50" rx="10" fill="white" stroke="#F38020" stroke-width="3" />
-                    <path d="M190 200 L197 207 L210 194" stroke="#F38020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    
-                    <!-- Flow Particles -->
-                    <circle r="3" fill="#F38020">
-                        <animateMotion path="M200 60 L320 140 L280 300 L200 200" dur="4s" repeatCount="indefinite" />
-                    </circle>
-                    <circle r="2" fill="#0051C3">
-                        <animateMotion path="M80 140 L120 300 L200 200" dur="3s" repeatCount="indefinite" />
-                    </circle>
-                </svg>
+            <div class="flex-1 w-full max-w-[280px] hidden md:flex items-center justify-center floating-graphic">
+                <img src="https://via.placeholder.com/600x400?text=Insert+Hero+Image" 
+                     alt="Value Selling Framework" 
+                     class="w-full h-auto object-contain rounded-xl shadow-lg border border-slate-200"
+                     onerror="this.src='https://via.placeholder.com/600x400?text=Image+URL+Not+Found'">
             </div>
         </div>
     </header>
