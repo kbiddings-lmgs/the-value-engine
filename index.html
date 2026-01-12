@@ -82,29 +82,17 @@
             backdrop-filter: blur(12px);
         }
 
-        /* Action Buttons */
+        /* Base Action Button Styles (No Hovers) */
         .btn-start {
             background-color: var(--cf-orange);
             color: white;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-start:hover {
-            background-color: var(--cf-orange-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
-        }
 
-        /* Neutral Button Style */
         .btn-neutral {
             background-color: #E2E8F0; /* Slate 200 */
             color: #475569; /* Slate 600 */
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-neutral:hover {
-            background-color: var(--cf-orange);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(243, 128, 32, 0.3);
         }
         
         .btn-start:active, .btn-neutral:active {
@@ -299,9 +287,30 @@
                 busyMove: "Don't over-prep. Run the Insights Coach, spend 5-10 mins refining the output, and then move on to the Value Map Generator or Role-Play Coach to be ready to meet with the customer. Speed is a wedge.",
                 proTip: "Don't waste time researching every detail. Look for 1-3 anchor pain points (e.g., incident response times) and multiply it by their scale. If they lose $1k per day per person and have 500 people, that’s $500k a day.",
                 tools: [
-                    { name: 'Targeting & Insights Coach', type: 'Coach', isPhaseStart: true, desc: 'Runs a planning session to sharpen your research, and collarboate to instantly generate a personalized value hypotheses and compelling event summary to be the foundation of your business case - the Why Change.' },
-                    { name: 'Value Map Generator', type: 'Generator', isPhaseStart: false, desc: 'Use the output from the Targeting & Insights Coach combined with other account intel to generate a customer-facing Value Map slide that you can validate with your customer.' },
-                    { name: 'Role-Play Coach', type: 'Coach', isPhaseStart: false, desc: 'Simulate a live situation where this Coach dynamically embodies your target persona. It uses your refined research—including Value Map—to ensure you are ready to have any value conversation with confidence and precision.' }
+                    { 
+                        name: 'Targeting & Insights Coach', 
+                        type: 'Coach', 
+                        isPhaseStart: true, 
+                        url: 'https://gemini.google.com/gem/1sCn_oVIj2oe3c4almMaopDii5mWxX7W4?usp=sharing', 
+                        demoUrl: '#',
+                        desc: 'Runs a planning session to sharpen your research, and collarboate to instantly generate a personalized value hypotheses and compelling event summary to be the foundation of your business case - the Why Change.' 
+                    },
+                    { 
+                        name: 'Value Map Generator', 
+                        type: 'Generator', 
+                        isPhaseStart: false, 
+                        url: 'https://gemini.google.com/gem/1iGzPeCbCrXkCQ5YfPStD65pAYGu25jXI?usp=sharing', 
+                        demoUrl: '#',
+                        desc: 'Use the output from the Targeting & Insights Coach combined with other account intel to generate a customer-facing Value Map slide that you can validate with your customer.' 
+                    },
+                    { 
+                        name: 'Role-Play Coach', 
+                        type: 'Coach', 
+                        isPhaseStart: false, 
+                        url: 'https://gemini.google.com/gem/1how7IDCcJbpgCQHmZxqr83QSyPGncjXS?usp=sharing', 
+                        demoUrl: '#',
+                        desc: 'Simulate a live situation where this Coach dynamically embodies your target persona. It uses your refined research—including Value Map—to ensure you are ready to have any value conversation with confidence and precision.' 
+                    }
                 ]
             },
             2: {
@@ -311,8 +320,22 @@
                 busyMove: "Great discovery isn't about asking questions— it's about validating your value hypotheses. Use the Discovery Prep Coach to confirm yours before the call.",
                 proTip: "Avoid the feature dump. For every unique capability you mention, you must tie it to a specific metric found in the Why Change phase. If your UI is better, don't say 'it's intuitive'. Instead say 'it reduces onboarding time by 3 weeks, which saves you $X in training costs.'",
                 tools: [
-                    { name: 'Discovery Prep Coach', type: 'Coach', isPhaseStart: true, desc: 'Complete a rapid, preparation sprint for your upcoming discovery meeting. Develop the opener, discovery questions, talking points, closer, and immediate next steps.' },
-                    { name: 'Akamai Takeout Data Sheet', type: 'Coach', isPhaseStart: false, desc: "Generate a customer-facing data sheet to displace Akamai that is tailored to your prospect's goals and challenges providing quantified and compelling reasons for further engagement." }
+                    { 
+                        name: 'Discovery Prep Coach', 
+                        type: 'Coach', 
+                        isPhaseStart: true, 
+                        url: 'https://gemini.google.com/gem/1MyDycPlHlpJHakJ81KLbaJJ3VwK69fWf?usp=sharing', 
+                        demoUrl: '#',
+                        desc: 'Complete a rapid, preparation sprint for your upcoming discovery meeting. Develop the opener, discovery questions, talking points, closer, and immediate next steps.' 
+                    },
+                    { 
+                        name: 'Akamai Takeout Data Sheet', 
+                        type: 'Coach', 
+                        isPhaseStart: false, 
+                        url: 'https://gemini.google.com/gem/1kV2nIhjghwp8dEJJRqTFHqqfqWkceyps?usp=sharing', 
+                        demoUrl: '#',
+                        desc: "Generate a customer-facing data sheet to displace Akamai that is tailored to your prospect's goals and challenges providing quantified and compelling reasons for further engagement." 
+                    }
                 ]
             },
             3: {
@@ -320,10 +343,24 @@
                 subtitle: "Why Now?",
                 desc: "Build a compelling value narrative to pitch your CxO-ready business case. Align technical impact with strategic financial outcomes to close the opportunity.",
                 busyMove: "Bring it all together - feed all other Coaching outputs into the Business Case Coach to quickly define and quantify the 3 WHYs.",
-                proTip: "When building the business case, don't just show the ROI of the project. Show the monthly cost of waiting. If the project saves $1.2M a year, every month they 'think about it' is a $100k check they are effectively writing to their own inefficiency.",
+                proTip: "When building the business case, don't just show the ROI of the project. Show the monthly cost of waiting. If the project saves $1.2M a year, every month they 'think about it' is a $100k check they are writing to their own inefficiency.",
                 tools: [
-                    { name: 'Business Case Coach', type: 'Coach', isPhaseStart: true, desc: 'Quickly refine your business case - synthesize the 3 WHYs and anchor the case to quantified value outcomes.' },
-                    { name: 'Lite Business Case', type: 'Generator', isPhaseStart: false, desc: 'Convert your findings into a one-page summary of the 3 WHYs.' }
+                    { 
+                        name: 'Business Case Coach', 
+                        type: 'Coach', 
+                        isPhaseStart: true, 
+                        url: 'https://gemini.google.com/gem/13VpsIRJ7QvsHTkE9ycuP20UBHFUBTZtw?usp=sharing', 
+                        demoUrl: '#',
+                        desc: 'Quickly refine your business case - synthesize the 3 WHYs and anchor the case to quantified value outcomes.' 
+                    },
+                    { 
+                        name: 'Lite Business Case', 
+                        type: 'Generator', 
+                        isPhaseStart: false, 
+                        url: '#', 
+                        demoUrl: '#',
+                        desc: 'Convert your findings into a one-page summary of the 3 WHYs.' 
+                    }
                 ]
             }
         };
@@ -355,7 +392,23 @@
             }, 150);
 
             document.getElementById('phase-content').innerHTML = data.tools.map(tool => {
-                const buttonClass = tool.isPhaseStart ? 'btn-start' : 'btn-neutral';
+                const hasValidUrl = tool.url && tool.url !== '#';
+                const hasValidDemo = tool.demoUrl && tool.demoUrl !== '#';
+
+                // Conditional Hover Logic
+                let hoverClasses = "";
+                if (hasValidUrl) {
+                    if (tool.isPhaseStart) {
+                        hoverClasses = "hover:bg-[#FAAD6E] hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgba(243,128,32,0.3)]";
+                    } else {
+                        hoverClasses = "hover:bg-[#EA580C] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgba(243,128,32,0.3)]";
+                    }
+                } else {
+                    hoverClasses = "cursor-default opacity-60";
+                }
+
+                const buttonBaseClass = tool.isPhaseStart ? 'btn-start' : 'btn-neutral';
+                
                 return `
                     <div class="tool-card bg-white p-8 rounded-2xl flex flex-col h-full relative ${tool.isPhaseStart ? 'border-2 border-orange-500 ring-4 ring-orange-500/5' : ''}">
                         ${tool.isPhaseStart ? `
@@ -372,10 +425,16 @@
                         <h4 class="text-xl font-extrabold text-gray-900 mb-2">${tool.name}</h4>
                         <p class="text-sm text-gray-500 font-medium leading-relaxed mb-8 flex-grow">${tool.desc}</p>
                         <div class="flex items-center gap-4">
-                            <button class="${buttonClass} flex-grow py-3 rounded-xl font-bold shadow-md">
+                            <a href="${tool.url}" 
+                               ${hasValidUrl ? 'target="_blank" rel="noopener noreferrer"' : 'onclick="return false;"'} 
+                               class="${buttonBaseClass} ${hoverClasses} flex-grow py-3 rounded-xl font-bold shadow-md text-center block transition-all duration-200">
                                 Start Using
-                            </button>
-                            <a href="#" class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors">Demo</a>
+                            </a>
+                            <a href="${tool.demoUrl}" 
+                               ${hasValidDemo ? 'target="_blank" rel="noopener noreferrer"' : 'onclick="return false;"'} 
+                               class="text-orange-600 text-xs font-bold underline underline-offset-4 hover:text-orange-700 transition-colors ${!hasValidDemo ? 'opacity-30 cursor-default grayscale' : ''}">
+                                Demo
+                            </a>
                         </div>
                     </div>
                 `;
