@@ -71,34 +71,6 @@
             box-shadow: 0 20px 25px -5px rgba(243, 128, 32, 0.05);
         }
 
-        /* Custom Checkbox */
-        .checklist-input {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #CBD5E1;
-            border-radius: 4px;
-            cursor: pointer;
-            display: grid;
-            place-content: center;
-            transition: 120ms;
-        }
-        .checklist-input::before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--cf-orange);
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-        .checklist-input:checked {
-            border-color: var(--cf-orange);
-        }
-        .checklist-input:checked::before {
-            transform: scale(1);
-        }
-
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -139,16 +111,6 @@
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(243, 128, 32, 0.1);
         }
-
-        /* Floating Animation for Hero Graphic */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating-graphic {
-            animation: float 6s ease-in-out infinite;
-        }
     </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -157,7 +119,6 @@
     <div class="sticky top-0 z-50 glass-panel border-b border-gray-200">
         <nav class="py-4 px-6 max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-[#F38020] rounded-md flex items-center justify-center text-white font-bold">V</div>
                 <span class="font-extrabold tracking-tight text-xl">The Value Engine</span>
             </div>
             <div class="flex items-center gap-4">
@@ -165,7 +126,7 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     How it works
                 </button>
-                <a href="#" class="hidden md:block bg-slate-950 text-white text-[10px] uppercase tracking-widest font-black px-5 py-2 rounded-full border border-slate-900 hover:bg-slate-800 transition-all">Support</a>
+                <a href="#" class="hidden md:block bg-[#3e74ff] text-white text-[10px] uppercase tracking-widest font-black px-5 py-2 rounded-full border border-[#3e74ff] hover:opacity-90 transition-all">Support</a>
             </div>
         </nav>
 
@@ -174,7 +135,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 border-t border-gray-100">
                 <div class="p-8 space-y-3">
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="w-5 h-5 rounded bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] font-black">1</span>
+                        <span class="w-5 h-5 rounded bg-orange-100 text text-orange-600 flex items-center justify-center text-[10px] font-black">1</span>
                         <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Methodology</span>
                     </div>
                     <h4 class="font-bold text-base text-gray-900">Win the 3 WHYs</h4>
@@ -226,43 +187,53 @@
                 <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight leading-[1.1] text-slate-900">
                     Own the <br class="hidden md:block"> <span class="text-orange-600">Value Conversation.</span>
                 </h1>
-                <p class="text-base text-slate-600 max-w-xl font-medium leading-relaxed">
-                    Unified prep, discovery, and business case tooling to stop losing to the status-quo.
-                </p>
+                <h2 class="text-base text-slate-600 font-medium leading-relaxed">
+                    Accelerate prep, discovery and business case creation to beat the status quo.
+                </h2>
             </div>
 
-            <!-- Fun Cloudflare-inspired Graphic (Scaled down for shorter height) -->
-            <div class="flex-1 w-full max-w-[240px] hidden md:flex items-center justify-center pointer-events-none floating-graphic">
-                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-2xl">
-                    <!-- Geometric Network Base -->
-                    <circle cx="200" cy="200" r="160" stroke="#FEE2E2" stroke-width="1" stroke-dasharray="8 8" />
-                    <circle cx="200" cy="200" r="100" stroke="#FFEDD5" stroke-width="1" />
-                    
-                    <!-- Nodes and Paths -->
-                    <path d="M200 60 L320 140 L280 300 L120 300 L80 140 Z" stroke="#F38020" stroke-width="2" opacity="0.3" />
-                    <path d="M200 60 L280 300 M320 140 L120 300 M80 140 L280 300" stroke="#0051C3" stroke-width="1.5" opacity="0.1" />
+            <!-- Static Quantification Graphic (Detailed & Muted) -->
+            <div class="flex-1 w-full max-w-[280px] hidden md:flex items-center justify-center pointer-events-none">
+                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-sm">
+                    <!-- Background Circular Motif (Muted) -->
+                    <circle cx="200" cy="200" r="150" stroke="#F1F5F9" stroke-width="1.5" stroke-dasharray="10 6" />
+                    <circle cx="200" cy="200" r="100" fill="#FFF7ED" opacity="0.4" />
 
-                    <!-- Insights Pulse Points -->
-                    <circle cx="200" cy="60" r="8" fill="#F38020">
-                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="320" cy="140" r="6" fill="#0051C3" />
-                    <circle cx="280" cy="300" r="10" fill="#F38020" opacity="0.8" />
-                    <circle cx="120" cy="300" r="6" fill="#0051C3" opacity="0.6" />
-                    <circle cx="80" cy="140" r="5" fill="#F38020" opacity="0.5" />
+                    <!-- Detailed Grid (Slate) -->
+                    <g stroke="#E2E8F0" stroke-width="0.5">
+                        <line x1="80" y1="100" x2="320" y2="100" />
+                        <line x1="80" y1="150" x2="320" y2="150" />
+                        <line x1="80" y1="200" x2="320" y2="200" />
+                        <line x1="80" y1="250" x2="320" y2="250" />
+                        <line x1="80" y1="300" x2="320" y2="300" />
+                    </g>
+
+                    <!-- Muted Data Bars -->
+                    <rect x="100" y="260" width="18" height="40" rx="3" fill="#94A3B8" opacity="0.3" />
+                    <rect x="130" y="240" width="18" height="60" rx="3" fill="#94A3B8" opacity="0.4" />
+                    <rect x="160" y="190" width="18" height="110" rx="3" fill="#94A3B8" opacity="0.5" />
+                    <rect x="190" y="160" width="18" height="140" rx="3" fill="#CBD5E1" opacity="0.6" />
+                    <rect x="220" y="110" width="18" height="190" rx="3" fill="#FDBA74" opacity="0.5" />
+                    <rect x="250" y="80" width="18" height="220" rx="3" fill="#FDBA74" opacity="0.7" />
+                    <rect x="280" y="60" width="18" height="240" rx="3" fill="#F97316" opacity="0.4" />
                     
-                    <!-- Central Hub -->
-                    <rect x="175" y="175" width="50" height="50" rx="10" fill="white" stroke="#F38020" stroke-width="3" />
-                    <path d="M190 200 L197 207 L210 194" stroke="#F38020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Solid Muted Trend Line -->
+                    <path d="M80 320 L120 280 L180 230 L220 180 L280 120 L320 60" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 4" opacity="0.6" />
+                    <path d="M80 320 Q 150 310, 200 200 T 320 60" stroke="#F97316" stroke-width="3" stroke-linecap="round" opacity="0.6" />
                     
-                    <!-- Flow Particles -->
-                    <circle r="3" fill="#F38020">
-                        <animateMotion path="M200 60 L320 140 L280 300 L200 200" dur="4s" repeatCount="indefinite" />
-                    </circle>
-                    <circle r="2" fill="#0051C3">
-                        <animateMotion path="M80 140 L120 300 L200 200" dur="3s" repeatCount="indefinite" />
-                    </circle>
+                    <!-- Precise Nodes -->
+                    <circle cx="200" cy="200" r="4" fill="#F97316" opacity="0.8" />
+                    <circle cx="320" cy="60" r="6" fill="#F97316" />
+                    <circle cx="320" cy="60" r="10" stroke="#F97316" stroke-width="1" opacity="0.3" />
+
+                    <!-- Detailed Central Hub (Static) -->
+                    <rect x="175" y="175" width="50" height="50" rx="10" fill="white" stroke="#CBD5E1" stroke-width="1" />
+                    <rect x="182" y="182" width="36" height="36" rx="6" fill="#F8FAFC" />
+                    <text x="200" y="210" font-family="Plus Jakarta Sans, Arial" font-size="22" font-weight="800" fill="#94A3B8" text-anchor="middle">$</text>
+                    
+                    <!-- Detail Annotations (Ticks) -->
+                    <line x1="315" y1="60" x2="325" y2="60" stroke="#94A3B8" stroke-width="1" />
+                    <line x1="195" y1="200" x2="205" y2="200" stroke="#94A3B8" stroke-width="1" />
                 </svg>
             </div>
         </div>
@@ -270,21 +241,21 @@
 
     <main class="max-w-7xl mx-auto px-4 -mt-10 relative z-20">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="space-y-8">
             
-            <!-- LEFT: TOOL CONTENT -->
-            <div class="lg:col-span-8 space-y-6">
+            <!-- TOOL CONTENT -->
+            <div class="space-y-6">
                 
                 <!-- PHASE NAVIGATION -->
-                <div class="flex p-1.5 bg-gray-200/50 rounded-xl backdrop-blur-sm">
+                <div class="flex p-1.5 bg-gray-200/50 rounded-xl backdrop-blur-sm max-w-2xl">
                     <button onclick="showPhase(1)" id="btn-p1" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all active">
-                        Phase 01: Prep
+                        Phase: Prep
                     </button>
                     <button onclick="showPhase(2)" id="btn-p2" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all">
-                        Phase 02: Validate
+                        Phase: Validate
                     </button>
                     <button onclick="showPhase(3)" id="btn-p3" class="phase-tab flex-1 py-4 px-2 rounded-lg text-center font-bold text-sm transition-all">
-                        Phase 03: Quantify
+                        Phase: Quantify
                     </button>
                 </div>
 
@@ -294,65 +265,35 @@
                 </div>
 
                 <!-- TOOLS CONTAINER -->
-                <div id="phase-content" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div id="phase-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Dynamic Tool Cards -->
                 </div>
 
             </div>
 
-            <!-- RIGHT: PERSISTENT SIDEBAR -->
-            <aside class="lg:col-span-4 sticky top-24 space-y-6">
-                
-                <!-- READINESS HUB -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-                        <h4 class="font-extrabold text-sm tracking-tight text-gray-900">Business Case Progress</h4>
-                        <span id="health-percentage" class="text-[10px] font-bold bg-gray-100 px-2 py-1 rounded text-gray-500 uppercase">0% Complete</span>
+            <!-- HORIZONTAL PRO-TIP BOX -->
+            <div class="p-8 bg-orange-50 border border-orange-100 rounded-3xl text-gray-900 shadow-sm relative overflow-hidden group animate-slide-up">
+                <svg class="absolute -right-4 -top-4 w-32 h-32 text-orange-200/30 rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="bg-orange-100 p-4 rounded-2xl border border-orange-200 shrink-0">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-orange-600">Enablement Pro-Tip</p>
                     </div>
-                    
-                    <div id="master-checklist" class="p-6 space-y-8">
-                        <!-- Checklists -->
-                    </div>
-
-                    <!-- 3 WHYs VISUALIZER -->
-                    <div class="p-6 bg-slate-50 border-t border-gray-100">
-                        <div class="flex justify-between items-end mb-3">
-                            <span class="text-[10px] font-bold text-gray-400 uppercase">Pipeline Health</span>
-                            <span class="text-[10px] font-bold text-orange-600">The 3 WHYs</span>
-                        </div>
-                        <div class="flex gap-1.5 h-2">
-                            <div id="why-bar-1" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
-                            <div id="why-bar-2" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
-                            <div id="why-bar-3" class="flex-1 rounded-full bg-gray-200 transition-all duration-700"></div>
-                        </div>
-                        <div class="flex justify-between mt-3 text-[9px] font-bold text-gray-400">
-                            <span>CHANGE?</span>
-                            <span>US?</span>
-                            <span>NOW?</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- QUICK TIP (Now Dynamic) -->
-                <div class="p-6 bg-orange-600 rounded-2xl text-white shadow-lg relative overflow-hidden group">
-                    <svg class="absolute -right-4 -bottom-4 w-24 h-24 text-white/10 rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    <p class="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Enablement Pro-Tip</p>
-                    <p id="dynamic-pro-tip" class="text-sm font-semibold leading-relaxed transition-all duration-300">
+                    <p id="dynamic-pro-tip" class="text-lg font-bold text-gray-900 leading-relaxed transition-all duration-300">
                         <!-- Content Injected via JS -->
                     </p>
                 </div>
-            </aside>
+            </div>
         </div>
 
-        <!-- AI GUARDRAILS -->
+        <!-- FOOTER -->
         <footer class="mt-24 py-16 border-t border-gray-200">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-2">
                     <h5 class="font-bold text-gray-900 mb-4 text-sm">AI Usage Guidelines</h5>
                     <ul class="text-sm text-gray-500 space-y-2 inline-block md:block text-left list-disc pl-5 max-w-md leading-relaxed">
-                        <li><strong>Accuracy:</strong> AI is a co-pilot, not an auto-pilot. You are responsible for the accuracy of all results.</li>
-                        <li><strong>Privacy:</strong> Protect customer data; never input sensitive PII or confidential materials into prompts.</li>
-                        <li><strong>Review:</strong> Always verify and refine AI-generated content before sharing with champions.</li>
+                        <li>Everyone has a responsibility to <strong>protect customer data</strong> in any and every situation.</li>
+                        <li>You still <strong>own the output</strong>. Read, understand, and approve all AI-generated work.</li>
+                        <li>Only use <strong>approved tools</strong> for work.</li>
                     </ul>
                 </div>
                 <div>
@@ -363,9 +304,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-4">Privacy</h5>
                     <p class="text-[10px] text-gray-400 leading-tight">
-                        &copy; 2025 Cloudflare, Inc. <br>All prompts and logic are internal intellectual property.
+                        &copy; 2026 Cloudflare, Inc. <br>All prompts and logic are internal intellectual property.
                     </p>
                 </div>
             </div>
@@ -373,7 +313,6 @@
     </main>
 
     <script>
-        let checkedItems = {};
         const phases = {
             1: {
                 title: "Strategic Prep",
@@ -385,8 +324,7 @@
                     { name: 'Insights Coach', type: 'Coach', isPhaseStart: true, desc: 'Synthesize disruptive research into a Point-of-View hypothesis.' },
                     { name: 'Value Map Generator', type: 'Generator', isPhaseStart: false, desc: 'Transform your POV into a visual slide for the technical champion.' },
                     { name: 'Role-Play Coach', type: 'Coach', isPhaseStart: false, desc: 'Pressure-test your opening hook against a skeptical CFO persona.' }
-                ],
-                checklist: ["POV on business priorities set", "Cost of Doing Nothing quantified", "3 WHYs: Defined 'Why Change?'"]
+                ]
             },
             2: {
                 title: "Validate & Differentiate",
@@ -397,8 +335,7 @@
                 tools: [
                     { name: 'Discovery Prep Coach', type: 'Coach', isPhaseStart: true, desc: 'Isolate the "Unique Wedge" based on competitive incumbent pain.' },
                     { name: 'Competitive Takeout Coach', type: 'Coach', isPhaseStart: false, desc: 'Playbooks for displacing legacy firewall and MPLS vendors.' }
-                ],
-                checklist: ["Identified a 'Unique Wedge'", "Incumbent pain-points confirmed", "3 WHYs: Defined 'Why Us?'"]
+                ]
             },
             3: {
                 title: "Quantify & Close",
@@ -409,8 +346,7 @@
                 tools: [
                     { name: 'Business Case Coach', type: 'Coach', isPhaseStart: true, desc: 'Synthesize deal logic into a Board-ready executive narrative.' },
                     { name: 'Executive Summary Gen', type: 'Generator', isPhaseStart: false, desc: 'Convert your findings into a one-page Executive brief.' }
-                ],
-                checklist: ["Dollar amount attached to problem", "Champion 'owns' this business case", "3 WHYs: Defined 'Why Now?'"]
+                ]
             }
         };
 
@@ -423,14 +359,14 @@
 
             // Strategy Header
             document.getElementById('phase-strategy').innerHTML = `
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-center bg-white p-8 rounded-2xl border border-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 items-start px-2">
                     <div class="md:col-span-2">
                         <p class="text-orange-600 text-xs font-extrabold uppercase tracking-[0.2em] mb-3">${data.subtitle}</p>
-                        <h2 class="text-3xl font-extrabold text-gray-900 mb-3">${data.title}</h2>
-                        <p class="text-gray-500 font-medium leading-relaxed">${data.desc}</p>
+                        <h2 class="text-4xl font-extrabold text-gray-900 mb-4">${data.title}</h2>
+                        <p class="text-lg text-gray-500 font-medium leading-relaxed max-w-2xl">${data.desc}</p>
                     </div>
-                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
-                        <p class="text-[10px] font-black text-orange-600 uppercase mb-2">The Busy Seller Move</p>
+                    <div class="bg-orange-100/50 p-6 rounded-2xl border border-orange-100/50">
+                        <p class="text-[10px] font-black text-orange-600 uppercase mb-2 tracking-widest">The Busy Seller Move</p>
                         <p class="text-sm font-bold text-gray-900 leading-snug">"${data.busyMove}"</p>
                     </div>
                 </div>
@@ -452,7 +388,7 @@
                     <div class="tool-card bg-white p-8 rounded-2xl flex flex-col h-full relative ${tool.isPhaseStart ? 'border-2 border-orange-500 ring-4 ring-orange-500/5' : ''}">
                         ${tool.isPhaseStart ? `
                             <div class="absolute -top-3 left-6 bg-orange-600 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg uppercase tracking-widest z-10">
-                                Phase Start
+                                Start Here
                             </div>
                         ` : ''}
                         <div class="flex justify-between items-start mb-6">
@@ -472,65 +408,6 @@
                     </div>
                 `;
             }).join('');
-
-            renderChecklist(num);
-        }
-
-        function renderChecklist(activeNum) {
-            const container = document.getElementById('master-checklist');
-            container.innerHTML = [1, 2, 3].map(pNum => {
-                const isActive = pNum === activeNum;
-                return `
-                    <div class="transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-40'}">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="text-[9px] font-black text-gray-400">PHASE 0${pNum}</span>
-                            <div class="h-px flex-grow bg-gray-100"></div>
-                        </div>
-                        <ul class="space-y-4">
-                            ${phases[pNum].checklist.map(item => `
-                                <li class="flex items-start gap-3">
-                                    <input type="checkbox" class="checklist-input mt-0.5" 
-                                        ${checkedItems[item] ? 'checked' : ''} 
-                                        onchange="toggleCheck('${item.replace(/'/g, "\\'")}')">
-                                    <span class="text-xs font-semibold text-gray-700 leading-tight">${item}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `;
-            }).join('');
-            updateBars();
-        }
-
-        function toggleCheck(item) {
-            checkedItems[item] = !checkedItems[item];
-            updateBars();
-            renderChecklist(getCurrentPhase());
-        }
-
-        function updateBars() {
-            let total = 0;
-            let checked = 0;
-            [1,2,3].forEach(p => {
-                const items = phases[p].checklist;
-                total += items.length;
-                const pChecked = items.filter(i => checkedItems[i]).length;
-                checked += pChecked;
-                
-                const bar = document.getElementById(`why-bar-${p}`);
-                if (pChecked === items.length) bar.className = "flex-1 rounded-full bg-orange-600 transition-all duration-700";
-                else if (pChecked > 0) bar.className = "flex-1 rounded-full bg-orange-200 transition-all duration-700";
-                else bar.className = "flex-1 rounded-full bg-gray-200 transition-all duration-700";
-            });
-
-            const percent = Math.round((checked / total) * 100);
-            document.getElementById('health-percentage').innerText = `${percent}% Ready`;
-        }
-
-        function getCurrentPhase() {
-            const active = document.querySelector('.phase-tab.active');
-            if (!active) return 1;
-            return parseInt(active.id.replace('btn-p', ''));
         }
 
         function toggleOnboarding() {
